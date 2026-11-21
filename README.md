@@ -1,8 +1,8 @@
 # Motion-DESIGNER
 
-All-in-one AI motion design, 3D graphics, animation, and audiovisual production workspace combining **18 curated resources** and **47 agent skills** under one canonical routing architecture.
+All-in-one AI motion design, 3D graphics, animation, and audiovisual production workspace combining **18 curated resources** and **48 agent skills** under one canonical routing architecture.
 
-![Antigravity](https://img.shields.io/badge/Antigravity-Native-brightgreen) ![OpenAI Codex](https://img.shields.io/badge/OpenAI%20Codex-Native-brightgreen) ![Claude Code](https://img.shields.io/badge/Claude%20Code-CLAUDE.md%20%2B%20Sync-blue) ![Skills](https://img.shields.io/badge/Agent%20Skills-47-informational) ![Resources](https://img.shields.io/badge/Resources-18-informational)
+![Antigravity](https://img.shields.io/badge/Antigravity-Native-brightgreen) ![OpenAI Codex](https://img.shields.io/badge/OpenAI%20Codex-Native-brightgreen) ![Claude Code](https://img.shields.io/badge/Claude%20Code-CLAUDE.md%20%2B%20Sync-blue) ![Skills](https://img.shields.io/badge/Agent%20Skills-48-informational) ![Resources](https://img.shields.io/badge/Resources-18-informational)
 
 ---
 
@@ -16,10 +16,10 @@ All-in-one AI motion design, 3D graphics, animation, and audiovisual production 
 
 ---
 
-## What's Included (18 Resources / 47 Agent Skills)
+## What's Included (18 Resources / 48 Agent Skills)
 
-- **Motion, Art & Cloning Skills (6 skills + 1 style pack)**:
-  - `reanimate`, `motion-design`, `cinetic`, `motionmaxxing`, `anidoodle`, `huashu-art-motion`
+- **Motion, Art, Cloning & Prompt Planning Skills (7 skills + 1 style pack)**:
+  - `video-prompt-enhancer` (interview-first dynamic prompt planner targeting the full skill stack), `reanimate`, `motion-design`, `cinetic`, `motionmaxxing`, `anidoodle`, `huashu-art-motion`
   - `resources/mg-styles-15/` — 15 canonical 10s motion-graphics style prompts/demos, `window.renderAt(t)` render harness, critic rubric, and zero-API-key Python audio synthesizer (`lib/audio/mgaudio/`)
 - **Blender 5.2+ 3D Pipeline Skills (28 skills)**: Full modeling, sculpting, retopo/UV, Geometry Nodes, PBR/NPR materials, rigging, facial blendshapes, clothing, grooming, animation, look-dev, weather/physics, rendering, QA (`blender-asset-qa`), and engine export
 - **Remotion 4 Skills (13 skills)**: Routed via `remotion-best-practices` covering project scaffolding, markup, Studio interactivity, captions, maps, Mediabunny, rendering, and SaaS `<Player>`
@@ -36,7 +36,7 @@ All-in-one AI motion design, 3D graphics, animation, and audiovisual production 
    git clone https://github.com/janusinss/Motion-DESIGNER.git
    cd Motion-DESIGNER
    ```
-2. **Claude Code users** — expose all 47 skills to `.claude/skills/` (or add `-Global` / `--global` for user-wide availability):
+2. **Claude Code users** — expose all 48 skills to `.claude/skills/` (or add `-Global` / `--global` for user-wide availability):
    ```powershell
    # Windows (PowerShell)
    .\scripts\sync-skills.ps1
@@ -79,7 +79,7 @@ Motion-DESIGNER/
 ├── package.json               # JS/TS 3D stack manifest (three.quarks, R3F, postprocessing, tweakpane)
 ├── package-lock.json          # Locked npm dependencies
 ├── .agents/
-│   └── skills/                # 47 canonical agent skills (<skill-name>/SKILL.md)
+│   └── skills/                # 48 canonical agent skills (<skill-name>/SKILL.md)
 ├── scripts/
 │   ├── sync-skills.ps1        # Windows skill mirror/junction helper (Claude Code & global targets)
 │   └── sync-skills.sh         # macOS/Linux skill symlink/copy helper (Claude Code & global targets)

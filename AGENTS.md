@@ -31,6 +31,7 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 
 | User Intent | Primary Skill / Tool | Runtime & Output | Choose Over Overlaps When |
 |---|---|---|---|
+| Enhance/plan/architect a rough video idea into a directed multi-skill Prompt-Plan | `video-prompt-enhancer` | Plan-only (`SKILL.md` + static curated `references/`); outputs copy-pasteable Markdown Prompt-Plan | User explicitly asks to enhance, direct, or architect a video prompt before building (interviews 2–4 questions first; never auto-executes) |
 | Clone/match animation from live URL, MP4, GIF, Lottie, Rive, or WebGL/Three.js | `reanimate` | Bun + Playwright + `ffmpeg` + pixelmatch; code in target stack | Reference exists ("clone/steal/match this motion"); motion (±80ms) or pixel (≤2%) fidelity |
 | UI/UX micro-interactions, component transitions, scroll/state motion spec | `motion-design` | Design craft rules (CSS, Framer Motion, GSAP, Lottie, Spring, Three.js) | Designing UI transitions or layering Disney/easing/choreography rules onto any build |
 | Commercial SaaS/product launch, update ("vX is out"), UI walkthrough, logo sting | `cinetic` | Remotion 4 (default) or HyperFrames; MP4/WebM/GIF/ProRes/SRT | Structured 1–2h launch/update film using dealt house scenes, real licensed music, official logos |
@@ -56,14 +57,15 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 
 ---
 
-## 3. Full Skill & Resource Catalog (47 Skills + 18 Resources)
+## 3. Full Skill & Resource Catalog (48 Skills + 18 Resources)
 
-All 47 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
+All 48 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
 
-### 3.1 Motion, Art & Cloning Skills (6) + Style Pack
+### 3.1 Motion, Art, Cloning & Prompt Planning Skills (7) + Style Pack
 
 | Skill / Resource | Entry Path | Key Local Scripts / Assets |
 |---|---|---|
+| `video-prompt-enhancer` | `.agents/skills/video-prompt-enhancer/SKILL.md` | `references/interview-bank.md`, `references/catalog.md`, `references/plan-template.md` (plan-only, interview-first) |
 | `reanimate` | `.agents/skills/reanimate/SKILL.md` | `scripts/capture.ts` (`--clock virtual --gl --assets`), `compare.ts`, `sheet.ts`, `easing.ts`, `gl.ts` |
 | `motion-design` | `.agents/skills/motion-design/SKILL.md` | `reference/quality-checklist.md`, `reference/timing-easing-tables.md`, `reference/troubleshooting.md` |
 | `cinetic` | `.agents/skills/cinetic/SKILL.md` | `scripts/precheck.mjs`, `lint-film.mjs`, `copy-check.py`, `forensics.py`, `check-sync.py`, `av-audit.py` |
@@ -106,7 +108,7 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 
 ### 3.4 Complete 18-Resource Workspace Map
 
-- **Agent Skills (8 packs / 47 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13) -> `.agents/skills/`
+- **Agent Skills (8 upstream packs + 1 local planner / 48 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13), + local `video-prompt-enhancer` -> `.agents/skills/`
 - **Prompt & Demo Pack (1)**: #3 `mg-styles-15` -> `resources/mg-styles-15/`
 - **Python Stack (3)**: #8 `manim`, #15 `librosa`, #16 `whisperx` -> `.venv/`, `pyproject.toml`, `requirements.txt`, `uv.lock`
 - **JS/TS 3D Stack (3)**: #10 `three.quarks`, #11 `@react-three/postprocessing`, #12 `tweakpane` -> `package.json`, `package-lock.json`, `node_modules/`
