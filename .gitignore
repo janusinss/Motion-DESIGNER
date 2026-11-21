@@ -1,0 +1,59 @@
+# Python virtual environments & caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# Node.js dependencies & logs
+node_modules/
+.npm/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Portable binary drops, archives & executables (keep tools/effectcraft/SHA256SUMS.txt tracked)
+tools/effectcraft/effectcraft-*-portable/
+*.zip
+*.7z
+*.tar.gz
+*.exe
+*.dll
+
+# Generated local harness skill mirrors (created by scripts/sync-skills.{ps1,sh})
+.claude/skills/
+.codex/skills/
+
+# Local secrets & environment files
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# OS, editor & Blender backup temp files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.blend1
+*.blend2
+
+# Workspace-root render outputs (preserve upstream demo/resource assets in resources/ & .agents/)
+/*.mp4
+/*.mov
+/*.webm
+/*.avi
+/*.mkv
+/out/
+/output/
+/renders/
+/media/

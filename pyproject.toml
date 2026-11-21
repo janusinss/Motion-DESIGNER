@@ -1,0 +1,23 @@
+[project]
+name = "motion-designer"
+version = "0.1.0"
+description = "Motion Designer Python environment (manim, librosa, whisperx)"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+    "librosa>=1.0.1",
+    "manim>=0.22.1",
+    "whisperx>=3.8.6",
+    "torch~=2.8.0",
+    "torchaudio~=2.8.0",
+    "torchvision~=0.23.0",
+]
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchaudio = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
