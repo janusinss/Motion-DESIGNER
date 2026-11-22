@@ -88,7 +88,14 @@ In **Step 4**, output **one copy-pasteable fenced Markdown block** following thi
    ffprobe -v error -show_format -show_streams <output.mp4>
    ```
    Pass: `[W]x[H]` @ `[fps]`, `[duration]s`, non-zero streams, `-14 LUFS`, `≤ -1.1 dBTP`
-3. **Creative review on the rendered contact sheet** (every box must be YES)
+3. **Jury scan** (engine-agnostic measured evidence)
+   ```powershell
+   .venv\Scripts\python.exe .agents/skills/motion-critic/scripts/critic_scan.py <output.mp4> --out <dir>/critic --expect [duration] --hero [hero_s]
+   ```
+   Pass: zero FAIL; measured peak within ±0.75 s of the planned hero; no dead spans; static tail ≤ 1.4 s; slop ratio ≤ 30 %
+4. **Jury verdict & revision loop** (`.agents/skills/motion-critic/SKILL.md`, `references/jury-rubric.md`, lens: [D&AD / Motion Awards / CICLOPE / Staff Pick])
+   - Ship when every dimension ≥ 8 and Idea + Motion Craft ≥ 9; otherwise apply the ranked fix list (max 3 rounds)
+5. **Creative review on the rendered contact sheet** (every box must be YES)
    - [ ] Cover the logo: still unmistakably this brand/subject
    - [ ] Mute: picture alone tells problem → result
    - [ ] Frame 0 in motion; no logo/title opener

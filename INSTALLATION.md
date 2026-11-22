@@ -1,6 +1,6 @@
 # Installation Guide
 
-Cross-platform setup instructions (Windows, macOS, Linux) for installing **Motion-DESIGNER** in a fresh environment or bringing its 48 agent skills into another repository.
+Cross-platform setup instructions (Windows, macOS, Linux) for installing **Motion-DESIGNER** in a fresh environment or bringing its 49 agent skills into another repository.
 
 ---
 
@@ -26,7 +26,7 @@ cd Motion-DESIGNER
 
 ## 2. AI Agent Harness Setup
 
-All 48 skills live canonically in `.agents/skills/<name>/SKILL.md`, and all agent rules/routing live in [`AGENTS.md`](./AGENTS.md).
+All 49 skills live canonically in `.agents/skills/<name>/SKILL.md`, and all agent rules/routing live in [`AGENTS.md`](./AGENTS.md).
 
 | Harness | Instruction File | Project Skills Path | Global Skills Path | Setup |
 |---|---|---|---|---|
@@ -36,13 +36,13 @@ All 48 skills live canonically in `.agents/skills/<name>/SKILL.md`, and all agen
 
 ### 2.1 Antigravity
 
-Open the cloned `Motion-DESIGNER` directory as your workspace. Antigravity automatically loads `AGENTS.md` and discovers all 48 skills under `.agents/skills/`. No extra step is required.
+Open the cloned `Motion-DESIGNER` directory as your workspace. Antigravity automatically loads `AGENTS.md` and discovers all 49 skills under `.agents/skills/`. No extra step is required.
 
 ### 2.2 OpenAI Codex
 
 Run Codex inside `Motion-DESIGNER`. Codex automatically reads `AGENTS.md` and discovers `.agents/skills/<name>/SKILL.md` while walking from `$CWD` up to the repository root.
 
-Optional — expose all 48 skills globally to Codex across every project on your machine:
+Optional — expose all 49 skills globally to Codex across every project on your machine:
 
 ```powershell
 # Windows (PowerShell)
@@ -376,13 +376,13 @@ Run these checks from the repository root to confirm every installed stack is he
 ### 6.1 Agent Skills & Claude Code Sync
 
 ```powershell
-# Windows (PowerShell) — expect 48 SKILL.md files and clean dry-run
+# Windows (PowerShell) — expect 49 SKILL.md files and clean dry-run
 (Get-ChildItem .agents\skills\*\SKILL.md).Count
 .\scripts\sync-skills.ps1 -DryRun
 ```
 
 ```bash
-# macOS / Linux (Bash) — expect 48 SKILL.md files and clean dry-run
+# macOS / Linux (Bash) — expect 49 SKILL.md files and clean dry-run
 ls -1 .agents/skills/*/SKILL.md | wc -l
 ./scripts/sync-skills.sh --dry-run
 ```

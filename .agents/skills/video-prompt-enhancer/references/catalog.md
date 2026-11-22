@@ -1,4 +1,4 @@
-# Motion-DESIGNER Static Curated Catalog (47 Sibling Skills + 18 Resources)
+# Motion-DESIGNER Static Curated Catalog (48 Sibling Skills + 18 Resources)
 
 Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, and QA gate below is verified on disk in `Motion-DESIGNER`. Never cite anything outside this catalog unless the user explicitly supplies a custom local file.
 
@@ -32,7 +32,7 @@ Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, a
 
 ---
 
-## 2. All 47 Sibling Skills (Exact Paths)
+## 2. All 48 Sibling Skills (Exact Paths)
 
 ### 2.1 Motion, Art & Cloning (6 Skills + 1 Resource Pack)
 - `.agents/skills/reanimate/SKILL.md` — scripts: `scripts/capture.ts` (`--clock virtual --gl --assets`), `scripts/compare.ts`, `scripts/sheet.ts`, `scripts/easing.ts`, `scripts/gl.ts`
@@ -140,3 +140,4 @@ On Windows, run `python3` commands with `.venv\Scripts\python.exe`.
 | **`motion-design`** | `.agents/skills/motion-design/reference/quality-checklist.md` | Zero linear spatial motion, zero opacity-only state changes, 1/3 choreography rule, 3 motion layers |
 | **`remotion-*`** | `remotion-interactivity` on markup + `remotion-studio` preview + `remotion-render` only on explicit export | Studio-editable layers/timing, clean preview, zero unrequested renders |
 | **Any MP4 / Cross-Engine** | `ffprobe -v error -show_format -show_streams <out.mp4>` + `.agents/skills/motionmaxxing/scripts/look.py` (or `film_gate.py`) + `resources/mg-styles-15/lib/audio/mgaudio/qc.py` | Valid non-zero streams, exact fps/duration/res, audio `-14 LUFS` & `≤-1.1 dBTP`, visually verified contact sheet |
+| **Award jury (every video)** | `.agents/skills/motion-critic/scripts/critic_scan.py <out.mp4> --out <dir>/critic --expect <s> --hero <s>` + `.agents/skills/motion-critic/references/jury-rubric.md` | Zero FAIL, peak within ±0.75 s of planned hero, no dead spans, all 8 jury dimensions ≥ 8 with Idea + Motion Craft ≥ 9 (max 3 revision rounds) |

@@ -25,6 +25,20 @@ Instructions, operating rules, and skill mappings for AI agents (Codex, Antigrav
 
 ---
 
+## 1.5 Creative Director Protocol (Every Video, Animation, or Motion Request)
+
+The bar is award-level work (D&AD, Motion Awards, CICLOPE, Vimeo Staff Pick), not "it renders". Concept comes first; tools come second; the rendered film is judged before delivery.
+
+1. **Direct**: Before any build, run the 10-Move Direction Engine in `.agents/skills/video-prompt-enhancer/references/creative-direction.md` (PAGE → inventory → 3 concepts of different kinds → kill tests → idea/device/grammar → hero moment → system decisions → world per act → energy curve → sound arc). Apply the matching video-type playbook (Part C, C1–C12). If the user asked only for a plan, stop after the `video-prompt-enhancer` Prompt-Plan.
+2. **Route**: Pick the primary engine from Section 2 that best serves the chosen concept (not the most familiar one).
+3. **Hero first**: Build the hero moment and its hardest seam first; render stills; confirm it reads at speed before building the rest.
+4. **Build & render**: Full film at target spec.
+5. **Judge**: Run `motion-critic` (`scripts/critic_scan.py` + jury rubric) and the primary skill's native gate on the real render.
+6. **Revise**: Apply the ranked fix list; max 3 rounds. Ship when every jury dimension is ≥ 8 and Idea + Motion Craft are ≥ 9 with zero FAIL checks; otherwise report scores honestly.
+7. **Never ship** banned props, copy tells, or visual tells from `creative-direction.md` Part B.
+
+---
+
 ## 2. Skill Activation & Disambiguation Routing Matrix
 
 Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in that domain.
@@ -32,6 +46,7 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 | User Intent | Primary Skill / Tool | Runtime & Output | Choose Over Overlaps When |
 |---|---|---|---|
 | Enhance/plan/architect a rough video idea into a directed multi-skill Prompt-Plan | `video-prompt-enhancer` | Plan-only (`SKILL.md` + static curated `references/`); outputs copy-pasteable Markdown Prompt-Plan | User explicitly asks to enhance, direct, or architect a video prompt before building (interviews 2–4 questions first; never auto-executes) |
+| Critique, review, judge, or iterate any rendered video toward award level | `motion-critic` | `.venv` Python + `ffmpeg`; `sheet.jpg`, `energy.png`, `critic.json` + jury verdict with timecoded fixes | After every render (engine-agnostic), or when the user asks to review/polish/"make it award-level" |
 | Clone/match animation from live URL, MP4, GIF, Lottie, Rive, or WebGL/Three.js | `reanimate` | Bun + Playwright + `ffmpeg` + pixelmatch; code in target stack | Reference exists ("clone/steal/match this motion"); motion (±80ms) or pixel (≤2%) fidelity |
 | UI/UX micro-interactions, component transitions, scroll/state motion spec | `motion-design` | Design craft rules (CSS, Framer Motion, GSAP, Lottie, Spring, Three.js) | Designing UI transitions or layering Disney/easing/choreography rules onto any build |
 | Commercial SaaS/product launch, update ("vX is out"), UI walkthrough, logo sting | `cinetic` | Remotion 4 (default) or HyperFrames; MP4/WebM/GIF/ProRes/SRT | Structured 1–2h launch/update film using dealt house scenes, real licensed music, official logos |
@@ -57,14 +72,15 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 
 ---
 
-## 3. Full Skill & Resource Catalog (48 Skills + 18 Resources)
+## 3. Full Skill & Resource Catalog (49 Skills + 18 Resources)
 
-All 48 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
+All 49 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
 
-### 3.1 Motion, Art, Cloning & Prompt Planning Skills (7) + Style Pack
+### 3.1 Motion, Art, Cloning, Prompt Planning & Critique Skills (8) + Style Pack
 
 | Skill / Resource | Entry Path | Key Local Scripts / Assets |
 |---|---|---|
+| `motion-critic` | `.agents/skills/motion-critic/SKILL.md` | `scripts/critic_scan.py` (contact sheet, energy curve, hero-peak %, dead spans, end hold, slop ratio, LUFS/dBTP, cut-onset sync), `references/jury-rubric.md` (8 dimensions, 4 award-lens weights, ship thresholds) |
 | `video-prompt-enhancer` | `.agents/skills/video-prompt-enhancer/SKILL.md` | `references/creative-direction.md` (10-move direction engine + 12 video-type playbooks), `references/interview-bank.md`, `references/catalog.md`, `references/plan-template.md`, `references/example-plan.md` (plan-only, interview-first) |
 | `reanimate` | `.agents/skills/reanimate/SKILL.md` | `scripts/capture.ts` (`--clock virtual --gl --assets`), `compare.ts`, `sheet.ts`, `easing.ts`, `gl.ts` |
 | `motion-design` | `.agents/skills/motion-design/SKILL.md` | `reference/quality-checklist.md`, `reference/timing-easing-tables.md`, `reference/troubleshooting.md` |
@@ -108,7 +124,7 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 
 ### 3.4 Complete 18-Resource Workspace Map
 
-- **Agent Skills (8 upstream packs + 1 local planner / 48 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13), + local `video-prompt-enhancer` -> `.agents/skills/`
+- **Agent Skills (8 upstream packs + 2 local skills / 49 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13), + local `video-prompt-enhancer` and `motion-critic` -> `.agents/skills/`
 - **Prompt & Demo Pack (1)**: #3 `mg-styles-15` -> `resources/mg-styles-15/`
 - **Python Stack (3)**: #8 `manim`, #15 `librosa`, #16 `whisperx` -> `.venv/`, `pyproject.toml`, `requirements.txt`, `uv.lock`
 - **JS/TS 3D Stack (3)**: #10 `three.quarks`, #11 `@react-three/postprocessing`, #12 `tweakpane` -> `package.json`, `package-lock.json`, `node_modules/`
@@ -187,7 +203,7 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 
 ## 6. Mandatory Quality & Verification Gates
 
-**Universal Gate**: Never self-certify visual motion, video, or 3D output from source code alone. Render real frames/media and run both automated metrics and visual contact-sheet inspection before marking any task done.
+**Universal Gate**: Never self-certify visual motion, video, or 3D output from source code alone. Render real frames/media and run both automated metrics and visual contact-sheet inspection before marking any task done. **Every video also passes the `motion-critic` jury** (`.venv\Scripts\python.exe .agents/skills/motion-critic/scripts/critic_scan.py <film.mp4> --out <dir>/critic --expect <s> [--hero <s>]` + `references/jury-rubric.md`): ship at every dimension ≥ 8, Idea + Motion Craft ≥ 9, zero FAIL checks; max 3 revision rounds.
 
 | Domain / Skill | Required Pre-Delivery Gate | Pass Condition |
 |---|---|---|
