@@ -10,6 +10,47 @@ Use this reference in **Step 1** to ask **2 to 4** sharp, non-redundant scoping 
    - Broad/vague input (e.g., "make a cool video for my app") → ask **4** questions covering Format/Duration, Visual Direction/Archetype, Audio/Voice Strategy, and 3D/VFX Depth.
 3. **Always provide a `(Recommended)` first option** grounded in the strongest synergy in `references/catalog.md`.
 4. **Offer concrete, mutually exclusive choices** — never ask open-ended essays like "What vibe do you want?"
+5. **At least ONE creative question per interview** (from the Creative Question Bank below). Technical specs can be defaulted; the emotional delta and the one true thing cannot be invented as well as the user can supply them.
+
+---
+
+## Creative Question Bank (pick at least 1)
+
+- **Q-Emotion-Delta** — "Where should the viewer start and end emotionally?"
+  - Overwhelmed → relieved *(Recommended for productivity/tools)* | Sceptical → convinced | Bored → delighted/amused | Curious → in awe
+- **Q-One-True-Thing** — "Which single fact should the whole film be built on?"
+  - One real number (e.g. 47 min → 3 lines) *(Recommended)* | One non-obvious behaviour ("unlike X, it…") | One real user moment | The name's meaning / the logo's shape
+- **Q-Voice** — "How does this brand/creator sound?"
+  - Dry, exact, understated *(Recommended for premium)* | Warm and human | Playful and cheeky | Bold and cinematic
+- **Q-Concept-Kind** — "Which kind of film fits best?" (map to `creative-direction.md` Move 3)
+  - Let the director pick the strongest after kill tests *(Recommended)* | UI documentary of one real task | Typographic essay | Joke with a character | Stillness that breaks | One unbroken take | Montage of real output
+- **Q-Restraint** — "How loud should the craft be?"
+  - Quiet confidence: one hero moment, everything else restrained *(Recommended)* | Maximal spectacle with a 3D/VFX hero | Raw, handmade, imperfect texture
+
+## Video Type → Playbook Map (`creative-direction.md` Part C)
+
+| Signals in raw input | Playbook | Archetype section below |
+|---|---|---|
+| launch, release, "v2 is out", SaaS, new feature | C1 Launch Film | §1 |
+| ad, commercial, spot, bumper, 15 s / 30 s | C2 Advertisement | §1 |
+| explainer, how it works, educational, onboarding | C3 Explainer | §4 / §5 |
+| logo animation, sting, ident, intro | C4 Brand Sting | §1 |
+| reel, TikTok, Shorts, vertical, social | C5 Social Short | §1 / §3 |
+| demo, walkthrough, tutorial, feature loop | C6 Product Demo | §1 / §2 |
+| title sequence, opening credits, intro for a film/show | C7 Title Sequence | §3 / §7 |
+| music video, lyric video, visualizer | C8 Music / Lyric | §3 / §6 |
+| data, statistics, report, infographic | C9 Data Story | §5 |
+| art, generative, loop, abstract, NFT, style piece | C10 Art / Loop | §3 / §6 |
+| teaser, countdown, event, coming soon | C11 Teaser | §1 |
+| 3D product, render, turntable, hero shot | C12 3D Product Hero | §7 |
+
+Type-specific scoping questions for C2, C5, C7, C8, C9, C11 that are not covered below:
+- **C2 Ad — Q-Spot-Length**: 30 s story spot *(Recommended)* | 15 s single idea | 6 s bumper (thumbnail-legible) | 30 + 15 + 6 cut-down set
+- **C5 Social — Q-Hook-Style**: Pattern interrupt in the first 0.5 s *(Recommended)* | Seamless loop re-watch | Punchline at the end
+- **C7 Title — Q-Motif**: An object from the story's world *(Recommended)* | Typography-in-environment | Abstract graphic system
+- **C8 Music — Q-Visual-Rule**: One visual rule per song section *(Recommended)* | Kinetic lyrics as the picture | Audio-reactive generative visuals
+- **C9 Data — Q-Hero-Number**: One shocking number opens the film *(Recommended)* | A comparison (before/after) | A trend over time
+- **C11 Teaser — Q-Reveal**: Partial glimpse of the mark + date *(Recommended)* | Pure mood, name only at the end | Countdown series
 
 ---
 

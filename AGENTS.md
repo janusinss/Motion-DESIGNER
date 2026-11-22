@@ -65,7 +65,7 @@ All 48 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
 
 | Skill / Resource | Entry Path | Key Local Scripts / Assets |
 |---|---|---|
-| `video-prompt-enhancer` | `.agents/skills/video-prompt-enhancer/SKILL.md` | `references/interview-bank.md`, `references/catalog.md`, `references/plan-template.md` (plan-only, interview-first) |
+| `video-prompt-enhancer` | `.agents/skills/video-prompt-enhancer/SKILL.md` | `references/creative-direction.md` (10-move direction engine + 12 video-type playbooks), `references/interview-bank.md`, `references/catalog.md`, `references/plan-template.md`, `references/example-plan.md` (plan-only, interview-first) |
 | `reanimate` | `.agents/skills/reanimate/SKILL.md` | `scripts/capture.ts` (`--clock virtual --gl --assets`), `compare.ts`, `sheet.ts`, `easing.ts`, `gl.ts` |
 | `motion-design` | `.agents/skills/motion-design/SKILL.md` | `reference/quality-checklist.md`, `reference/timing-easing-tables.md`, `reference/troubleshooting.md` |
 | `cinetic` | `.agents/skills/cinetic/SKILL.md` | `scripts/precheck.mjs`, `lint-film.mjs`, `copy-check.py`, `forensics.py`, `check-sync.py`, `av-audit.py` |

@@ -88,6 +88,32 @@ Guardrail: Root `package.json` does NOT install Remotion globally; scaffold per-
 
 ---
 
+## 3b. Creative Direction References & Concept Tools (verified on disk)
+
+Cite these in Section 3 of a plan when the concept needs depth (see `creative-direction.md`):
+
+| Need | Path |
+|---|---|
+| PAGE, brand inventory, film kinds, metaphor bank, copy voice | `.agents/skills/motionmaxxing/references/idea.md` |
+| Beat roles, "Buys" lines, system decisions, seams, energy curve, storyboard worksheet | `.agents/skills/motionmaxxing/references/director.md` |
+| Ground, light, depth, texture, hero-moment toolbox | `.agents/skills/motionmaxxing/references/world.md` |
+| Typography in motion / endings / UI demos | `.agents/skills/motionmaxxing/references/type.md`, `close.md`, `ui-demo.md` |
+| VO-led timing | `.agents/skills/motionmaxxing/references/sound-sync.md` |
+| What reads as AI-made | `.agents/skills/motionmaxxing/references/slop.md`, `.agents/skills/cinetic/references/taste-and-slop.md` |
+| Three lenses, kill tests, story devices, arcs by format, end cards | `.agents/skills/cinetic/references/concept-and-story.md` |
+| Format recipes, sound, camera, lighting, transitions | `.agents/skills/cinetic/references/formats.md`, `sound.md`, `camera.md`, `lighting.md`, `transitions.md` |
+| Durations and easing curves | `.agents/skills/motion-design/reference/timing-easing-tables.md` |
+
+Concept tools:
+- `cinetic` art-direction deal (3 contrasting directions): `python3 .agents/skills/cinetic/scripts/deck.py --brief "<one line>" --format <launch|update|...> --pace <calm|crisp> --options 3`
+- `motionmaxxing` measured precedent per beat: `python3 .agents/skills/motionmaxxing/scripts/precedent.py query --beat proof --content ui --text "<what the beat shows>"`
+- `motionmaxxing` brand capture: `node .agents/skills/motionmaxxing/scripts/brand.mjs <url> film/brand`
+- `motionmaxxing` render/still/QA: `node .agents/skills/motionmaxxing/scripts/render.mjs film/index.html --still 1.2,2.4 film/stills` · `render.mjs film/index.html film/final.mp4 --audio film/audio/mix.wav` · `python3 .agents/skills/motionmaxxing/scripts/look.py film/final.mp4 --out film/look-final --expect <s> --expect-audio` · `node .agents/skills/motionmaxxing/scripts/lint.mjs film/index.html`
+
+On Windows, run `python3` commands with `.venv\Scripts\python.exe`.
+
+---
+
 ## 4. High-Leverage Synergy Patterns
 
 1. **Beat-Synced & Captioned Film**: `openverse_client.py` (CC0 audio/images) → `librosa` beat/onset JSON → `whisperx` word timestamps → `cinetic` / `remotion-captions`+`remotion-markup` / `motionmaxxing` (`sync.mjs`) / `anidoodle` (`narrate.mjs`) / `huashu-art-motion` (`render.py --spec`) / `manim` → `ffmpeg` mux → `look.py` + `ffprobe`.
