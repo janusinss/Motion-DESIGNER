@@ -183,16 +183,17 @@ const camK = [[0, { s: 1.55, cx: 980, cy: 520 }]];
 CUTS.forEach((f, c) => { const o = els[cutTargets[c]]; camK.push([f, { s: K[c], cx: o.px, cy: o.py }]); });
 const xs = [], ys = [], ss = [];
 const put = (f, s, cx, cy, e) => { const k = v => e ? [f, v, e] : [f, v]; xs.push(k(960 - s * cx)); ys.push(k(540 - s * cy)); ss.push(k(s)); };
+const CUT = t => (t >= 1 ? 1 : 0);                             // hard cut, seek-safe: hold through the 1-frame gap, jump ON the cut frame (no in-between pose for --shutter to blur)
 camK.forEach(([f, v], k) => {
   const next = k + 1 < camK.length ? camK[k + 1][0] : 300;
-  put(f, v.s, v.cx, v.cy);                                      // hard cut: this shot starts on its cut frame
+  put(f, v.s, v.cx, v.cy, k > 0 ? CUT : undefined);             // hard cut: this shot starts on its cut frame
   put(next - 1, v.s * 1.07, v.cx, v.cy);                        // slow push inside every shot, ends 1 frame before the next cut (no same-frame keys: seek-safe)
   if (k > 0) M.mark(f, 'cut', 'reframe ' + els[cutTargets[k - 1]].name);
 });
 // 300-360: wide on the pile behind the prompt; 360: hard cut to the column framing
-put(300, 1.0, 960, 540); put(359, 1.04, 960, 540);
+put(300, 1.0, 960, 540, CUT); put(359, 1.04, 960, 540);
 // as video-director lands (393), the camera punches in and centres it: the screenshot frame (399)
-put(360, 1.0, 960, 540); put(391, 1.0, 960, 530); put(399, 1.34, 886, 322, 'whip'); put(440, 1.4, 886, 318);
+put(360, 1.0, 960, 540, CUT); put(391, 1.0, 960, 530); put(399, 1.34, 886, 322, 'whip'); put(440, 1.4, 886, 318);
 M.kf('#cam', 'x', xs.sort((a, b) => a[0] - b[0]), { ease: 'cruise' });
 M.kf('#cam', 'y', ys.sort((a, b) => a[0] - b[0]), { ease: 'cruise' });
 M.kf('#cam', 'scale', ss.sort((a, b) => a[0] - b[0]), { ease: 'cruise' });
