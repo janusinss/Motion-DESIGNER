@@ -188,7 +188,7 @@ Entry: `.agents/skills/hyperframes/SKILL.md` (render contract, work loop, per-vi
 
 ### Python Stack (`.venv/`, `pyproject.toml`, `requirements.txt`, `uv.lock`)
 - **Interpreter**: `.venv\Scripts\python.exe` (Python `3.13.5`, `requires-python >=3.12,<3.14`; `uv 0.13.1` on PATH).
-- **Installed Packages**: `manim 0.22.1`, `librosa 1.0.1`, `whisperx 3.8.6`, `torch 2.8.0+cu128` (`torchaudio~=2.8.0`, `torchvision~=0.23.0` via `pytorch-cu128`), plus the engines' audio/QA/logo packages: `pyloudnorm` (loudness gates, `mgaudio qc.py`), `opencv-python-headless` (`cv2`, cinetic forensics), `brotli` + `uharfbuzz` (cinetic outlined logos).
+- **Installed Packages**: `manim 0.22.1`, `librosa 1.0.1`, `whisperx 3.8.6`, `torch 2.8.0+cu128` (`torchaudio~=2.8.0`, `torchvision~=0.23.0` via `pytorch-cu128`), plus the engines' audio/QA/logo packages: `pyloudnorm` (loudness gates, `mgaudio qc.py`), `pedalboard` (mgaudio mix bus), `opencv-python-headless` (`cv2`, cinetic forensics), `brotli` + `uharfbuzz` (cinetic outlined logos).
 - **Windows**: `python3` resolves to the Microsoft Store stub, so run every skill's `python3 x.py` as `.venv\Scripts\python.exe x.py`. `bash` on PATH is WSL, so run `.sh` scripts with `"C:\Program Files\Git\bin\bash.exe"`. Run `doctor.py` to confirm.
 - **GPU**: CUDA enabled (`torch.cuda.is_available() == True`, `NVIDIA GeForce RTX 3050 Laptop GPU`).
 - **CLI Binaries**: `.venv\Scripts\manim.exe`, `.venv\Scripts\manimce.exe`, `.venv\Scripts\whisperx.exe`.

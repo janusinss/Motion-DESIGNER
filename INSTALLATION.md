@@ -153,7 +153,7 @@ Then add `.claude/skills/` to the target repo's `.gitignore` and run the sync sc
 
 ## 3. Python Stack (`manim`, `librosa`, `whisperx`)
 
-Pinned in [`pyproject.toml`](./pyproject.toml) (`requires-python = ">=3.12,<3.14"`): `manim>=0.22.1`, `librosa>=1.0.1`, `whisperx>=3.8.6`, `torch~=2.8.0`, `torchaudio~=2.8.0`, `torchvision~=0.23.0`, plus the video engines' audio/QA packages `pyloudnorm`, `opencv-python-headless`, `brotli`, `uharfbuzz` (loudness gates, cinetic forensics and outlined logos). The CPU/macOS commands below include them.
+Pinned in [`pyproject.toml`](./pyproject.toml) (`requires-python = ">=3.12,<3.14"`): `manim>=0.22.1`, `librosa>=1.0.1`, `whisperx>=3.8.6`, `torch~=2.8.0`, `torchaudio~=2.8.0`, `torchvision~=0.23.0`, plus the video engines' audio/QA packages `pyloudnorm`, `pedalboard`, `opencv-python-headless`, `brotli`, `uharfbuzz` (loudness gates, mgaudio mix bus, cinetic forensics and outlined logos). The CPU/macOS commands below include them.
 
 ### 3.1 System Libraries for Manim (macOS / Linux)
 
@@ -189,7 +189,7 @@ uv venv .venv --python 3.13
 uv pip install --python .venv/bin/python \
   "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" \
   "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
-  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
+  "pyloudnorm>=0.1.1" "pedalboard>=0.9.25" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ```powershell
@@ -199,7 +199,7 @@ uv pip install --python .venv\Scripts\python.exe `
   --extra-index-url https://download.pytorch.org/whl/cpu `
   "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" `
   "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" `
-  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
+  "pyloudnorm>=0.1.1" "pedalboard>=0.9.25" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ```bash
@@ -209,7 +209,7 @@ uv pip install --python .venv/bin/python \
   --extra-index-url https://download.pytorch.org/whl/cpu \
   "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" \
   "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
-  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
+  "pyloudnorm>=0.1.1" "pedalboard>=0.9.25" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ### 3.3 `pip` Fallback (`requirements.txt`)
@@ -236,7 +236,7 @@ python3.13 -m venv .venv
 source .venv/bin/activate
 pip install "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" \
   "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
-  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
+  "pyloudnorm>=0.1.1" "pedalboard>=0.9.25" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ### 3.4 Optional LaTeX for Manim (`Tex` / `MathTex`)

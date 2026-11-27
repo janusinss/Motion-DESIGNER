@@ -6,6 +6,28 @@ All-in-one AI motion design, 3D graphics, animation, and audiovisual production 
 
 ---
 
+## Made With This Repo: "One Prompt" (20 s hype cut)
+
+[![One prompt puts all 59 skills in order: the drop of the Motion-DESIGNER hype cut](./projects/motion-designer-hype/film/preview.gif)](./projects/motion-designer-hype/film/final.mp4)
+
+**[▶ Watch the full film with sound (`final.mp4`, 1080p, 20 s)](./projects/motion-designer-hype/film/final.mp4)**
+
+The repo's 59 real skill names pile up on paper. Then one prompt is typed: *"make a hype launch video for this repo"*. On Enter, every name files into one column under `video-director`. Real `doctor.py` output and the film's own critic checks follow, then the name.
+
+Built end to end by an agent from that one prompt, using the `video-director` workflow:
+1. Preflight (`doctor.py`).
+2. Direction: 3 concepts and kill tests (C1b playbook).
+3. Engine lock: `motionmaxxing`, with an `mgaudio` score.
+4. Hero built first.
+5. Gates: `look.py`, `lint.mjs` and `Motion.selfTest`, all PASS.
+6. Three rounds from an independent `motion-critic` jury: 6.65 → 6.70 → **7.05 / 10** (Motion Awards lens).
+   - Every automated check passes.
+   - It is below the award bar (every dimension ≥ 8), and the score is reported as measured.
+
+Brief, plan, source, score script, jury history and credits: [`projects/motion-designer-hype/`](./projects/motion-designer-hype/) ([`NOTE.md`](./projects/motion-designer-hype/NOTE.md)).
+
+---
+
 ## Harness Compatibility
 
 | AI Harness | Instructions | Skills Discovery | Setup Needed |

@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Motion-DESIGNER: one prompt</title>
+<meta name="viewport" content="width=1920, height=1080">
+<link rel="stylesheet" href="./runtime/fonts.css">
+<style>
+/* ACCENT = "the one in charge" (video-director, then the name). Nothing else is orange. */
+@font-face { font-family: "JBMono"; src: url("fonts/JetBrainsMono-400.woff2") format("woff2"); font-weight: 400; font-display: block; }
+@font-face { font-family: "JBMono"; src: url("fonts/JetBrainsMono-700.woff2") format("woff2"); font-weight: 700; font-display: block; }
+:root {
+  --paper: #ECE9E2;
+  --ink: #141414;
+  --ink-soft: #77736B;
+  --accent: #FF5A1F;
+  --mono: "JBMono", ui-monospace, monospace;
+  --sans: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+#main { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--paper); color: var(--ink); font-family: var(--mono); }
+.scene { position: absolute; inset: 0; }
+#cam { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.nm { position: absolute; white-space: pre; font: 400 44px/62px var(--mono); color: var(--ink); filter: blur(var(--b, 0px)); will-change: transform; }
+.nm.far { color: #5d5a54; }
+#vd { color: var(--ink); font-weight: 700; }
+/* light: act 1 is dim with a heavy vignette; at the drop a key light opens over the column */
+#dim { position: absolute; inset: 0; background: #2a2219; mix-blend-mode: multiply; pointer-events: none; }
+#vig { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 75% at 50% 45%, rgba(0,0,0,0) 45%, rgba(38,28,18,.55) 100%); pointer-events: none; }
+#pool { position: absolute; inset: 0; background: radial-gradient(ellipse 42% 62% at 50% 36%, #FBF8F1 0%, rgba(251,248,241,0) 72%); pointer-events: none; }
+#vd { transform-origin: 0 50%; }
+#grain { position: absolute; left: -20px; top: -20px; width: 1960px; height: 1120px; opacity: .10; mix-blend-mode: multiply; pointer-events: none; }
+/* Enter kills the light for 2 frames; the key light opens on the ordered column */
+#flash { position: absolute; inset: 0; background: var(--ink); opacity: 0; pointer-events: none; }
+#npool { position: absolute; inset: 0; background: radial-gradient(ellipse 38% 30% at 50% 50%, #FFFDF8 0%, rgba(255,253,248,0) 75%); opacity: 0; }
+/* terminal input (product input: the only typed text in the film) */
+#pr { position: absolute; left: 130px; top: 470px; font: 400 72px/96px var(--mono); color: var(--ink-soft); }
+#input { position: absolute; left: 216px; top: 470px; white-space: pre; font: 400 72px/96px var(--mono); color: var(--ink); }
+#input .p { color: var(--ink-soft); }
+#caret { position: absolute; left: 0; top: 482px; width: 6px; height: 76px; background: var(--ink); }
+/* proofs: real output, magnified by the camera */
+.term { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.ln { position: absolute; white-space: pre; font: 400 56px/80px var(--mono); color: var(--ink); }
+#d6 { transform-origin: 0 50%; }
+/* the ordered column recedes into the paper below the poster frame: nothing is clipped by the frame edge */
+#floor { position: absolute; left: 0; right: 0; bottom: 0; height: 420px; background: linear-gradient(to top, var(--paper) 22%, rgba(236,233,226,0) 100%); opacity: 0; pointer-events: none; }
+.ln .k { color: var(--ink-soft); }
+.ln b { font-weight: 700; }
+#name { position: absolute; left: 0; top: 456px; width: 1920px; text-align: center; white-space: pre; font: 700 132px/168px var(--mono); letter-spacing: -0.03em; color: var(--ink); }
+#name span { color: var(--accent); }
+</style>
+</head>
+<body>
+<div id="main">
+
+  <!-- ACT 1 + 2: the pile becomes the column (one world, one camera) -->
+  <div id="pool"></div>
+  <section id="s1" class="scene"><div id="cam"></div></section>
+  <div id="floor"></div>
+
+  <!-- TURN: the prompt, over the blurred pile -->
+  <div id="pr">›</div><div id="input">make a hype launch video for this repo</div>
+  <div id="caret"></div>
+
+  <!-- PROOF 1: real doctor.py output -->
+  <section id="s3" class="scene"><div id="t3" class="term">
+    <div class="ln" id="d0" style="left:110px;top:150px"><span class="k">$</span> python …/video-director/scripts/doctor.py</div>
+    <div class="ln" id="d1" style="left:110px;top:290px"><span class="k">  OK  </span> libx264: yes</div>
+    <div class="ln" id="d2" style="left:110px;top:370px"><span class="k">  OK  </span> node22: v22.21.0</div>
+    <div class="ln" id="d3" style="left:110px;top:450px"><span class="k">  ----</span> skills: source=59, claude_mirror=59</div>
+    <div class="ln" id="d4" style="left:110px;top:580px">Engines ready: motionmaxxing, cinetic, …</div>
+    <div class="ln" id="d6" style="left:110px;top:720px"><b>READY</b></div>
+  </div></section>
+
+  <!-- PROOF 2: real motion-critic lines for this film (filled from critic.json) -->
+  <section id="s4" class="scene"><div id="t4" class="term">
+    <div class="ln" id="c0" style="left:110px;top:170px"><span class="k">$</span> python …/critic_scan.py final.mp4 --hero 12.75</div>
+    <div class="ln" id="c1" style="left:110px;top:320px"><b>[PASS]</b> peak_in_hero_window</div>
+    <div class="ln" id="c2" style="left:110px;top:400px"><b>[PASS]</b> no_dead_spans: none</div>
+    <div class="ln" id="c3" style="left:110px;top:480px"><b>[PASS]</b> loudness: -14.1 LUFS</div>
+    <div class="ln" id="c4" style="left:110px;top:560px"><b>[PASS]</b> true_peak: -1.3 dBTP</div>
+    <div class="ln" id="c5" style="left:110px;top:640px"><b>[PASS]</b> cut_audio_sync: 100%</div>
+  </div></section>
+
+  <!-- NAME -->
+  <section id="s5" class="scene"><div id="npool"></div><div id="name">Motion-<span>DESIGNER</span></div></section>
+
+  <!-- light + texture over everything (one world) -->
+  <div id="dim"></div>
+  <div id="vig"></div>
+  <div id="flash"></div>
+  <svg id="grain" width="1960" height="1120"><filter id="gr"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" seed="7" stitchTiles="stitch"/><feColorMatrix values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .9 0"/></filter><rect width="1960" height="1120" filter="url(#gr)"/></svg>
+</div>
+
+<script src="./runtime/vendor/gsap.min.js"></script>
+<script src="./runtime/motion.js"></script>
+<script>
+/* SEEK CONTRACT: every visible thing is a pure function of t, authored only through Motion calls. */
+const FPS = 30, DUR = 20;
+const M = Motion.film({ fps: FPS, duration: DUR, width: 1920, height: 1080, clock: 'smooth' });
+const ACCENT = '#FF5A1F', INK = '#141414';
+
+// ---------- data: the 59 real skill folders, in routing order (video-director first) ----------
+const ORDER = ['video-director', 'video-prompt-enhancer', 'motionmaxxing', 'cinetic', 'hyperframes', 'motion-design', 'motion-critic',
+  'hyperframes-registry', 'hyperframes-cli', 'media-use', 'anidoodle', 'huashu-art-motion', 'reanimate', 'reverse-any-video', 'style-sampling',
+  'figma', 'remotion-to-hyperframes', 'slideshow',
+  'remotion-best-practices', 'remotion-captions', 'remotion-create', 'remotion-docs', 'remotion-interactivity', 'remotion-license', 'remotion-maps',
+  'remotion-markup', 'remotion-multimedia', 'remotion-render', 'remotion-saas', 'remotion-studio', 'remotion-upgrade',
+  'blender-core', 'blender-workflow-recipes', 'blender-scene-setup', 'blender-pipeline-automation', 'blender-hardsurface-modeling', 'blender-sculpting',
+  'blender-retopology-uv', 'blender-geometry-nodes', 'blender-environment-kits', 'blender-pbr-materials', 'blender-texturing', 'blender-texture-baking',
+  'blender-stylized-npr', 'blender-character-rigging', 'blender-facial-shapekeys', 'blender-clothing', 'blender-hair-grooming', 'blender-animation',
+  'blender-lighting-lookdev', 'blender-time-of-day', 'blender-weather-fx', 'blender-simulation', 'blender-rendering', 'blender-video-editing',
+  'blender-asset-qa', 'blender-game-optimization', 'blender-export-pipelines', 'blender-addon-development'];
+const N = ORDER.length;                       // 59
+
+// deterministic PRNG (build time only; no Math.random)
+let seed = 20261127; const rnd = () => ((seed = (seed * 1664525 + 1013904223) >>> 0) / 4294967296);
+
+// ---------- column (the ordered state) ----------
+const COLX = 600, ROW0 = 190, ROWY = 296, LH = 62, FS = 44, ADV = 0.6 * FS;
+const cam = document.getElementById('cam');
+const els = ORDER.map((n, i) => {
+  const d = document.createElement('div');
+  d.className = 'nm'; d.textContent = n; if (i === 0) d.id = 'vd';
+  const y = i === 0 ? ROW0 : ROWY + (i - 1) * LH;
+  d.style.left = COLX + 'px'; d.style.top = y + 'px';
+  cam.appendChild(d);
+  return { el: d, name: n, cx: COLX + n.length * ADV / 2, cy: y + LH / 2 };
+});
+
+// ---------- pile (the chaos state): pose = translate/rotate/scale away from the column slot ----------
+els.forEach((o, i) => {
+  o.px = 230 + rnd() * 1460; o.py = 150 + rnd() * 780;
+  o.rot = (rnd() * 2 - 1) * 32;
+  const depth = rnd();
+  o.s = depth < .22 ? .55 + rnd() * .2 : depth > .84 ? 1.45 + rnd() * .5 : .85 + rnd() * .4;
+  o.b = o.s < .8 ? 2.5 : o.s > 1.4 ? 5 : 0;
+  if (o.s < .8) o.el.classList.add('far');
+});
+
+// ---------- act 1 arrivals: 13 cuts, each frames a name landing on that frame ----------
+// accelerating on the beat grid (beat = 15 f): 2 beats -> 1.5 -> 1 -> 1/2 -> 1/4 (a flurry into the prompt)
+const CUTS = [30, 60, 90, 120, 150, 180, 210, 232, 248, 262, 270, 278, 285, 289, 292, 296];
+const K    = [2.0, 2.5, 1.6, 2.8, 1.9, 2.6, 1.7, 2.4, 1.9, 2.2, 1.8, 2.1, 1.7, 2.0, 1.7, 1.9];
+const cutTargets = [3, 35, 19, 44, 8, 27, 52, 12, 40, 22, 57, 4, 30, 46, 15, 53];   // indexes into ORDER (never video-director)
+const arrive = new Array(N).fill(null);
+cutTargets.forEach((j, c) => { arrive[j] = CUTS[c]; });
+// 12 names already on the paper at frame 0, two of them mid-arrival
+const present = [1, 2, 5, 9, 14, 17, 24, 33, 38, 47, 50, 55];
+present.forEach((j, k) => { arrive[j] = k < 2 ? -3 + k : -30; });
+// the rest arrive on an accelerating 8th-note grid (7.5 f) between 4 and 330
+const rest = []; for (let i = 1; i < N; i++) if (arrive[i] === null) rest.push(i);
+rest.forEach((j, k) => { const t = 330 * Math.pow((k + 1) / (rest.length + 1), 0.62); arrive[j] = Math.max(4, Math.round(Math.round(t / 7.5) * 7.5)); });
+arrive[0] = 318;                                // video-director arrives late, small and far, unnoticed in the crowd
+els[0].s = .62; els[0].b = 2.5; els[0].rot = -14; els[0].px = 1310; els[0].py = 820;
+
+const DROP = 360;
+els.forEach((o, i) => {
+  const dx = o.px - o.cx, dy = o.py - o.cy, a = arrive[i];
+  // pile pose held until the drop, then file into the column (one tween per property per element)
+  const go = DROP + 1 + Math.floor((i === 0 ? 31 : (i - 1)) * 0.5);
+  const len = i === 0 ? 18 : 21;   // ~0.7 s pull so the order is seen arriving
+  M.kf(o.el, 'x', [[0, dx], [go, dx], [go + len, 0, 'whip']]);
+  M.kf(o.el, 'y', [[0, dy], [go, dy], [go + len, 0, 'whip']]);
+  M.kf(o.el, 'rotation', [[0, o.rot], [go, o.rot], [go + len - 4, 0, 'softLand']]);
+  M.kf(o.el, '--b', [[0, o.b], [go, o.b], [go + 2, 8], [go + len, 0, 'softLand']], { fmt: v => v + 'px' });
+  // arrival: crash in from oversize (decelerating), then the pile scale; at the drop everything returns to 1
+  const s0 = o.s * 2.4;
+  const sk = a < 0 ? [[0, a > -30 ? s0 * 0.6 + o.s * 0.4 : o.s]] : [[0, s0], [a, s0], [a + 8, o.s, 'snapSettle']];
+  if (a < 0 && a > -30) sk.push([a + 8, o.s, 'snapSettle']);
+  sk.push([go, o.s], [go + len, i === 0 ? 1.55 : 1, 'softLand']);
+  M.kf(o.el, 'scale', sk);
+  if (a > 0) { M.show(o.el, a); M.mark(a, 'enter', o.name); }
+  if (o.s < .8 && i !== 0) M.kf(o.el, 'color', [[0, '#5d5a54'], [go, '#5d5a54'], [go + len, INK]]);
+});
+// video-director lands last, in the accent, a touch oversize
+M.kf('#vd', 'color', [[0, INK], [392, INK], [393, ACCENT]]);
+M.mark(393, 'enter', 'video-director lands');
+
+// ---------- camera: hard reframes on the cut grid in act 1, wide at the drop, then a dive into video-director ----------
+const camK = [[0, { s: 1.55, cx: 980, cy: 520 }]];
+CUTS.forEach((f, c) => { const o = els[cutTargets[c]]; camK.push([f, { s: K[c], cx: o.px, cy: o.py }]); });
+const xs = [], ys = [], ss = [];
+const put = (f, s, cx, cy, e) => { const k = v => e ? [f, v, e] : [f, v]; xs.push(k(960 - s * cx)); ys.push(k(540 - s * cy)); ss.push(k(s)); };
+camK.forEach(([f, v], k) => {
+  const next = k + 1 < camK.length ? camK[k + 1][0] : 300;
+  if (k > 0) put(f, v.s, v.cx, v.cy);                          // duplicate frame = hard cut
+  else put(f, v.s, v.cx, v.cy);
+  put(next, v.s * 1.07, v.cx, v.cy);                            // slow push inside every shot
+  if (k > 0) M.mark(f, 'cut', 'reframe ' + els[cutTargets[k - 1]].name);
+});
+// 300-360: wide on the pile behind the prompt; 360: hard cut to the column framing
+put(300, 1.0, 960, 540); put(360, 1.04, 960, 540);
+// as video-director lands (393), the camera punches in and centres it: the screenshot frame (399)
+put(360, 1.0, 960, 540); put(391, 1.0, 960, 530); put(399, 1.34, 886, 322, 'whip'); put(440, 1.4, 886, 318);
+M.kf('#cam', 'x', xs.sort((a, b) => a[0] - b[0]), { ease: 'cruise' });
+M.kf('#cam', 'y', ys.sort((a, b) => a[0] - b[0]), { ease: 'cruise' });
+M.kf('#cam', 'scale', ss.sort((a, b) => a[0] - b[0]), { ease: 'cruise' });
+M.mark(300, 'cut', 'prompt');
+const wrap = M.wrap('#cam');
+M.dive(wrap, { at: 441, frames: 9, perStep: 1.5, origin: [960, 400] });   // video-director's screen position after the punch
+// after the file-in, the column tips back into the paper: video-director stays near, the other 58 recede
+const tilt = M.wrap(wrap);
+tilt.style.transformOrigin = '50% 37%';
+M.kf(tilt, 'transformPerspective', [[0, 1400]]);
+M.kf(tilt, 'rotationX', [[0, 0], [376, 0], [412, -42, 'softInOut'], [441, -46]]);
+
+// pile goes soft behind the prompt, sharp again at the drop
+M.kf('#s1', '--pb', [[0, 0], [300, 0], [300, 14], [360, 14], [360, 0]], { fmt: v => v + 'px' });
+document.getElementById('s1').style.filter = 'blur(var(--pb, 0px))';
+
+// ---------- turn: the prompt is typed (product input), a held breath, Enter ----------
+M.show('#input', 300, 360); M.show('#pr', 300, 360);
+M.type('#input', { at: 304, style: 'prompt', seed: 11, caret: '#caret', caretGap: 6, caretOff: 360 });
+M.kf('#caret', 'opacity', [[0, 1], [341, 1], [341, 0], [349, 0], [349, 1], [357, 1]]);   // the breath: one blink
+M.kf('#input', 'scale', [[0, 1], [357, 1], [359, .965, 'crashIn'], [360, .965]]);         // Enter: the line compresses; cut at max compression
+M.mark(357, 'press', 'Enter');
+
+// light: dim pile world -> key light opens over the column at the drop
+M.kf('#dim', 'opacity', [[0, .16], [360, .16], [366, 0, 'softLand']]);
+M.kf('#vig', 'opacity', [[0, 1], [360, 1], [370, .45, 'softLand']]);
+M.kf('#pool', 'opacity', [[0, 0], [362, 0], [372, 1, 'softLand'], [450, .8], [540, .8], [541, 0]]);
+M.kf('#floor', 'opacity', [[0, 0], [384, 0], [398, 1, 'softLand'], [449, 1], [450, 0]]);
+M.kf('#flash', 'opacity', [[0, 0], [360, 0], [360, 1], [362, 1], [362, 0]]);   // Enter: lights out for 2 frames
+// film grain moves at 15 fps (hard steps), so no frame is ever frozen
+const gx = [], gy = [];   // hold each position 2 frames ([f] and [f+1]): no same-frame keys, so seeking and playing agree
+for (let f = 0; f <= 600; f += 2) { const k = f / 2, nx = ((k * 37) % 9) * 4 - 16, ny = ((k * 53) % 7) * 4 - 12; gx.push([f, nx], [f + 1, nx]); gy.push([f, ny], [f + 1, ny]); }
+M.kf('#grain', 'x', gx); M.kf('#grain', 'y', gy);
+
+// ---------- proof 1: doctor output (450-495) ----------
+M.cut(450, { hide: ['#s1'], show: ['#s3'] });
+['#d0', '#d1', '#d2', '#d3', '#d4', '#d6'].forEach((id, k) => {
+  const at = 450 + [0, 4, 7, 10, 15, 22][k];
+  M.enter(id, { at, frames: 7, ease: 'softLand', from: { y: 26 }, smear: { axis: 'y', px: 18, frames: 2 } });
+});
+// framed so the longest line keeps an 80 px right margin at the end of the push
+M.kf('#d6', 'scale', [[0, 1], [472, 1], [476, 1.12, 'crashIn'], [484, 1, 'snapSettle']]);   // READY lands with a kick
+M.kf('#t3', 'scale', [[450, 1.0], [495, 1.07]], { ease: 'cruise' });
+M.kf('#t3', 'x', [[450, 0], [495, -40]], { ease: 'cruise' });
+M.kf('#t3', 'y', [[450, -30], [495, -90]], { ease: 'cruise' });
+
+// ---------- proof 2: critic lines (495-540) ----------
+M.cut(495, { hide: ['#s3'], show: ['#s4'] });
+['#c0', '#c1', '#c2', '#c3', '#c4', '#c5'].forEach((id, k) => {
+  const at = 495 + [0, 5, 9, 13, 17, 21][k];
+  M.enter(id, { at, frames: 7, ease: 'softLand', from: { y: 26 }, smear: { axis: 'y', px: 18, frames: 2 } });
+});
+M.kf('#t4', 'scale', [[495, 1.0], [534, 1.05], [540, .9, 'accelExit']], { ease: 'cruise' });
+M.kf('#t4', 'x', [[495, 0], [534, -30], [540, 140, 'accelExit']], { ease: 'cruise' });
+M.kf('#t4', 'y', [[495, -30], [534, -100], [540, 60, 'accelExit']], { ease: 'cruise' });
+M.kf('#s4', 'scaleY', [[0, 1], [533, 1], [540, .18, 'accelExit']]);
+
+// ---------- name (540-600) ----------
+M.cut(540, { hide: ['#s4'], show: ['#s5'] });
+M.enter('#name', { at: 540, frames: 20, ease: 'snapSettle', from: { scale: 3.2, blur: 14 } });
+// the hold stays alive: a slow pull-back while a narrow light pool blooms onto the name
+M.drift('#s5', { prop: 'scale', from: 1, to: .93, start: 560, end: 600 });
+M.kf('#npool', 'opacity', [[0, 0], [548, 0], [600, 1]], { ease: 'softInOut' });
+M.kf('#npool', 'scale', [[0, .7], [548, .7], [600, 1.15]], { ease: 'softInOut' });
+
+window.__ready = Motion.loaded().then(() => { if (/selftest/.test(location.search)) Motion.selfTest(M, { samples: 24 }); });
+</script>
+</body>
+</html>

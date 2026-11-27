@@ -1,0 +1,806 @@
+[
+ {
+  "t": 1,
+  "frame": 30,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 1,
+  "frame": 30,
+  "type": "enter",
+  "label": "cinetic"
+ },
+ {
+  "t": 1,
+  "frame": 30,
+  "type": "cut",
+  "label": "reframe cinetic"
+ },
+ {
+  "t": 1.2667,
+  "frame": 38,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 1.2667,
+  "frame": 38,
+  "type": "enter",
+  "label": "motion-critic"
+ },
+ {
+  "t": 2,
+  "frame": 60,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 2,
+  "frame": 60,
+  "type": "enter",
+  "label": "hyperframes-registry"
+ },
+ {
+  "t": 2,
+  "frame": 60,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 2,
+  "frame": 60,
+  "type": "enter",
+  "label": "blender-hardsurface-modeling"
+ },
+ {
+  "t": 2,
+  "frame": 60,
+  "type": "cut",
+  "label": "reframe blender-hardsurface-modeling"
+ },
+ {
+  "t": 2.5,
+  "frame": 75,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 2.5,
+  "frame": 75,
+  "type": "enter",
+  "label": "anidoodle"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "enter",
+  "label": "huashu-art-motion"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "enter",
+  "label": "remotion-captions"
+ },
+ {
+  "t": 3,
+  "frame": 90,
+  "type": "cut",
+  "label": "reframe remotion-captions"
+ },
+ {
+  "t": 3.5,
+  "frame": 105,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 3.5,
+  "frame": 105,
+  "type": "enter",
+  "label": "reverse-any-video"
+ },
+ {
+  "t": 4,
+  "frame": 120,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 4,
+  "frame": 120,
+  "type": "enter",
+  "label": "remotion-to-hyperframes"
+ },
+ {
+  "t": 4,
+  "frame": 120,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 4,
+  "frame": 120,
+  "type": "enter",
+  "label": "blender-character-rigging"
+ },
+ {
+  "t": 4,
+  "frame": 120,
+  "type": "cut",
+  "label": "reframe blender-character-rigging"
+ },
+ {
+  "t": 4.2667,
+  "frame": 128,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 4.2667,
+  "frame": 128,
+  "type": "enter",
+  "label": "remotion-best-practices"
+ },
+ {
+  "t": 4.7667,
+  "frame": 143,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 4.7667,
+  "frame": 143,
+  "type": "enter",
+  "label": "remotion-create"
+ },
+ {
+  "t": 5,
+  "frame": 150,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 5,
+  "frame": 150,
+  "type": "enter",
+  "label": "hyperframes-cli"
+ },
+ {
+  "t": 5,
+  "frame": 150,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 5,
+  "frame": 150,
+  "type": "enter",
+  "label": "remotion-docs"
+ },
+ {
+  "t": 5,
+  "frame": 150,
+  "type": "cut",
+  "label": "reframe hyperframes-cli"
+ },
+ {
+  "t": 5.5,
+  "frame": 165,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 5.5,
+  "frame": 165,
+  "type": "enter",
+  "label": "remotion-license"
+ },
+ {
+  "t": 5.7667,
+  "frame": 173,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 5.7667,
+  "frame": 173,
+  "type": "enter",
+  "label": "remotion-markup"
+ },
+ {
+  "t": 6,
+  "frame": 180,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 6,
+  "frame": 180,
+  "type": "enter",
+  "label": "remotion-multimedia"
+ },
+ {
+  "t": 6,
+  "frame": 180,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 6,
+  "frame": 180,
+  "type": "enter",
+  "label": "remotion-render"
+ },
+ {
+  "t": 6,
+  "frame": 180,
+  "type": "cut",
+  "label": "reframe remotion-render"
+ },
+ {
+  "t": 6.5,
+  "frame": 195,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 6.5,
+  "frame": 195,
+  "type": "enter",
+  "label": "remotion-saas"
+ },
+ {
+  "t": 6.7667,
+  "frame": 203,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 6.7667,
+  "frame": 203,
+  "type": "enter",
+  "label": "remotion-studio"
+ },
+ {
+  "t": 7,
+  "frame": 210,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 7,
+  "frame": 210,
+  "type": "enter",
+  "label": "blender-core"
+ },
+ {
+  "t": 7,
+  "frame": 210,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 7,
+  "frame": 210,
+  "type": "enter",
+  "label": "blender-simulation"
+ },
+ {
+  "t": 7,
+  "frame": 210,
+  "type": "cut",
+  "label": "reframe blender-simulation"
+ },
+ {
+  "t": 7.2667,
+  "frame": 218,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 7.2667,
+  "frame": 218,
+  "type": "enter",
+  "label": "blender-workflow-recipes"
+ },
+ {
+  "t": 7.5,
+  "frame": 225,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 7.5,
+  "frame": 225,
+  "type": "enter",
+  "label": "blender-pipeline-automation"
+ },
+ {
+  "t": 7.7333,
+  "frame": 232,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 7.7333,
+  "frame": 232,
+  "type": "enter",
+  "label": "reanimate"
+ },
+ {
+  "t": 7.7333,
+  "frame": 232,
+  "type": "cut",
+  "label": "reframe reanimate"
+ },
+ {
+  "t": 7.7667,
+  "frame": 233,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 7.7667,
+  "frame": 233,
+  "type": "enter",
+  "label": "blender-sculpting"
+ },
+ {
+  "t": 8,
+  "frame": 240,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 8,
+  "frame": 240,
+  "type": "enter",
+  "label": "blender-retopology-uv"
+ },
+ {
+  "t": 8.2667,
+  "frame": 248,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 8.2667,
+  "frame": 248,
+  "type": "enter",
+  "label": "blender-pbr-materials"
+ },
+ {
+  "t": 8.2667,
+  "frame": 248,
+  "type": "cut",
+  "label": "reframe blender-pbr-materials"
+ },
+ {
+  "t": 8.5,
+  "frame": 255,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 8.5,
+  "frame": 255,
+  "type": "enter",
+  "label": "blender-environment-kits"
+ },
+ {
+  "t": 8.7333,
+  "frame": 262,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 8.7333,
+  "frame": 262,
+  "type": "enter",
+  "label": "remotion-interactivity"
+ },
+ {
+  "t": 8.7333,
+  "frame": 262,
+  "type": "cut",
+  "label": "reframe remotion-interactivity"
+ },
+ {
+  "t": 8.7667,
+  "frame": 263,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 8.7667,
+  "frame": 263,
+  "type": "enter",
+  "label": "blender-texturing"
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "enter",
+  "label": "blender-texture-baking"
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "enter",
+  "label": "blender-export-pipelines"
+ },
+ {
+  "t": 9,
+  "frame": 270,
+  "type": "cut",
+  "label": "reframe blender-export-pipelines"
+ },
+ {
+  "t": 9.2667,
+  "frame": 278,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.2667,
+  "frame": 278,
+  "type": "enter",
+  "label": "hyperframes"
+ },
+ {
+  "t": 9.2667,
+  "frame": 278,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.2667,
+  "frame": 278,
+  "type": "enter",
+  "label": "blender-stylized-npr"
+ },
+ {
+  "t": 9.2667,
+  "frame": 278,
+  "type": "cut",
+  "label": "reframe hyperframes"
+ },
+ {
+  "t": 9.5,
+  "frame": 285,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.5,
+  "frame": 285,
+  "type": "enter",
+  "label": "remotion-upgrade"
+ },
+ {
+  "t": 9.5,
+  "frame": 285,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.5,
+  "frame": 285,
+  "type": "enter",
+  "label": "blender-facial-shapekeys"
+ },
+ {
+  "t": 9.5,
+  "frame": 285,
+  "type": "cut",
+  "label": "reframe remotion-upgrade"
+ },
+ {
+  "t": 9.6333,
+  "frame": 289,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.6333,
+  "frame": 289,
+  "type": "enter",
+  "label": "blender-clothing"
+ },
+ {
+  "t": 9.6333,
+  "frame": 289,
+  "type": "cut",
+  "label": "reframe blender-clothing"
+ },
+ {
+  "t": 9.7333,
+  "frame": 292,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.7333,
+  "frame": 292,
+  "type": "enter",
+  "label": "figma"
+ },
+ {
+  "t": 9.7333,
+  "frame": 292,
+  "type": "cut",
+  "label": "reframe figma"
+ },
+ {
+  "t": 9.7667,
+  "frame": 293,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.7667,
+  "frame": 293,
+  "type": "enter",
+  "label": "blender-animation"
+ },
+ {
+  "t": 9.7667,
+  "frame": 293,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.7667,
+  "frame": 293,
+  "type": "enter",
+  "label": "blender-lighting-lookdev"
+ },
+ {
+  "t": 9.8667,
+  "frame": 296,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 9.8667,
+  "frame": 296,
+  "type": "enter",
+  "label": "blender-rendering"
+ },
+ {
+  "t": 9.8667,
+  "frame": 296,
+  "type": "cut",
+  "label": "reframe blender-rendering"
+ },
+ {
+  "t": 10,
+  "frame": 300,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 10,
+  "frame": 300,
+  "type": "enter",
+  "label": "blender-weather-fx"
+ },
+ {
+  "t": 10,
+  "frame": 300,
+  "type": "cut",
+  "label": "prompt"
+ },
+ {
+  "t": 10,
+  "frame": 300,
+  "type": "show",
+  "label": "#input"
+ },
+ {
+  "t": 10,
+  "frame": 300,
+  "type": "show",
+  "label": "#pr"
+ },
+ {
+  "t": 10.1333,
+  "frame": 304,
+  "type": "type",
+  "label": "start"
+ },
+ {
+  "t": 10.2667,
+  "frame": 308,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 10.2667,
+  "frame": 308,
+  "type": "enter",
+  "label": "blender-video-editing"
+ },
+ {
+  "t": 10.5,
+  "frame": 315,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 10.5,
+  "frame": 315,
+  "type": "enter",
+  "label": "blender-game-optimization"
+ },
+ {
+  "t": 10.6,
+  "frame": 318,
+  "type": "show",
+  "label": "#vd"
+ },
+ {
+  "t": 10.6,
+  "frame": 318,
+  "type": "enter",
+  "label": "video-director"
+ },
+ {
+  "t": 10.7667,
+  "frame": 323,
+  "type": "show",
+  "label": ".nm"
+ },
+ {
+  "t": 10.7667,
+  "frame": 323,
+  "type": "enter",
+  "label": "blender-addon-development"
+ },
+ {
+  "t": 11.3333,
+  "frame": 340,
+  "type": "type",
+  "label": "end"
+ },
+ {
+  "t": 11.9,
+  "frame": 357,
+  "type": "press",
+  "label": "Enter"
+ },
+ {
+  "t": 13.1,
+  "frame": 393,
+  "type": "enter",
+  "label": "video-director lands"
+ },
+ {
+  "t": 14.7,
+  "frame": 441,
+  "type": "dive",
+  "label": ".mwrap"
+ },
+ {
+  "t": 15,
+  "frame": 450,
+  "type": "cut",
+  "label": "hide #s1 show #s3"
+ },
+ {
+  "t": 15,
+  "frame": 450,
+  "type": "enter",
+  "label": "#d0"
+ },
+ {
+  "t": 15.1333,
+  "frame": 454,
+  "type": "enter",
+  "label": "#d1"
+ },
+ {
+  "t": 15.2333,
+  "frame": 457,
+  "type": "enter",
+  "label": "#d2"
+ },
+ {
+  "t": 15.3333,
+  "frame": 460,
+  "type": "enter",
+  "label": "#d3"
+ },
+ {
+  "t": 15.5,
+  "frame": 465,
+  "type": "enter",
+  "label": "#d4"
+ },
+ {
+  "t": 15.7333,
+  "frame": 472,
+  "type": "enter",
+  "label": "#d6"
+ },
+ {
+  "t": 16.5,
+  "frame": 495,
+  "type": "cut",
+  "label": "hide #s3 show #s4"
+ },
+ {
+  "t": 16.5,
+  "frame": 495,
+  "type": "enter",
+  "label": "#c0"
+ },
+ {
+  "t": 16.6667,
+  "frame": 500,
+  "type": "enter",
+  "label": "#c1"
+ },
+ {
+  "t": 16.8,
+  "frame": 504,
+  "type": "enter",
+  "label": "#c2"
+ },
+ {
+  "t": 16.9333,
+  "frame": 508,
+  "type": "enter",
+  "label": "#c3"
+ },
+ {
+  "t": 17.0667,
+  "frame": 512,
+  "type": "enter",
+  "label": "#c4"
+ },
+ {
+  "t": 17.2,
+  "frame": 516,
+  "type": "enter",
+  "label": "#c5"
+ },
+ {
+  "t": 18,
+  "frame": 540,
+  "type": "cut",
+  "label": "hide #s4 show #s5"
+ },
+ {
+  "t": 18,
+  "frame": 540,
+  "type": "enter",
+  "label": "#name"
+ }
+]

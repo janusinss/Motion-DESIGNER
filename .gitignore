@@ -62,3 +62,8 @@ desktop.ini
 projects/**/draft*.mp4
 projects/**/draft*.mp4.events.json
 projects/**/critic/
+projects/**/final_v.mp4
+projects/**/final_v.mp4.events.json
+projects/**/stills/
+projects/**/look/
+projects/**/audio/*.wav

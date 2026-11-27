@@ -28,7 +28,7 @@ IS_WIN = platform.system() == "Windows"
 
 # Packages the engines' Python scripts import (cinetic compatibility line,
 # motionmaxxing look.py/mix.py, motion-critic, mgaudio qc.py, Manim, WhisperX).
-CORE_PY = ["numpy", "scipy", "soundfile", "pyloudnorm", "cv2", "librosa", "PIL"]
+CORE_PY = ["numpy", "scipy", "soundfile", "pyloudnorm", "pedalboard", "cv2", "librosa", "PIL"]  # pedalboard: mgaudio mix bus
 EXTRA_PY = ["fontTools", "brotli", "uharfbuzz", "manim", "whisperx", "torch"]
 
 
