@@ -33,3 +33,4 @@ Round 3 scores: Idea 7, Story 8, Motion Craft 7, Design 7, World 6, Sound 8, Ori
 - **Gap found**: AAC encoding adds about 1.2 dB of true peak to transient-heavy mixes. Master to -2.5 dBTP when muxing to AAC. `score.py` does this.
 - **Gap found**: two same-frame keyframes on a hard step are not seek-safe; selfTest caught it on the film grain. Hold each value for one frame instead.
 - The critic lines on screen are real: they are this film's own r2/r3 check results.
+- **Post-delivery source fix (seek safety)**: an every-frame `Motion.selfTest` (600/600) found 1 mismatch on `#cam` at f262, a same-frame camera cut. In `index.html` each shot's slow push now ends 1 frame before the next cut, which gives 0/600 mismatches; `lint.mjs` rule K1 now catches this. `final.mp4` was rendered forward from frame 0, so it was unaffected; the source now differs from it by that 1-frame push end.

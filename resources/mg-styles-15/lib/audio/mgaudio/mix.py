@@ -531,9 +531,14 @@ class Mix:
         self.meta['master'] = info
         return y
 
-    def export(self, path, lufs=-14.0, tp=-1.0, spectrogram=None, analyze=True, stems_dir=None, **kw):
-        """Render + master + write 24-bit WAV (exact duration). Returns QC dict (and prints a line)."""
+    def export(self, path, lufs=-14.0, tp=-1.0, spectrogram=None, analyze=True, stems_dir=None, for_aac=False, **kw):
+        """Render + master + write 24-bit WAV (exact duration). Returns QC dict (and prints a line).
+
+        for_aac=True (LOCAL MODIFICATION, Motion-DESIGNER; not upstream): lowers the true-peak ceiling to -2.5 dBTP
+        (or keeps a lower `tp`), because AAC encoding of the muxed MP4 adds about 1.2 dB of true peak. Default unchanged."""
         from .master import write
+        if for_aac:
+            tp = min(tp, -2.5)
         y = self.master(lufs=lufs, tp=tp, **kw)
         write(path, y)
         res = {'path': path}

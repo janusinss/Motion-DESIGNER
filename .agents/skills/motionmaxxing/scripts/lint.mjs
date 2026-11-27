@@ -29,6 +29,9 @@
 //     V3 status dot             6-14 px filled circle right before a text                                                    WARN
 //     V4 zinc grey text         colour within 10 of Tailwind zinc 300/400/500/600 (#d4d4d8 #a1a1aa #71717a #52525b)            WARN
 //     V5 vibe-coded UI card     one surface (or the page) holds >= 2 of: greeting, label.value, status dot, zinc text         FAIL
+//     K1 same-frame keyframes   two keys on one frame in one M.kf list (after the film's own frame quantisation): a zero-length
+//                               step is not seek-safe. Fix: hold the value 1 frame, [f,v],[f+1,v]   FAIL on transform props / WARN
+//                               [LOCAL MODIFICATION, Motion-DESIGNER: K1 is not upstream; it hooks Motion.film before page scripts run]
 //   [data-ui="captured"] marks a faithful rebuild of a captured product screen: V5 is skipped inside it (the exemption is printed).
 //
 // Output: PASS / WARN / FAIL per rule with the sample times, an element snippet and the bbox [x0,y0,x1,y1] (0-1 of the frame),
@@ -199,6 +202,47 @@ const PAGE_LIB = String.raw`(() => {
   return true;
 })()`;
 
+// ---------------------------------------------------------------- K1 hook (LOCAL MODIFICATION, Motion-DESIGNER; not in upstream motionmaxxing)
+// Runs before any page script: traps `window.Motion = {...}` (runtime/motion.js), wraps Motion.film so the returned M.kf records every
+// authored keyframe list, and stores the first same-frame pair of each list in window.__lintKf. Frames go through the film's own q()
+// (a 'twos' clock rounds onsets to even frames), so [f,v],[f+1,v] is caught on a twos film too. Internal calls (enter, drift, ...) use
+// the runtime's private kf and are not checked: K1 is about hand-authored lists.
+const KF_HOOK = String.raw`(() => {
+  let M0;
+  const lab = (t) => typeof t === 'string' ? t : (t && t.id ? '#' + t.id : (t && t.length != null ? 'list[' + t.length + ']' : String(t && t.tagName || t).toLowerCase()));
+  Object.defineProperty(window, 'Motion', { configurable: true, enumerable: true, get: () => M0, set: (v) => {
+    M0 = v;
+    if (v && typeof v.film === 'function' && !v.film.__lintK1) {
+      const film = v.film;
+      v.film = function () {
+        const api = film.apply(this, arguments);
+        if (api && typeof api.kf === 'function') {
+          const kf = api.kf, q = typeof api.q === 'function' ? api.q : (f) => f;
+          const rec = window.__lintKf || (window.__lintKf = { fps: api.fps || 30, dups: [] });
+          rec.fps = api.fps || rec.fps;
+          api.kf = function (target, prop, keys) {
+            try {
+              let first = null, n = 0;
+              for (let i = 1; i < (keys ? keys.length : 0); i++) {
+                const a = Math.round(q(keys[i - 1][0])), b = Math.round(q(keys[i][0]));
+                if (a === b) { n++; if (!first) first = { frame: b, from: keys[i - 1][1], to: keys[i][1] }; }
+              }
+              if (first) rec.dups.push({ target: lab(target), prop: String(prop), n, ...first });
+            } catch (e) {}
+            return kf.apply(this, arguments);
+          };
+        }
+        return api;
+      };
+      v.film.__lintK1 = true;
+    }
+  } });
+})()`;
+// Severity by property class, from an every-frame Motion.selfTest (600/600 frames, projects/motion-designer-hype): same-frame pairs on
+// GSAP transform channels (grain x/y, camera x/y/scale) break seeking; on opacity and CSS custom properties they matched on every frame.
+const K1_TRANSFORM = /^(x|y|z|xPercent|yPercent|scale|scaleX|scaleY|scaleZ|rotation|rotationX|rotationY|rotationZ|rotate|skewX|skewY|transformPerspective|transform|transformOrigin)$/;
+const SEV_K1 = (prop) => (K1_TRANSFORM.test(prop) ? 'FAIL' : 'WARN');
+
 // ---------------------------------------------------------------- node side: rules
 const R = [
   ['C1', 'corner/edge micro-label', 'FAIL'], ['C2', 'tracked uppercase label', 'FAIL'], ['C3', 'chapter / counter index', 'FAIL'],
@@ -206,6 +250,7 @@ const R = [
   ['C7', 'kicker above headline', 'FAIL'], ['D1', 'deck layout (left-anchored headline block)', 'FAIL'], ['P1', 'progress bar', 'FAIL'],
   ['T1', 'letter-typed headline', 'FAIL'], ['V1', 'greeting header', 'FAIL'], ['V2', 'label . value line', 'FAIL'],
   ['V3', 'status dot beside text', 'WARN'], ['V4', 'zinc-grey text', 'WARN'], ['V5', 'vibe-coded UI card (cluster)', 'FAIL'],
+  ['K1', 'same-frame keyframes in one M.kf list', 'FAIL'],   // LOCAL MODIFICATION (Motion-DESIGNER)
 ];
 const RULE = Object.fromEntries(R.map(([id, name, sev]) => [id, { id, name, sev, hits: new Map() }]));
 const addHit = (rule, t, key, d) => {
@@ -322,6 +367,7 @@ let br, exitCode = 0;
   br = await launchChrome({ args: ['--allow-file-access-from-files'] });
   let W = numOpt(opt.width, 'width'), H = numOpt(opt.height, 'height');
   const page = await br.newPage({ width: W || 1920, height: H || 1080, scale: 1 });
+  await page.send('Page.addScriptToEvaluateOnNewDocument', { source: KF_HOOK });   // K1 (local modification): record M.kf lists
   const loaded = await page.goto(url, { timeout: 45000 });
   if (!loaded) console.error('warn: load event timed out, continuing');
   await page.eval(PAGE_LIB);
@@ -361,6 +407,13 @@ let br, exitCode = 0;
     if (grow >= 0.08 && up >= 2 && dn <= Math.max(0, Math.floor(up / 3)))
       for (const x of a) addHit('P1', x.t, a[0].snip, { text: '', snippet: a[0].snip, bbox: x.bbox, note: 'thin bar grows ' + r2(Math.min(...ws)) + ' -> ' + r2(Math.max(...ws)) + ' of W over t=' + a[0].t + '..' + a[a.length - 1].t });
   }
+  // K1 (local modification): two keys on one frame in one authored M.kf list
+  const kfDup = await page.eval('window.__lintKf || null').catch(() => null);
+  if (kfDup) for (const d of kfDup.dups) {
+    const sev = SEV_K1(d.prop);
+    addHit('K1', +(d.frame / kfDup.fps).toFixed(3), d.target + ' ' + d.prop + ' @' + d.frame, { text: '', snippet: `M.kf(${d.target}, '${d.prop}')`, bbox: null, sev,
+      note: `frame ${d.frame}: ${JSON.stringify(d.from)} -> ${JSON.stringify(d.to)} on the same frame (${d.n} such pair${d.n > 1 ? 's' : ''} in this list)` + (sev === 'FAIL' ? '; hold 1 frame: [f,v],[f+1,v]' : '') });
+  }
   await page.close();
 
   // ---------- report
@@ -380,7 +433,7 @@ let br, exitCode = 0;
       console.log(`${r.id} ${r.name.padEnd(46, '.')} ${r.status}${r.hits.length ? '  (' + r.hits.length + ' distinct)' : ''}`);
       for (const h of r.hits.slice(0, 6)) {
         const ts = h.times.length > 6 ? h.times.slice(0, 6).join(',') + ',... (' + h.times.length + ' samples)' : h.times.join(',') + 's';
-        console.log(`    ${h.sev === 'WARN' && r.status === 'FAIL' ? '[warn] ' : ''}t=${ts}  ${h.text ? JSON.stringify(h.text.slice(0, 70)) + '  ' : ''}${h.snippet}  bbox=[${h.bbox.join(',')}]${h.fs ? '  fs=' + h.fs + '%H' : ''}${h.note ? '\n      ' + h.note : ''}`);
+        console.log(`    ${h.sev === 'WARN' && r.status === 'FAIL' ? '[warn] ' : ''}t=${ts}  ${h.text ? JSON.stringify(h.text.slice(0, 70)) + '  ' : ''}${h.snippet}${h.bbox ? '  bbox=[' + h.bbox.join(',') + ']' : ''}${h.fs ? '  fs=' + h.fs + '%H' : ''}${h.note ? '\n      ' + h.note : ''}`);
       }
       if (r.hits.length > 6) console.log(`    ... ${r.hits.length - 6} more (use --json)`);
     }

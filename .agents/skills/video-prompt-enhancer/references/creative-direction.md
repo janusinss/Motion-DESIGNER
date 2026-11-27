@@ -142,6 +142,17 @@ For each act write five words: **Ground** (a real surface: captured UI plate, pa
 
 **What the winners share**: a stated reason for every choice · a cause for every joint · one hero moment · a built world · a quiet, confident ending · none of them could advertise a competitor with the logo swapped.
 
+**Craft rules from the jury** (each came up again and again in independent `motion-critic` reviews; check each one on the render, not the plan):
+
+| # | Rule | Test on the render |
+|---|---|---|
+| K1 | Make the hero one continuous, readable move, then hold it. | Step the hero window frame by frame: no cut and no reset inside the move, and the landed pose holds still for ≥ 0.5 s (≥ 15 frames at 30 fps) before anything else moves. |
+| K2 | Give every act its own light event (a blackout, a key light coming up, a pool, a sweep, a colour shift). | The `critic_scan.py` luma curve shows at least one distinct step or ramp per act; two acts lit the same way fail. |
+| K3 | Build the end mark from the film's own material, never a stock wordmark faded in. | Trace each element of the mark back through the frames: it appears earlier in the film (the same type, line, shape or object) and moves into place on screen. |
+| K4 | In chaos scenes, cap the sharp elements at about 7 and stage them on 3 parallax depths (1.0 / 0.6 / 0.3). | On any still from the scene, count ≤ ~7 in-focus elements; everything else is blurred or dimmed. Under a camera move, the three layers travel at 1.0×, 0.6× and 0.3× the speed. |
+| K5 | Show proof as a transformation, not a readout. | The proof beat has a before and an after state on screen, and the change happens in frame. A line of stats, a log or a checklist that only appears fails. |
+| K6 | Keep a static end card alive with real motion: a scale breathe (about 1.00 → 1.02) or a light change. | Diff the first and last frame of the end hold: the mark or the light changes measurably. Grain, noise or flicker alone does not count. |
+
 ---
 
 ## Part C — Playbooks by Video Type

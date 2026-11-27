@@ -146,6 +146,7 @@ Entry: `.agents/skills/hyperframes/SKILL.md` (render contract, work loop, per-vi
 
 - **Agent Skills (9 upstream packs + 3 local skills / 59 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13), `heygen-com/hyperframes` (9), + local `video-director`, `video-prompt-enhancer` and `motion-critic` -> `.agents/skills/`
 - **Local modifications to upstream packs**: `motionmaxxing/scripts/_cdp.mjs` `findChrome()` also checks the standard Windows Chrome paths (additive; re-apply after updating motionmaxxing from upstream).
+  Also additive: `motionmaxxing/scripts/lint.mjs` rule K1 flags two keys on the same frame in one `M.kf` list (FAIL on transform props, which are not seek-safe; fix with `[f,v],[f+1,v]`), and `mg-styles-15` mgaudio `Mix.export(..., for_aac=True)` caps true peak at -2.5 dBTP because AAC adds about 1.2 dB (default unchanged).
 - **HyperFrames pack**: vendored unmodified (Section 3.3b); also reachable as `cinetic`'s HTML runtime (`new-film.sh --engine hyperframes`). User-global HyperFrames installs never override this file's routing.
 - **Prompt & Demo Pack (1)**: #3 `mg-styles-15` -> `resources/mg-styles-15/`
 - **Python Stack (3)**: #8 `manim`, #15 `librosa`, #16 `whisperx` -> `.venv/`, `pyproject.toml`, `requirements.txt`, `uv.lock`
