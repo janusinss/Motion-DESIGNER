@@ -20,6 +20,8 @@ av==19.0.2
     #   manim
 beautifulsoup4==4.15.0
     # via manim
+brotli==1.2.1
+    # via motion-designer
 certifi==2026.11.20
     # via requests
 cffi==2.1.1
@@ -183,10 +185,12 @@ numpy==2.5.5
     #   moderngl-window
     #   numba
     #   onnxruntime
+    #   opencv-python-headless
     #   optuna
     #   pandas
     #   pyannote-core
     #   pyannote-metrics
+    #   pyloudnorm
     #   pytorch-metric-learning
     #   scikit-learn
     #   scipy
@@ -237,6 +241,8 @@ omegaconf==2.4.0
     # via whisperx
 onnxruntime==1.32.0
     # via faster-whisper
+opencv-python-headless==5.1.0.95
+    # via motion-designer
 opentelemetry-api==1.45.2
     # via
     #   opentelemetry-exporter-http-transport
@@ -350,6 +356,8 @@ pygments==2.21.0
     # via
     #   manim
     #   rich
+pyloudnorm==0.2.0
+    # via motion-designer
 pyobjc-core==13.0 ; sys_platform == 'darwin'
     # via pyobjc-framework-cocoa
 pyobjc-framework-cocoa==13.0 ; sys_platform == 'darwin'
@@ -406,6 +414,7 @@ scipy==1.18.1
     #   manim
     #   pyannote-metrics
     #   pyannote-pipeline
+    #   pyloudnorm
     #   scikit-learn
 screeninfo==0.8.1
     # via manim
@@ -521,6 +530,8 @@ tzdata==2026.6
     # via
     #   pandas
     #   python-dateutil
+uharfbuzz==0.57.0
+    # via motion-designer
 urllib3==2.8.0
     # via requests
 watchdog==7.1.1

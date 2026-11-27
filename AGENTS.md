@@ -27,10 +27,10 @@ Instructions, operating rules, and skill mappings for AI agents (Codex, Antigrav
 
 ## 1.5 Creative Director Protocol (Every Video, Animation, or Motion Request)
 
-The bar is award-level work (D&AD, Motion Awards, CICLOPE, Vimeo Staff Pick), not "it renders". Concept comes first; tools come second; the rendered film is judged before delivery.
+The bar is award-level work (D&AD, Motion Awards, CICLOPE, Vimeo Staff Pick), not "it renders". Concept comes first; tools come second; the rendered film is judged before delivery. The executable form of this protocol is `.agents/skills/video-director/SKILL.md`; start there for any "make a video" request (preflight: `.venv\Scripts\python.exe .agents/skills/video-director/scripts/doctor.py`).
 
-1. **Direct**: Before any build, run the 10-Move Direction Engine in `.agents/skills/video-prompt-enhancer/references/creative-direction.md` (PAGE → inventory → 3 concepts of different kinds → kill tests → idea/device/grammar → hero moment → system decisions → world per act → energy curve → sound arc). Apply the matching video-type playbook (Part C, C1–C12). If the user asked only for a plan, stop after the `video-prompt-enhancer` Prompt-Plan.
-2. **Route**: Pick the primary engine from Section 2 that best serves the chosen concept (not the most familiar one).
+1. **Direct**: Before any build, run the 10-Move Direction Engine in `.agents/skills/video-prompt-enhancer/references/creative-direction.md` (PAGE → inventory → 3 concepts of different kinds → kill tests → engine lock + engine-ban check → idea/device/grammar → hero moment → system decisions → world per act → energy curve → sound arc). Apply the matching video-type playbook (Part C, C1–C12, plus C1b for fast-paced / hype launch cuts). If the user asked only for a plan, stop after the `video-prompt-enhancer` Prompt-Plan.
+2. **Route**: Pick the primary engine from Section 2 that best serves the chosen concept (not the most familiar one), then check the concept against **that engine's own ban list** (Move 4b). Where engines disagree, the locked engine wins; never mix `cinetic` and `motionmaxxing` rules in one film.
 3. **Hero first**: Build the hero moment and its hardest seam first; render stills; confirm it reads at speed before building the rest.
 4. **Build & render**: Full film at target spec.
 5. **Judge**: Run `motion-critic` (`scripts/critic_scan.py` + jury rubric) and the primary skill's native gate on the real render.
@@ -45,7 +45,9 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 
 | User Intent | Primary Skill / Tool | Runtime & Output | Choose Over Overlaps When |
 |---|---|---|---|
+| Make / create / build / render any video end to end (launch, fast-paced hype cut, ad, reel, explainer, sting, demo, titles, music, data, loop, teaser, 3D hero) | `video-director` | Orchestrator: `scripts/doctor.py` preflight → direction → one locked engine → hero first → native gates → independent `motion-critic` jury → `projects/<slug>/` delivery | Default entry for every build request; it hands off to `video-prompt-enhancer` (plan only), `motion-critic` (review only), or `reanimate` (clone) |
 | Enhance/plan/architect a rough video idea into a directed multi-skill Prompt-Plan | `video-prompt-enhancer` | Plan-only (`SKILL.md` + static curated `references/`); outputs copy-pasteable Markdown Prompt-Plan | User explicitly asks to enhance, direct, or architect a video prompt before building (interviews 2–4 questions first; never auto-executes) |
+| HTML-to-video with ready blocks (captions, charts, maps, transitions, kinetic type), audio mixing, Figma import, video-file recreation, proven explainer styles, live decks | `hyperframes` -> `hyperframes-cli` / `hyperframes-registry` / `media-use` / `figma` / `reverse-any-video` / `style-sampling` / `remotion-to-hyperframes` / `slideshow` | `npx hyperframes` (Node 22+, FFmpeg); seek-safe HTML compositions, Studio preview, MP4 | A registry block or the audio mixer does the hero job better than hand-building; recreating a video file (no Bun needed, unlike `reanimate`); an "episode in the style of"; porting Remotion/Manim work |
 | Critique, review, judge, or iterate any rendered video toward award level | `motion-critic` | `.venv` Python + `ffmpeg`; `sheet.jpg`, `energy.png`, `critic.json` + jury verdict with timecoded fixes | After every render (engine-agnostic), or when the user asks to review/polish/"make it award-level" |
 | Clone/match animation from live URL, MP4, GIF, Lottie, Rive, or WebGL/Three.js | `reanimate` | Bun + Playwright + `ffmpeg` + pixelmatch; code in target stack | Reference exists ("clone/steal/match this motion"); motion (±80ms) or pixel (≤2%) fidelity |
 | UI/UX micro-interactions, component transitions, scroll/state motion spec | `motion-design` | Design craft rules (CSS, Framer Motion, GSAP, Lottie, Spring, Three.js) | Designing UI transitions or layering Disney/easing/choreography rules onto any build |
@@ -63,7 +65,8 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 
 ### Tie-Breaker Rules
 
-1. **Existing reference to replicate** -> `reanimate` first; layer `motion-design` only for post-clone polish.
+0. **"Make a video" of any type** -> `video-director` first; it locks one engine below. Fast-paced / hype launch -> playbook C1b (beat-locked cuts from a `librosa` grid, a designed breath before the drop) on `motionmaxxing` or `cinetic`.
+1. **Existing reference to replicate** -> a video file -> `reverse-any-video`; a live site, Lottie or WebGL scene -> `reanimate` first; layer `motion-design` only for post-clone polish.
 2. **UI/component motion** -> `motion-design` (apply its craft rules alongside Three.js, GSAP, CSS, or Framer Motion).
 3. **Commercial promo film**: Remotion + house scene bank -> `cinetic`; brand URL scrape / ElevenLabs VO / anti-template HTML+GSAP -> `motionmaxxing`; custom React video architecture -> `remotion-best-practices`.
 4. **Artistic / explainer film**: English code-drawn stills, lessons, 32 styles, offline HTML -> `anidoodle`; Chinese/bilingual VO explainers, 36 art styles, 8 parameterized YouTube/tech grammars -> `huashu-art-motion`.
@@ -72,14 +75,15 @@ Read the matching `.agents/skills/<name>/SKILL.md` before executing any task in 
 
 ---
 
-## 3. Full Skill & Resource Catalog (49 Skills + 18 Resources)
+## 3. Full Skill & Resource Catalog (59 Skills + 18 Resources)
 
-All 49 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
+All 59 workspace skills reside under `.agents/skills/<skill-name>/SKILL.md`.
 
-### 3.1 Motion, Art, Cloning, Prompt Planning & Critique Skills (8) + Style Pack
+### 3.1 Motion, Art, Cloning, Direction, Prompt Planning & Critique Skills (9) + Style Pack
 
 | Skill / Resource | Entry Path | Key Local Scripts / Assets |
 |---|---|---|
+| `video-director` | `.agents/skills/video-director/SKILL.md` | `scripts/doctor.py` (cross-platform preflight: ffmpeg/libx264, Node 22+, Chrome, venv packages, Git Bash, Blender, Bun, LaTeX, EffectCraft, ElevenLabs key, skill-mirror count; `--json`) |
 | `motion-critic` | `.agents/skills/motion-critic/SKILL.md` | `scripts/critic_scan.py` (contact sheet, energy curve, hero-peak %, dead spans, end hold, slop ratio, LUFS/dBTP, cut-onset sync), `references/jury-rubric.md` (8 dimensions, 4 award-lens weights, ship thresholds) |
 | `video-prompt-enhancer` | `.agents/skills/video-prompt-enhancer/SKILL.md` | `references/creative-direction.md` (10-move direction engine + 12 video-type playbooks), `references/interview-bank.md`, `references/catalog.md`, `references/plan-template.md`, `references/example-plan.md` (plan-only, interview-first) |
 | `reanimate` | `.agents/skills/reanimate/SKILL.md` | `scripts/capture.ts` (`--clock virtual --gl --assets`), `compare.ts`, `sheet.ts`, `easing.ts`, `gl.ts` |
@@ -122,9 +126,27 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 
 **Remotion Guardrails**: Root `package.json` does not install Remotion globally (scaffold per project via `remotion-create` / `npx`); never overwrite unexpected external user edits.
 
+### 3.3b HyperFrames Skills (9, vendored unmodified from `heygen-com/hyperframes`, Apache-2.0)
+
+Entry: `.agents/skills/hyperframes/SKILL.md` (render contract, work loop, per-video-kind needs). Provenance and update steps: `.agents/skills/hyperframes/UPSTREAM.md`. CLI: `npx hyperframes <command>` (resolved by `hyperframes/scripts/plugin-cli.mjs`; Node 22+, FFmpeg).
+
+| Skill | Route When |
+|---|---|
+| `hyperframes` | Building any HyperFrames composition (launch film, explainer, music video, charts, maps, vertical clips, title cards, captions, overlays) |
+| `hyperframes-cli` | `init`, `check --json`, `timeline`, `snapshot --review`, `preview`, `render`, history and recovery |
+| `hyperframes-registry` | ~450 ready blocks/components (transitions, overlays, titles, kinetic type, captions, charts, maps, 3D, camera moves); search before hand-building any named visual, in any engine |
+| `media-use` | Music, SFX, images, icons, logos, VO, transcripts, cutouts, grades and placed-audio mixing (HeyGen generation needs sign-in and credits: ask first; free local tools need none) |
+| `figma` | A Figma design, frame, logo or brand brought into a video |
+| `reverse-any-video` | Rebuild a video file as an editable project, checked frame by frame against the original |
+| `style-sampling` | A new episode in a proven style (Collage, Finance, Animated Science, 3D Brand, 3D True Crime explainers) |
+| `remotion-to-hyperframes` | Port Remotion, Motion Canvas, Lottie, Three.js, p5.js, canvas or Manim/AE/Blender renders, verified frame by frame |
+| `slideshow` | A live deck with presenter mode (`hyperframes present`), not a rendered video |
+
 ### 3.4 Complete 18-Resource Workspace Map
 
-- **Agent Skills (8 upstream packs + 2 local skills / 49 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13), + local `video-prompt-enhancer` and `motion-critic` -> `.agents/skills/`
+- **Agent Skills (9 upstream packs + 3 local skills / 59 skills)**: #1 `reanimate`, #2 `motion-design`, #4 `huashu-art-motion`, #5 `anidoodle`, #6 `cinetic`, #7 `motionmaxxing`, #9 `blender-skills` (28), #17 `remotion-dev/skills` (13), `heygen-com/hyperframes` (9), + local `video-director`, `video-prompt-enhancer` and `motion-critic` -> `.agents/skills/`
+- **Local modifications to upstream packs**: `motionmaxxing/scripts/_cdp.mjs` `findChrome()` also checks the standard Windows Chrome paths (additive; re-apply after updating motionmaxxing from upstream).
+- **HyperFrames pack**: vendored unmodified (Section 3.3b); also reachable as `cinetic`'s HTML runtime (`new-film.sh --engine hyperframes`). User-global HyperFrames installs never override this file's routing.
 - **Prompt & Demo Pack (1)**: #3 `mg-styles-15` -> `resources/mg-styles-15/`
 - **Python Stack (3)**: #8 `manim`, #15 `librosa`, #16 `whisperx` -> `.venv/`, `pyproject.toml`, `requirements.txt`, `uv.lock`
 - **JS/TS 3D Stack (3)**: #10 `three.quarks`, #11 `@react-three/postprocessing`, #12 `tweakpane` -> `package.json`, `package-lock.json`, `node_modules/`
@@ -166,7 +188,8 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 
 ### Python Stack (`.venv/`, `pyproject.toml`, `requirements.txt`, `uv.lock`)
 - **Interpreter**: `.venv\Scripts\python.exe` (Python `3.13.5`, `requires-python >=3.12,<3.14`; `uv 0.13.1` on PATH).
-- **Installed Packages**: `manim 0.22.1`, `librosa 1.0.1`, `whisperx 3.8.6`, `torch 2.8.0+cu128` (`torchaudio~=2.8.0`, `torchvision~=0.23.0` via `pytorch-cu128`).
+- **Installed Packages**: `manim 0.22.1`, `librosa 1.0.1`, `whisperx 3.8.6`, `torch 2.8.0+cu128` (`torchaudio~=2.8.0`, `torchvision~=0.23.0` via `pytorch-cu128`), plus the engines' audio/QA/logo packages: `pyloudnorm` (loudness gates, `mgaudio qc.py`), `opencv-python-headless` (`cv2`, cinetic forensics), `brotli` + `uharfbuzz` (cinetic outlined logos).
+- **Windows**: `python3` resolves to the Microsoft Store stub, so run every skill's `python3 x.py` as `.venv\Scripts\python.exe x.py`. `bash` on PATH is WSL, so run `.sh` scripts with `"C:\Program Files\Git\bin\bash.exe"`. Run `doctor.py` to confirm.
 - **GPU**: CUDA enabled (`torch.cuda.is_available() == True`, `NVIDIA GeForce RTX 3050 Laptop GPU`).
 - **CLI Binaries**: `.venv\Scripts\manim.exe`, `.venv\Scripts\manimce.exe`, `.venv\Scripts\whisperx.exe`.
 - **Manim LaTeX Caveat**: `latex`, `pdflatex`, `xelatex`, and `dvisvgm` are NOT installed on PATH. Use `Text` / `MarkupText` for Manim scenes; `Tex` / `MathTex` require installing MiKTeX or TeX Live + `dvisvgm`.
@@ -203,6 +226,8 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 
 ## 6. Mandatory Quality & Verification Gates
 
+**Preflight**: run `.agents/skills/video-director/scripts/doctor.py` with the venv Python before a build; route only to engines it reports ready.
+
 **Universal Gate**: Never self-certify visual motion, video, or 3D output from source code alone. Render real frames/media and run both automated metrics and visual contact-sheet inspection before marking any task done. **Every video also passes the `motion-critic` jury** (`.venv\Scripts\python.exe .agents/skills/motion-critic/scripts/critic_scan.py <film.mp4> --out <dir>/critic --expect <s> [--hero <s>]` + `references/jury-rubric.md`): ship at every dimension ≥ 8, Idea + Motion Craft ≥ 9, zero FAIL checks; max 3 revision rounds.
 
 | Domain / Skill | Required Pre-Delivery Gate | Pass Condition |
@@ -212,6 +237,7 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md` (also contains `
 | **`cinetic`** | `.agents/skills/cinetic/scripts/precheck.mjs`, `lint-film.mjs`, `copy-check.py`, `forensics.py`, `check-sync.py`, `av-audit.py` | Zero linear-motion/slop/copy/seam/empty-frame/A-V sync failures |
 | **`anidoodle`** | `.agents/skills/anidoodle/engine/tools/gate.mjs`, `verify-export.mjs`, `ship.mjs` | Pure `(frame, env)` determinism, zero dead air, A/V sync & true peak pass, `ship.mjs` unified check green (blind check fails) |
 | **`huashu-art-motion`** | `.agents/skills/huashu-art-motion/scripts/storyboard_lint.py` (pre-code), `engine/render.py --spec ... --audit`, `qa.py`, `film_gate.py`, `subzone_gate.py`, `deliver.py` | Storyboard passes before coding; fast-motion ratio ≥0.035, no ≥0.3s blank/flat spans, ≤30% blue-purple slop frames, subtitle safe-zone clear, fingerprinted delivery note |
+| **HyperFrames (`hyperframes`)** | `npx hyperframes check --json` + `npx hyperframes snapshot --review` (→ `REVIEW.md`, `references/review.md`); `reverse-any-video` / `remotion-to-hyperframes` frame-by-frame comparison | Zero `check` errors, every warning weighed, review sheet inspected; reconstructions match the original frame by frame |
 | **`reanimate`** | `.agents/skills/reanimate/scripts/compare.ts`, `sheet.ts`, `easing.ts`, `gl.ts` | Side-by-side proof sheet inspected; timing within ±80ms (motion-faithful) or pixel diff ≤2% (pixel-faithful) |
 | **`motion-design`** | `.agents/skills/motion-design/reference/quality-checklist.md` | Zero linear spatial motion, zero opacity-only state changes, 1/3 choreography compliance, 3 motion layers |
 | **`remotion-*`** | `remotion-interactivity` on markup, `remotion-studio` preview, `remotion-render` only on explicit export request | Studio-editable structure, clean preview, zero unrequested renders or overwritten external edits |

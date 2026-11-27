@@ -1,6 +1,6 @@
 ---
 name: video-prompt-enhancer
-description: Transform a user's rough video or motion-design idea into an award-level, deeply directed, copy-pasteable Prompt-Plan for any video type (launch film, ad/commercial, explainer, brand sting, social short, product demo, title sequence, music/lyric video, data story, art loop, teaser, 3D product hero). Develops a real creative concept (PAGE, three competing concepts, kill tests, device, grammar, hero moment, world, energy curve, sound arc) and then routes it to the optimal multi-skill stack across all 48 sibling Motion-DESIGNER skills and 18 local tools. Explicitly invoke when the user asks to enhance, plan, direct, or architect a video prompt (or calls `video-prompt-enhancer`). Always interviews first with 2-4 dynamic scoping questions and outputs a standalone Markdown Prompt-Plan without auto-executing.
+description: Transform a user's rough video or motion-design idea into an award-level, deeply directed, copy-pasteable Prompt-Plan for any video type (launch film, ad/commercial, explainer, brand sting, social short, product demo, title sequence, music/lyric video, data story, art loop, teaser, 3D product hero). Develops a real creative concept (PAGE, three competing concepts, kill tests, device, grammar, hero moment, world, energy curve, sound arc) and then routes it to the optimal multi-skill stack across all 58 sibling Motion-DESIGNER skills and 18 local tools. Explicitly invoke when the user asks to enhance, plan, direct, or architect a video prompt (or calls `video-prompt-enhancer`). Always interviews first with 2-4 dynamic scoping questions and outputs a standalone Markdown Prompt-Plan without auto-executing.
 ---
 
 # Video Prompt Enhancer
@@ -33,13 +33,13 @@ Turn a raw, under-specified video idea into a **director's treatment plus an exe
 
 ### Step 2: Direct the Film (Creative Direction Engine)
 1. Read `references/creative-direction.md`.
-2. Run Moves 1-10 in order: PAGE → Inventory → three concepts of different kinds → kill tests and scoring → concept triad + logline + idea sentence → hero moment and signature shot → system decisions → world per act → energy curve, importance budget, seams → sound arc and ending.
+2. Run Moves 1-10 in order: PAGE → Inventory → three concepts of different kinds → kill tests and scoring → engine lock + engine-ban check (Move 4b) → concept triad + logline + idea sentence → hero moment and signature shot → system decisions → world per act → energy curve, importance budget, seams → sound arc and ending.
 3. Apply the matching Part C playbook for arc, proportions, and traps.
 4. When the user gave no brand or subject details, invent specific, plausible ones and mark them `[editable assumption]` instead of staying generic.
 
 ### Step 3: Route to the Optimal Skill Stack
 1. Read `references/catalog.md`.
-2. Lock the primary engine using the Tie-Breaker Rules; it must suit the chosen concept (e.g. a held lit-material shot → Blender; a typographic essay in brand voice → `motionmaxxing`; a structured chapters launch with house scenes → `cinetic`; a VO explainer in Chinese → `huashu-art-motion`).
+2. Confirm the primary engine locked in Move 4b using the Tie-Breaker Rules; it must suit the chosen concept, and the concept must already pass that engine's own ban list (e.g. a held lit-material shot → Blender; a typographic essay in brand voice → `motionmaxxing`; a structured chapters launch with house scenes → `cinetic`; a VO explainer in Chinese → `huashu-art-motion`).
 3. Layer only what the concept needs:
    - **Craft**: `motion-design` for curves, choreography, and timing tables (always, when anything moves on screen).
    - **Audio/sync**: Openverse CC0 + `librosa` beat grid · `mgaudio` / `music.mjs` offline score · `whisperx` VO word timing · `cinetic` licensed track · ElevenLabs in `motionmaxxing` (needs a key).
@@ -64,5 +64,6 @@ Turn a raw, under-specified video idea into a **director's treatment plus an exe
    - Every shot has a picture-with-text-covered, a Buys line, a motion spec with curve + duration, a seam, and a sound cue.
    - ≤ 25 % of beats are importance 3; the hero moment sits at 60-75 % of runtime; frame 0 is already in motion; the ending arrives by cause.
    - Zero banned props, copy tells, or visual tells from Part B.
+   - The concept passes the locked engine's own ban list (Move 4b), with the result written in Section 0.
    - All paths, scripts, and flags match `references/catalog.md` / `references/creative-direction.md`.
    - Manim plans use `Text`/`MarkupText` unless LaTeX + `dvisvgm` is confirmed; Remotion plans include `remotion-interactivity` and per-project `npx` scaffolding.

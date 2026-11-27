@@ -36,7 +36,7 @@
 
 .EXAMPLE
     .\scripts\sync-skills.ps1 -Global -DryRun
-    Previews syncing all 47 skills to ~/.claude/skills, ~/.agents/skills, and ~/.codex/skills.
+    Previews syncing all 59 skills to ~/.claude/skills, ~/.agents/skills, and ~/.codex/skills.
 
 .EXAMPLE
     .\scripts\sync-skills.ps1 -Mode copy -Force

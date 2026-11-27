@@ -1,0 +1,35 @@
+# Keep text files LF in the repository AND in every working copy, on every OS.
+# Several skill scripts parse source files with line-anchored regexes and break on
+# CRLF checkouts (Windows Git defaults to core.autocrlf=true), e.g. cinetic's
+# scripts/type-family.mjs reading src/lib/look.ts during new-film.sh.
+* text=auto eol=lf
+
+# Windows batch files need CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Media and binaries: never touch.
+*.mp4 binary
+*.mov binary
+*.webm binary
+*.gif binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.wav binary
+*.mp3 binary
+*.m4a binary
+*.flac binary
+*.ogg binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.blend binary
+*.glb binary
+*.exr binary
+*.hdr binary
+*.lottie binary
+*.pdf binary

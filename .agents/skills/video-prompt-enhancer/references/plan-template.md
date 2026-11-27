@@ -21,6 +21,8 @@ In **Step 4**, output **one copy-pasteable fenced Markdown block** following thi
 
 **Chosen: [A/B/C]**, because [one line on ownership + buildability]. **Grafted from [loser]:** [one element].
 
+**Engine lock (Move 4b)**: primary engine `[motionmaxxing / cinetic / ...]` · engine-ban check: [PASS vs `<engine>` ban list, or the element changed and why] · conflicts resolved in favour of the locked engine: [e.g. serif allowed, no colour flood, words 2–4 f apart].
+
 ## 1. Director's Treatment
 - **PAGE**: Problem [situation] · Audience [who, where, state] · Goal [one action/thought] · Emotion [start → end]
 - **The one true thing**: [real feature / behaviour / number this film is built on]
@@ -64,6 +66,7 @@ In **Step 4**, output **one copy-pasteable fenced Markdown block** following thi
 | 4 | | cta | 1 | | | | | | | |
 
 ## 5. Step-by-Step Build Commands
+0. **Executor & preflight**: build this plan with `.agents/skills/video-director/SKILL.md` (project folder `projects/<slug>/`); first run `.venv\Scripts\python.exe .agents/skills/video-director/scripts/doctor.py` and confirm the locked engine is ready.
 1. **Concept & assets**
    ```powershell
    # verified commands: brand.mjs / deck.py / openverse_client.py / librosa beat grid / whisperx / mgaudio / music.mjs

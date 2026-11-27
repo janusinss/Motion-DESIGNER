@@ -1,4 +1,4 @@
-# Motion-DESIGNER Static Curated Catalog (48 Sibling Skills + 18 Resources)
+# Motion-DESIGNER Static Curated Catalog (58 Sibling Skills + 18 Resources)
 
 Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, and QA gate below is verified on disk in `Motion-DESIGNER`. Never cite anything outside this catalog unless the user explicitly supplies a custom local file.
 
@@ -8,6 +8,8 @@ Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, a
 
 | User Intent | Primary Skill / Tool | Exact Entry Path | Runtime & Output |
 |---|---|---|---|
+| Build the planned film end to end (the executor of a Prompt-Plan) | `video-director` | `.agents/skills/video-director/SKILL.md` | Preflight `scripts/doctor.py` → one locked engine → hero first → native gates → `motion-critic` jury → `projects/<slug>/` |
+| Independent award-jury review of any render | `motion-critic` | `.agents/skills/motion-critic/SKILL.md` | `.venv` Python + `ffmpeg`; `sheet.jpg`, `energy.png`, `critic.json` + scored fix list |
 | Clone/match animation from live URL, MP4, GIF, Lottie, Rive, WebGL/Three.js | `reanimate` | `.agents/skills/reanimate/SKILL.md` | Bun + Playwright + `ffmpeg` + pixelmatch; code in target stack |
 | UI/UX micro-interactions, easing curves, choreography, motion craft layer | `motion-design` | `.agents/skills/motion-design/SKILL.md` | Craft rules (CSS, Framer Motion, GSAP, Lottie, Spring, Three.js) |
 | Structured SaaS/product launch, update ("vX is out"), UI walkthrough, logo sting | `cinetic` | `.agents/skills/cinetic/SKILL.md` | Remotion 4 (default) or HyperFrames; MP4/WebM/GIF/ProRes/SRT |
@@ -15,6 +17,8 @@ Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, a
 | Code-drawn 2D Canvas / 3D Three.js stills, loops, lessons, story films (32 styles) | `anidoodle` | `.agents/skills/anidoodle/SKILL.md` | Node + Playwright + Canvas/Three.js; PNG, MP4/GIF/WebM/APNG, offline HTML |
 | Chinese/bilingual explainers (9 grammars, 8 parameterized) or 36 art-style films | `huashu-art-motion` | `.agents/skills/huashu-art-motion/SKILL.md` | `uv` Python + Playwright + HTML/Canvas + `ffmpeg`; 1080p@30 MP4 |
 | Canonical 10s MG style seed, `window.renderAt(t)` harness, CC0 Python audio synth | `mg-styles-15` *(pack)* | `resources/mg-styles-15/README.md` | HTML/Canvas/WebGL (+Blender `04`) + Python WAV (`-14 LUFS`) |
+| HTML-to-video with ~450 ready blocks (captions, charts, maps, transitions, kinetic type), audio mixing, Figma import | `hyperframes` | `.agents/skills/hyperframes/SKILL.md` | `npx hyperframes` (Node 22+, FFmpeg); seek-safe HTML compositions, Studio, MP4 |
+| Recreate a video file / episode in a proven explainer style / port Remotion-Manim work | `reverse-any-video` / `style-sampling` / `remotion-to-hyperframes` | `.agents/skills/<name>/SKILL.md` | HyperFrames project verified frame by frame against the original |
 | Direct React-video engineering, Studio interactivity, captions, maps, `<Player>` | `remotion-best-practices` | `.agents/skills/remotion-best-practices/SKILL.md` | Per-project Remotion 4 (`npx`); React compositions, Studio, MP4/OTIO |
 | Any 3D modeling, sculpting, materials, rigging, animation, VFX, look-dev, export | `blender-core` + `blender-workflow-recipes` | `.agents/skills/blender-core/SKILL.md` | Blender `5.2.2 LTS` (Live MCP or headless CLI) + mandatory `blender-asset-qa` |
 | Mathematical/algorithmic animations, graphs, geometric proofs | `manim` *(Python)* | `.venv\Scripts\manim.exe` / `.venv/bin/manim` | Python `3.13.5` Manim Community `0.22.1`; MP4/GIF/PNG |
@@ -23,6 +27,7 @@ Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, a
 | CC-licensed media, beat grids, word-level speech timestamps, muxing | `openverse` + `librosa` + `whisperx` + `ffmpeg` | `tools/openverse/openverse_client.py` + `.venv` + `PATH` | Python `.venv` (CUDA RTX 3050) + `ffmpeg`/`ffprobe` |
 
 ### Tie-Breakers
+0. **Lock ONE engine, then check its bans** (`creative-direction.md` Move 4b): the concept must pass the locked engine's own ban list (`motionmaxxing` "Never ship", `cinetic` "Hard bans"); never mix the two promo engines' rules. Fast-paced / hype launch → playbook C1b on `motionmaxxing` or `cinetic`. A plan's Section 5 ends with "build with `video-director`".
 1. **Existing reference to match** → `reanimate` first; layer `motion-design` only for post-clone polish.
 2. **UI/component motion or easing discipline** → layer `motion-design` alongside any web/Remotion/Three.js/GSAP build.
 3. **Commercial launch/promo** → Remotion + dealt house scenes + real licensed music → `cinetic`; URL brand capture / anti-template bespoke HTML+GSAP / ElevenLabs → `motionmaxxing`; custom React video architecture → `remotion-best-practices`.
@@ -32,9 +37,11 @@ Source of truth for `video-prompt-enhancer`. Every skill path, script, binary, a
 
 ---
 
-## 2. All 48 Sibling Skills (Exact Paths)
+## 2. All 58 Sibling Skills (Exact Paths)
 
-### 2.1 Motion, Art & Cloning (6 Skills + 1 Resource Pack)
+### 2.1 Motion, Art, Cloning, Direction & Critique (8 Skills + 1 Resource Pack)
+- `.agents/skills/video-director/SKILL.md` — scripts: `scripts/doctor.py` (preflight; `--json`); executes a Prompt-Plan: one engine, hero first, gates, jury, delivery in `projects/<slug>/`
+- `.agents/skills/motion-critic/SKILL.md` — scripts: `scripts/critic_scan.py`; refs: `references/jury-rubric.md`
 - `.agents/skills/reanimate/SKILL.md` — scripts: `scripts/capture.ts` (`--clock virtual --gl --assets`), `scripts/compare.ts`, `scripts/sheet.ts`, `scripts/easing.ts`, `scripts/gl.ts`
 - `.agents/skills/motion-design/SKILL.md` — refs: `reference/quality-checklist.md`, `reference/timing-easing-tables.md`, `reference/troubleshooting.md`
 - `.agents/skills/cinetic/SKILL.md` — scripts: `scripts/precheck.mjs`, `scripts/lint-film.mjs`, `scripts/copy-check.py`, `scripts/forensics.py`, `scripts/check-sync.py`, `scripts/av-audit.py`
@@ -62,11 +69,18 @@ Entry router: `.agents/skills/remotion-best-practices/SKILL.md`
 Specialists: `remotion-create`, `remotion-markup`, `remotion-interactivity` *(always pair with markup)*, `remotion-captions`, `remotion-maps`, `remotion-multimedia`, `remotion-studio`, `remotion-render` *(only when explicit export is requested)*, `remotion-saas`, `remotion-docs`, `remotion-license`, `remotion-upgrade`.
 Guardrail: Root `package.json` does NOT install Remotion globally; scaffold per-project via `npx create-video@latest`.
 
+### 2.4 HyperFrames Skills (9 Skills — `.agents/skills/<name>/SKILL.md`, vendored from `heygen-com/hyperframes`)
+Entry: `.agents/skills/hyperframes/SKILL.md`. Specialists: `hyperframes-cli` (`init`, `check --json`, `timeline`, `snapshot --review`, `render`), `hyperframes-registry` (~450 blocks; search before hand-building a named visual), `media-use` (music/SFX/VO/images/grades; HeyGen generation needs sign-in), `figma`, `reverse-any-video`, `style-sampling`, `remotion-to-hyperframes`, `slideshow` (live decks, not video).
+Commands: new project `npx hyperframes init <dir> --skip-skills --skill=hyperframes` · website subject `npx hyperframes capture <url> --json` · gate `npx hyperframes check --json` + `npx hyperframes snapshot --review`.
+
 ---
 
 ## 3. Verified Local Runtimes & Commands (Windows Default + POSIX Equivalent)
 
-- **Python `.venv`** (Python `3.13.5`, `manim 0.22.1`, `librosa 1.0.1`, `whisperx 3.8.6`, `torch 2.8.0+cu128`, CUDA RTX 3050):
+- **Preflight (run first)**: `.venv\Scripts\python.exe .agents/skills/video-director/scripts/doctor.py` / `.venv/bin/python .agents/skills/video-director/scripts/doctor.py`; reports which engines are ready.
+- **Windows mapping**: skill docs' `python3 x.py` → `.venv\Scripts\python.exe x.py`; `bash x.sh` → `& "C:\Program Files\Git\bin\bash.exe" x.sh` in PowerShell (the `bash` on PATH is WSL); motionmaxxing `providers.sh` → `doctor.py` (it ignores Windows Chrome paths).
+
+- **Python `.venv`** (Python `3.13.5`, `manim 0.22.1`, `librosa 1.0.1`, `whisperx 3.8.6`, `torch 2.8.0+cu128`, CUDA RTX 3050; plus `pyloudnorm`, `opencv-python-headless`, `brotli`, `uharfbuzz` for loudness gates and cinetic):
   - Windows: `.venv\Scripts\python.exe`, `.venv\Scripts\manim.exe`, `.venv\Scripts\whisperx.exe`
   - macOS/Linux: `.venv/bin/python`, `.venv/bin/manim`, `.venv/bin/whisperx`
   - **Manim LaTeX Caveat**: `latex`/`dvisvgm` is NOT installed on PATH by default. Always direct Manim scenes to use `Text`/`MarkupText` unless the user confirmed LaTeX is installed.
@@ -137,6 +151,7 @@ On Windows, run `python3` commands with `.venv\Scripts\python.exe`.
 | **`anidoodle`** | `.agents/skills/anidoodle/engine/tools/gate.mjs`, `verify-export.mjs`, `ship.mjs` | Deterministic `(frame, env)`, zero dead air, A/V sync & true peak pass, `ship.mjs` green |
 | **`huashu-art-motion`** | `.agents/skills/huashu-art-motion/scripts/storyboard_lint.py` (pre-code), `engine/render.py --spec ... --audit`, `qa.py`, `film_gate.py`, `subzone_gate.py`, `deliver.py` | Pre-code storyboard pass, fast-motion ratio `≥0.035`, no `≥0.3s` flat spans, `≤30%` blue-purple slop frames, subtitle safe-zone clear |
 | **`reanimate`** | `.agents/skills/reanimate/scripts/compare.ts`, `sheet.ts`, `easing.ts`, `gl.ts` | Side-by-side proof sheet inspected; timing within `±80ms` (motion-faithful) or pixel diff `≤2%` (pixel-faithful) |
+| **HyperFrames** | `npx hyperframes check --json` + `npx hyperframes snapshot --review` (→ `REVIEW.md`) | Zero `check` errors, warnings weighed, review sheet inspected |
 | **`motion-design`** | `.agents/skills/motion-design/reference/quality-checklist.md` | Zero linear spatial motion, zero opacity-only state changes, 1/3 choreography rule, 3 motion layers |
 | **`remotion-*`** | `remotion-interactivity` on markup + `remotion-studio` preview + `remotion-render` only on explicit export | Studio-editable layers/timing, clean preview, zero unrequested renders |
 | **Any MP4 / Cross-Engine** | `ffprobe -v error -show_format -show_streams <out.mp4>` + `.agents/skills/motionmaxxing/scripts/look.py` (or `film_gate.py`) + `resources/mg-styles-15/lib/audio/mgaudio/qc.py` | Valid non-zero streams, exact fps/duration/res, audio `-14 LUFS` & `≤-1.1 dBTP`, visually verified contact sheet |

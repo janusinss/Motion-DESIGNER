@@ -10,6 +10,10 @@ dependencies = [
     "torch~=2.8.0",
     "torchaudio~=2.8.0",
     "torchvision~=0.23.0",
+    "pyloudnorm>=0.1.1",
+    "opencv-python-headless>=4.10",
+    "brotli>=1.1",
+    "uharfbuzz>=0.41",
 ]
 
 [tool.uv.sources]

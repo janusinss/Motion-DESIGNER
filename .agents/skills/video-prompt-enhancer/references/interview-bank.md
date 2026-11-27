@@ -32,6 +32,7 @@ Use this reference in **Step 1** to ask **2 to 4** sharp, non-redundant scoping 
 | Signals in raw input | Playbook | Archetype section below |
 |---|---|---|
 | launch, release, "v2 is out", SaaS, new feature | C1 Launch Film | §1 |
+| fast-paced, hype, high-energy, beat-synced, "punchy" launch or promo | C1b Fast-Paced / Hype Launch Cut | §1 / §6 |
 | ad, commercial, spot, bumper, 15 s / 30 s | C2 Advertisement | §1 |
 | explainer, how it works, educational, onboarding | C3 Explainer | §4 / §5 |
 | logo animation, sting, ident, intro | C4 Brand Sting | §1 |
@@ -44,7 +45,8 @@ Use this reference in **Step 1** to ask **2 to 4** sharp, non-redundant scoping 
 | teaser, countdown, event, coming soon | C11 Teaser | §1 |
 | 3D product, render, turntable, hero shot | C12 3D Product Hero | §7 |
 
-Type-specific scoping questions for C2, C5, C7, C8, C9, C11 that are not covered below:
+Type-specific scoping questions for C1b, C2, C5, C7, C8, C9, C11 that are not covered below:
+- **C1b Hype — Q-Track**: CC0 track with a clear drop + `librosa` beat grid *(Recommended)* | Licensed track the user supplies | Original score via ElevenLabs (`motionmaxxing`, needs a key)
 - **C2 Ad — Q-Spot-Length**: 30 s story spot *(Recommended)* | 15 s single idea | 6 s bumper (thumbnail-legible) | 30 + 15 + 6 cut-down set
 - **C5 Social — Q-Hook-Style**: Pattern interrupt in the first 0.5 s *(Recommended)* | Seamless loop re-watch | Punchline at the end
 - **C7 Title — Q-Motif**: An object from the story's world *(Recommended)* | Typography-in-environment | Abstract graphic system

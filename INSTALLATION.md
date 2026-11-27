@@ -1,6 +1,6 @@
 # Installation Guide
 
-Cross-platform setup instructions (Windows, macOS, Linux) for installing **Motion-DESIGNER** in a fresh environment or bringing its 49 agent skills into another repository.
+Cross-platform setup instructions (Windows, macOS, Linux) for installing **Motion-DESIGNER** in a fresh environment or bringing its 59 agent skills into another repository.
 
 ---
 
@@ -26,7 +26,7 @@ cd Motion-DESIGNER
 
 ## 2. AI Agent Harness Setup
 
-All 49 skills live canonically in `.agents/skills/<name>/SKILL.md`, and all agent rules/routing live in [`AGENTS.md`](./AGENTS.md).
+All 59 skills live canonically in `.agents/skills/<name>/SKILL.md`, and all agent rules/routing live in [`AGENTS.md`](./AGENTS.md).
 
 | Harness | Instruction File | Project Skills Path | Global Skills Path | Setup |
 |---|---|---|---|---|
@@ -36,13 +36,13 @@ All 49 skills live canonically in `.agents/skills/<name>/SKILL.md`, and all agen
 
 ### 2.1 Antigravity
 
-Open the cloned `Motion-DESIGNER` directory as your workspace. Antigravity automatically loads `AGENTS.md` and discovers all 49 skills under `.agents/skills/`. No extra step is required.
+Open the cloned `Motion-DESIGNER` directory as your workspace. Antigravity automatically loads `AGENTS.md` and discovers all 59 skills under `.agents/skills/`. No extra step is required.
 
 ### 2.2 OpenAI Codex
 
 Run Codex inside `Motion-DESIGNER`. Codex automatically reads `AGENTS.md` and discovers `.agents/skills/<name>/SKILL.md` while walking from `$CWD` up to the repository root.
 
-Optional — expose all 49 skills globally to Codex across every project on your machine:
+Optional — expose all 59 skills globally to Codex across every project on your machine:
 
 ```powershell
 # Windows (PowerShell)
@@ -153,7 +153,7 @@ Then add `.claude/skills/` to the target repo's `.gitignore` and run the sync sc
 
 ## 3. Python Stack (`manim`, `librosa`, `whisperx`)
 
-Pinned in [`pyproject.toml`](./pyproject.toml) (`requires-python = ">=3.12,<3.14"`): `manim>=0.22.1`, `librosa>=1.0.1`, `whisperx>=3.8.6`, `torch~=2.8.0`, `torchaudio~=2.8.0`, `torchvision~=0.23.0`.
+Pinned in [`pyproject.toml`](./pyproject.toml) (`requires-python = ">=3.12,<3.14"`): `manim>=0.22.1`, `librosa>=1.0.1`, `whisperx>=3.8.6`, `torch~=2.8.0`, `torchaudio~=2.8.0`, `torchvision~=0.23.0`, plus the video engines' audio/QA packages `pyloudnorm`, `opencv-python-headless`, `brotli`, `uharfbuzz` (loudness gates, cinetic forensics and outlined logos). The CPU/macOS commands below include them.
 
 ### 3.1 System Libraries for Manim (macOS / Linux)
 
@@ -188,7 +188,8 @@ The `pytorch-cu128` index does not publish macOS wheels and requires an NVIDIA G
 uv venv .venv --python 3.13
 uv pip install --python .venv/bin/python \
   "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" \
-  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0"
+  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
+  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ```powershell
@@ -197,7 +198,8 @@ uv venv .venv --python 3.13
 uv pip install --python .venv\Scripts\python.exe `
   --extra-index-url https://download.pytorch.org/whl/cpu `
   "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" `
-  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0"
+  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" `
+  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ```bash
@@ -206,7 +208,8 @@ uv venv .venv --python 3.13
 uv pip install --python .venv/bin/python \
   --extra-index-url https://download.pytorch.org/whl/cpu \
   "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" \
-  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0"
+  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
+  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ### 3.3 `pip` Fallback (`requirements.txt`)
@@ -232,7 +235,8 @@ pip install --extra-index-url https://download.pytorch.org/whl/cu128 -r requirem
 python3.13 -m venv .venv
 source .venv/bin/activate
 pip install "manim>=0.22.1" "librosa>=1.0.1" "whisperx>=3.8.6" \
-  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0"
+  "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
+  "pyloudnorm>=0.1.1" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
 
 ### 3.4 Optional LaTeX for Manim (`Tex` / `MathTex`)
@@ -373,16 +377,30 @@ python tools/openverse/openverse_client.py --type audio -q "ambient synth" --lic
 
 Run these checks from the repository root to confirm every installed stack is healthy.
 
+### 6.0 One-Shot Preflight (all stacks)
+
+```powershell
+# Windows (PowerShell): prints hard requirements, optional tools, ready/blocked engines; exit 1 if a hard requirement is missing
+.\.venv\Scripts\python.exe .agents/skills/video-director/scripts/doctor.py
+```
+
+```bash
+# macOS / Linux (Bash); add --json for a machine-readable report
+.venv/bin/python .agents/skills/video-director/scripts/doctor.py
+```
+
+> **Windows note:** skill docs are written for macOS/Linux. Run their `python3 x.py` as `.venv\Scripts\python.exe x.py` (`python3` is the Microsoft Store stub), and their `bash x.sh` as `& "C:\Program Files\Git\bin\bash.exe" x.sh` (the `bash` on PATH is WSL).
+
 ### 6.1 Agent Skills & Claude Code Sync
 
 ```powershell
-# Windows (PowerShell) — expect 49 SKILL.md files and clean dry-run
+# Windows (PowerShell) — expect 59 SKILL.md files and clean dry-run
 (Get-ChildItem .agents\skills\*\SKILL.md).Count
 .\scripts\sync-skills.ps1 -DryRun
 ```
 
 ```bash
-# macOS / Linux (Bash) — expect 49 SKILL.md files and clean dry-run
+# macOS / Linux (Bash) — expect 59 SKILL.md files and clean dry-run
 ls -1 .agents/skills/*/SKILL.md | wc -l
 ./scripts/sync-skills.sh --dry-run
 ```

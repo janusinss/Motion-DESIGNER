@@ -70,6 +70,30 @@ Write the first idea, then **discard it** (it is nearly always the category cost
 
 Score survivors 0–3 on **ownership, muted clarity, device strength, surprise, buildability**. Pick the highest with ownership ≥ 2; break ties toward buildability. **Choose, never average** — but graft one element from a loser (a line, an opening image) and name it.
 
+### Move 4b — Engine lock & engine-ban check (before the triad is final)
+A concept that passes Part B can still be illegal in the engine that will build it. In a real Motion-DESIGNER launch film, the approved plan's centre-piece (a drop that becomes the logo, colour-flood wipes, a centred stat slide, a wordmark + button + URL end card) had to be thrown out mid-build, because the primary engine's never-ship list bans all four. Lock the engine **now**, then check the surviving concept against **that engine's own bans**:
+
+| Engine | Ban list to read before locking |
+|---|---|
+| `motionmaxxing` | `SKILL.md` "Never ship" 1–12 + `references/slop.md` |
+| `cinetic` | `SKILL.md` "Hard bans" + standard rules 1–11 (a supplied brand kit overrides only the house taste) |
+| HyperFrames (`hyperframes`) | its `SKILL.md` rules + `npx hyperframes check --json` (search `hyperframes-registry` before hand-building a named visual) |
+| `anidoodle` / `huashu-art-motion` | their `SKILL.md` gates (`ship.mjs` / `storyboard_lint.py` + `film_gate.py`) |
+| `remotion-*` / Manim / Blender | Part B here + `motion-design/reference/quality-checklist.md` |
+
+Where the two promo engines disagree, the locked engine wins. Do not mix their rules:
+
+| Decision | `motionmaxxing` | `cinetic` |
+|---|---|---|
+| Serif type | the brand's own serif is right | serif / italic banned (one italic accent face for a payoff word only) |
+| Colour-flood between beats | banned (house-style wipe) | one flood a film, as the single ground change |
+| Word timing | whole words 2–12 f apart (2–4 fast hook) | lines whole or in 2–3 chunks, never word by word |
+| Centred statements | only when paced to speech | default: centred in the 35–65 % band |
+| Music | ElevenLabs-generated or CC0 | generated music banned; a licensed track |
+| Invented-brand palette | from the brand / world | no orange, amber, cream, beige, purple, neon |
+
+If the concept breaks a ban in the engine that suits it best, change the concept, not the engine. Write the check result into the plan ("engine-ban check: PASS vs motionmaxxing Never-ship 1–12").
+
 ### Move 5 — The Concept Triad
 - **Idea** (≤ 8 words): what the viewer believes afterwards.
 - **Device**: the ONE owned thing that carries the idea through every shot (from, in order of preference: a product object with states → the name's meaning → the number → a primitive of the mark). It must change state (tick, fill, fold, lock), travel small, fill the frame once, and end as the mark or the resolved unit.
@@ -131,6 +155,16 @@ Each playbook gives the arc, the shapes that win, director moves, sound, the def
 - **Sound**: room tone + world sound → silence before the turn → drop on the hero proof → subtract into the lockup.
 - **Stack**: `motionmaxxing` (brand URL, bespoke HTML/GSAP, `brand.mjs` → `sync.mjs` → `look.py`) **or** `cinetic` (Remotion, `scripts/deck.py` deals 3 art directions, licensed music) + `motion-design`.
 - **Traps**: feature tour, full browser chrome on frame 1, "Introducing…", logo opener.
+
+### C1b. Fast-Paced / Hype Launch Cut (10–30 s, music-led, 120–150 BPM)
+A C1 launch film driven by the track, not by VO. Pace comes from **rhythm contrast**, not from cutting as fast as possible.
+- **Arc**: cold open mid-motion on the product's most kinetic state (0–10 %) → build: proofs cut on the beat grid, each one beat shorter than the last (10–55 %) → **designed breath, 0.4–1.0 s of near-silence, one living thing** → drop = the hero moment at 60–75 % → 2–3 fast echo proofs → mark lands by cause on the last downbeat; end hold 0.6–1.4 s.
+- **Cut grid**: run `librosa` on the track first; the picture is cut to it, never the reverse. Cuts land on beats or half-beats, on motion, mid-move. Cut lengths vary: 2-beat proofs in the build, 1-beat in the last bar before the drop, then the longest shot of the film right after the drop. Cutting on every beat for the whole film is exhausting; it is the trap.
+- **Readability under speed**: a line of copy holds ≥ 1.2 s even when the picture cuts under it. The words are the seam that runs across cuts. Fast hook words land 2–4 f apart in `motionmaxxing`; in `cinetic`, lines go whole or in 2–3 chunks (Move 4b).
+- **System**: one blur grammar for the whole film (directional smear on whips, or real shutter blur), 30 fps, 60 fps only for extreme whips/zooms; one accent; one camera language (whip pans or push-ins, not both).
+- **Sound**: a track with an obvious drop; 1–3 hand-placed hits (the turn, the drop, the mark); everything else rides the track. Measure: `critic_scan.py` `cut_audio_sync` ≥ 60 % of cuts within ±0.10 s of an onset, unless a cut is deliberately off-grid (the press-then-cut pattern).
+- **Stack**: `motionmaxxing` (bespoke HTML/GSAP, `look.py` cut list, `mix.py`) or `cinetic` (Remotion, licensed track) · Openverse CC0 or licensed track + `librosa` beat grid · `motion-design` (`timing-easing-tables.md` for smear/whip timing) · `motion-critic`.
+- **Traps**: 40 cuts of equal length; text that flashes under 0.5 s; a flash/strobe transition instead of a carried seam; the drop wasted on a logo; no breath before the hero.
 
 ### C2. Advertisement / Commercial Spot (6 s bumper · 15 s · 30 s)
 - **Arc (30 s)**: tension (0–6 s) → escalation as a visible quantity (6–12 s) → turn/reveal (12–15 s) → payoff + proof (15–24 s) → brand + line (24–30 s). **15 s**: 3–5 beats, ONE idea. **6 s bumper**: one image, one action, the mark — the idea must survive at thumbnail size.
