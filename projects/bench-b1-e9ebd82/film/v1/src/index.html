@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>One Line · Motion-DESIGNER (bench b1)</title>
+<meta name="viewport" content="width=1920, height=1080">
+<link rel="stylesheet" href="./runtime/fonts.css">
+<style>
+/* ACCENT = the director's choice (the locked engine, PASS, the hyphen). One element per scene. */
+:root {
+  --dark: #0F0E0C; --ink-l: #ECE7DE; --paper: #ECE6DA; --ink-d: #16130F; --accent: #FF4F1A;
+  --font: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; }
+#main { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden; background: var(--dark); color: var(--ink-l); font-family: var(--font); font-weight: 450; }
+.scene { position: absolute; inset: 0; overflow: hidden; }
+.dark { background: radial-gradient(ellipse 70% 60% at 42% 46%, #201d19 0%, #12100e 58%, #0b0a09 100%); }
+.paper { background: radial-gradient(ellipse 62% 58% at 50% 47%, #f6f1e7 0%, #e9e2d5 58%, #d8cfbf 100%); color: var(--ink-d); }
+.cam { position: absolute; inset: 0; }
+.plane { position: absolute; left: -400px; top: -500px; width: 2720px; height: 2080px; transform: rotate(-14deg); }
+.layer { position: absolute; inset: 0; }
+.nm { position: absolute; white-space: pre; line-height: 1; letter-spacing: -0.01em; }
+.far { filter: blur(5px); opacity: .26; }
+.mid { filter: blur(1.4px); opacity: .55; }
+.sweep { position: absolute; left: -900px; top: -400px; width: 700px; height: 1900px; transform: rotate(-14deg);
+  background: linear-gradient(90deg, rgba(255,236,210,0) 0%, rgba(255,236,210,.11) 50%, rgba(255,236,210,0) 100%); mix-blend-mode: screen; }
+.scrim { position: absolute; left: 260px; top: 380px; width: 1400px; height: 320px;
+  background: radial-gradient(ellipse 50% 50% at 50% 50%, rgba(10,9,8,.86) 0%, rgba(10,9,8,.55) 55%, rgba(10,9,8,0) 100%); }
+.copy { position: absolute; left: 0; width: 1920px; text-align: center; white-space: pre; font-weight: 500; letter-spacing: -0.02em; }
+.big { position: absolute; white-space: pre; font-weight: 550; line-height: 1; letter-spacing: -0.03em; }
+#black { position: absolute; inset: 0; background: #000; }
+</style>
+</head>
+<body>
+<div id="main">
+
+  <!-- ACT 1 · OVERWHELM (0-330) -->
+  <section id="s1" class="scene dark"><div id="cam1" class="cam"><div class="plane" id="p1"></div><div class="sweep" id="sw1"></div></div><div class="scrim"></div></section>
+  <section id="s2" class="scene dark" style="visibility:hidden"><div id="cam2" class="cam"><div class="plane" id="p2"></div><div class="sweep" id="sw2"></div></div><div class="scrim"></div></section>
+  <section id="s3" class="scene dark" style="visibility:hidden"><div id="cam3" class="cam"><div class="plane" id="p3"></div></div><div class="scrim"></div></section>
+  <section id="s4" class="scene dark" style="visibility:hidden"><div id="cam4" class="cam"><div class="plane" id="p4"></div><div id="eng"></div></div></section>
+  <section id="s5" class="scene dark" style="visibility:hidden"><div id="cam5" class="cam"><div class="plane" id="p5"></div><div id="gates"></div></div></section>
+  <section id="s6a" class="scene dark" style="visibility:hidden"><div class="cam"><div class="plane" id="p6a"></div><div class="big" id="b6a" style="left:1040px;top:330px;font-size:330px;color:#ECE7DE">cinetic</div></div></section>
+  <section id="s6b" class="scene dark" style="visibility:hidden"><div class="cam"><div class="plane" id="p6b"></div><div class="big" id="b6b" style="left:-260px;top:420px;font-size:330px;color:#ECE7DE">remotion</div></div></section>
+  <div id="stut"></div>
+  <section id="s8" class="scene dark" style="visibility:hidden"><div id="cam8" class="cam"><div class="plane" id="p8"></div></div></section>
+
+  <!-- ACT 2 · BREATH (330-360) -->
+  <section id="s9" class="scene" style="visibility:hidden;background:#0c0b0a">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 34% 40% at 50% 49%, #4a4239 0%, #2a2520 45%, #0c0b0a 100%)" id="pool9"></div>
+    <div id="ghost" class="cam"></div>
+    <div id="prompt" style="position:absolute;left:0;top:478px;width:1920px;text-align:center;font-size:40px;line-height:48px;white-space:pre;color:#EDE9E1;font-weight:400"><span id="ptext" style="position:relative">make a 20-second hype film</span></div>
+    <div id="caret" style="position:absolute;left:960px;top:482px;width:3px;height:42px;background:#EDE9E1"></div>
+  </section>
+
+  <!-- ACT 3 · CONTROL (360-600) -->
+  <section id="s10" class="scene paper" style="visibility:hidden"><div id="cam10" class="cam">
+    <div id="prompt10" style="position:absolute;left:0;top:466px;width:1920px;text-align:center;font-size:40px;line-height:48px;white-space:pre;color:#16130F;font-weight:450">make a 20-second hype film</div>
+    <div id="row" style="position:absolute;left:160px;top:540px;width:1600px;height:18px;display:flex;justify-content:space-between;align-items:center;font-size:17px;line-height:20px;color:#1a1714;font-weight:500"></div>
+    <div id="ticks"></div>
+    <div id="playhead" style="position:absolute;left:0;top:520px;width:2px;height:58px;background:#16130F"></div>
+    <div id="fail" class="big" style="left:1352px;top:600px;font-size:30px;font-weight:550;color:#16130F;letter-spacing:0">FAIL</div>
+    <div id="pass" class="big" style="left:1352px;top:600px;font-size:30px;font-weight:550;color:var(--accent);letter-spacing:0">PASS</div>
+    <div class="sweep" id="sw10" style="background:linear-gradient(90deg,rgba(255,250,240,0),rgba(255,250,240,.35),rgba(255,250,240,0));mix-blend-mode:normal"></div>
+  </div></section>
+  <section id="s11" class="scene paper" style="visibility:hidden"><div id="cam11" class="cam">
+    <div style="position:absolute;left:0;top:640px;width:1920px;height:3px;background:#16130F"></div>
+    <div id="cells"></div>
+    <div id="ph11" style="position:absolute;left:0;top:300px;width:3px;height:380px;background:#16130F"></div>
+  </div></section>
+  <section id="s12" class="scene paper" style="visibility:hidden">
+    <div id="pool12" style="position:absolute;inset:0;background:radial-gradient(ellipse 40% 36% at 50% 50%, rgba(255,252,246,.95) 0%, rgba(255,252,246,0) 100%);opacity:0"></div>
+    <div class="sweep" id="sw12" style="left:-1100px;width:900px;background:linear-gradient(90deg,rgba(255,253,248,0),rgba(255,253,248,.75),rgba(255,253,248,0));mix-blend-mode:normal"></div>
+    <div id="markg" class="cam">
+      <div id="mline" style="position:absolute;left:560px;top:538px;width:680px;height:4px;background:#16130F;transform-origin:50% 50%"></div>
+      <div id="mL" class="big" style="left:-54px;width:600px;top:481px;font-size:112px;font-weight:600;text-align:right;color:#16130F">Motion</div>
+      <div id="mR" class="big" style="left:1254px;top:481px;font-size:112px;font-weight:600;color:#16130F">DESIGNER</div>
+    </div>
+  </section>
+
+  <!-- copy layer (runs across cuts) -->
+  <div id="L1" class="copy" style="top:492px;font-size:86px;line-height:96px;color:#F3EEE6">So many ways to make a film.</div>
+  <div id="L2" class="copy" style="top:492px;font-size:86px;line-height:96px;color:#F3EEE6;visibility:hidden">Which engine? Which cut?</div>
+  <div id="L4" class="copy" style="top:262px;font-size:76px;line-height:86px;color:#16130F;visibility:hidden">One directed film out.</div>
+  <div id="black" style="visibility:hidden"></div>
+</div>
+
+<script src="./runtime/vendor/gsap.min.js"></script>
+<script src="./runtime/motion.js"></script>
+<script>
+const M = Motion.film({ fps: 30, duration: 20, width: 1920, height: 1080, clock: 'smooth' });
+const ACCENT = '#FF4F1A';
+const $ = s => document.querySelector(s);
+
+/* real material: the repo's skill folders and scripts */
+const SKILLS = ['anidoodle','blender-addon-development','blender-animation','blender-asset-qa','blender-character-rigging','blender-clothing','blender-core','blender-environment-kits','blender-export-pipelines','blender-facial-shapekeys','blender-game-optimization','blender-geometry-nodes','blender-hair-grooming','blender-hardsurface-modeling','blender-lighting-lookdev','blender-pbr-materials','blender-pipeline-automation','blender-rendering','blender-retopology-uv','blender-scene-setup','blender-sculpting','blender-simulation','blender-stylized-npr','blender-texture-baking','blender-texturing','blender-time-of-day','blender-video-editing','blender-weather-fx','blender-workflow-recipes','cinetic','figma','huashu-art-motion','hyperframes','hyperframes-cli','hyperframes-registry','media-use','motion-critic','motion-design','motionmaxxing','reanimate','remotion-best-practices','remotion-captions','remotion-create','remotion-docs','remotion-interactivity','remotion-license','remotion-maps','remotion-markup','remotion-multimedia','remotion-render','remotion-saas','remotion-studio','remotion-to-hyperframes','remotion-upgrade','reverse-any-video','slideshow','style-sampling','video-director','video-prompt-enhancer'];
+const SCRIPTS = ['doctor.py','plan_check.py','cues.py','critic_scan.py','look.py','lint.mjs','render.mjs','like.py','precedent.py','blind_review.py','brand.mjs','sync.mjs','mix.py','forensics.py','gate.mjs','ship.mjs','film_gate.py','qa_check.py'];
+const FLAGS = ['--cues','--hero 13.0','--expect 20','--reference','--breath','--like','--still','--scale 0.5','--expect-audio','--hold-warn 1.4','--samples 24','--audio mix.wav'];
+
+function rng(seed) { let a = seed >>> 0; return () => { a = (a + 0x6D2B79F5) >>> 0; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function pick(r, arr) { return arr[Math.floor(r() * arr.length)]; }
+
+/* a wall of names on one rotated plane, 3 parallax depths (K4: <= 7 sharp) */
+function wall(planeSel, o) {
+  const P = $(planeSel), r = rng(o.seed), src = o.names || SKILLS, ids = [];
+  const mk = (cls, n, size, box) => {
+    const L = document.createElement('div'); L.className = 'layer ' + cls; L.id = planeSel.slice(1) + '_' + cls; P.appendChild(L);
+    for (let i = 0; i < n; i++) {
+      const e = document.createElement('div'); e.className = 'nm'; const word = pick(r, src), fs = Math.round(size[0] + r() * (size[1] - size[0]));
+      if (cls === 'far') { e.style.width = Math.round(word.length * fs * .5) + 'px'; e.style.height = Math.round(fs * .5) + 'px'; e.style.background = 'currentColor'; e.style.borderRadius = '3px'; }
+      else { e.textContent = word; e.style.fontSize = fs + 'px'; }
+      e.style.left = Math.round(box[0] + r() * (box[2] - box[0])) + 'px'; e.style.top = Math.round(box[1] + r() * (box[3] - box[1])) + 'px';
+      if (cls === 'near') e.style.fontWeight = 500;
+      L.appendChild(e);
+    }
+    return L;
+  };
+  const far = mk('far', o.far ?? 46, o.farSize || [16, 24], [0, 0, 2720, 2080]);
+  const mid = mk('mid', o.mid ?? 18, o.midSize || [26, 36], [300, 300, 2400, 1800]);
+  const near = mk('near', o.near ?? 6, o.nearSize || [44, 64], o.nearBox || [700, 560, 2000, 1500]);
+  const [f0, f1] = o.span, v = o.speed || 6, d = f1 - f0;
+  M.kf(near, 'x', [[f0, o.x0 || 0], [f1, (o.x0 || 0) - v * d]]);
+  M.kf(mid, 'x', [[f0, (o.x0 || 0) * .6], [f1, (o.x0 || 0) * .6 - v * .6 * d]]);
+  M.kf(far, 'x', [[f0, (o.x0 || 0) * .3], [f1, (o.x0 || 0) * .3 - v * .3 * d]]);
+  return { far, mid, near };
+}
+
+/* ---------- ACT 1 ---------- */
+// S1 hook 0-75: the flood already racing on frame 0
+wall('#p1', { seed: 11, span: [0, 76], speed: 8, x0: 260 });
+M.kf('#sw1', 'x', [[0, 300], [76, 2600]]);
+M.kf('#cam1', 'scale', [[0, 1.0], [76, 1.06]]);
+M.words('#L1', { at: 4, mech: 'rise', dist: 60, gaps: 3, frames: 11, smear: true });
+M.hide('#L1', 87);
+
+// S2 build 75-135: families stack in columns, camera arrives whipping
+M.cut(75, { hide: ['#s1'], show: ['#s2'] });
+(() => {
+  const fams = [SKILLS.filter(s => s.startsWith('blender')), SKILLS.filter(s => s.startsWith('remotion')), SKILLS.filter(s => /hyper|media|figma|slide|style|reverse/.test(s)), SKILLS.filter(s => !/blender|remotion|hyper|media|figma|slide|style|reverse/.test(s))];
+  const P = $('#p2'), sizes = [30, 46, 24, 38], xs = [620, 1080, 1560, 1960], speeds = [5, 8, 3.5, 6.5], blur = [1.2, 0, 3, 0], op = [.6, .95, .35, .85];
+  fams.forEach((f, i) => {
+    const c = document.createElement('div'); c.className = 'layer'; c.id = 'col' + i; c.style.left = xs[i] + 'px'; c.style.top = '200px'; c.style.right = 'auto'; c.style.width = '900px';
+    c.style.filter = blur[i] ? `blur(${blur[i]}px)` : ''; c.style.opacity = op[i];
+    c.innerHTML = f.concat(f).map(n => `<div style="font-size:${sizes[i]}px;line-height:${Math.round(sizes[i] * 1.5)}px;white-space:pre;font-weight:${i % 2 ? 500 : 450}">${n}</div>`).join('');
+    P.appendChild(c);
+    M.kf(c, 'y', [[75, -40 * i], [135, -40 * i - speeds[i] * 60]]);
+  });
+})();
+M.kf('#cam2', 'x', [[75, 420], [83, 30, 'whip'], [135, -60]]);
+M.kf('#sw2', 'x', [[75, 2400], [135, 200]]);
+
+// S3 build 135-180: scripts and flags crossing in two directions
+M.cut(135, { hide: ['#s2'], show: ['#s3'] });
+(() => {
+  const P = $('#p3');
+  const mkRow = (id, list, size, top, dir, op) => {
+    const row = document.createElement('div'); row.id = id; row.className = 'layer'; row.style.top = top + 'px'; row.style.height = (size * 1.4) + 'px'; row.style.opacity = op;
+    row.innerHTML = `<div class="nm" style="left:0;top:0;font-size:${size}px;font-weight:500">${list.concat(list).join('      ')}</div>`;
+    P.appendChild(row);
+    M.kf(row, 'x', [[135, dir > 0 ? -1400 : 200], [180, dir > 0 ? -200 : -1300]]);
+  };
+  mkRow('r3a', SCRIPTS, 52, 760, 1, .95);
+  mkRow('r3b', FLAGS, 34, 1330, -1, .6);
+  mkRow('r3c', SCRIPTS.slice().reverse(), 22, 620, -1, .3);
+  mkRow('r3d', FLAGS.slice(3), 20, 1480, 1, .28);
+})();
+M.words('#L2', { at: 138, mech: 'rise', dist: 60, gaps: 4, frames: 11, smear: true });
+M.hide('#L2', 210);
+
+// S4 180-210: engines crash in from 3.5x
+M.cut(180, { hide: ['#s3'], show: ['#s4'] });
+wall('#p4', { seed: 4, span: [180, 211], speed: 8, near: 0, mid: 10 });
+(() => {
+  const E = [['motionmaxxing', 120, 140, 120], ['cinetic', 1180, 170, 140], ['hyperframes', 250, 690, 110], ['remotion', 1210, 680, 130], ['anidoodle', 820, 290, 90], ['huashu-art-motion', 120, 890, 78], ['blender', 1300, 880, 96]];
+  const host = $('#eng');
+  E.forEach(([n, x, y, s], i) => {
+    const e = document.createElement('div'); e.className = 'big'; e.id = 'e' + i; e.textContent = n;
+    e.style.cssText += `left:${x}px;top:${y}px;font-size:${s}px;color:#ECE7DE;transform-origin:50% 50%`;
+    host.appendChild(e);
+    M.enter(e, { at: 181 + i * 3, frames: 9, ease: 'snapSettle', from: { scale: 3.5, blur: 10 }, smear: { axis: 'x', px: 30, frames: 2 } });
+  });
+})();
+M.kf('#cam4', 'scale', [[180, 1.0], [210, 1.05]]);
+
+// S5 210-240: the gate words pile up (stamped on the eighths)
+M.cut(210, { hide: ['#s4'], show: ['#s5'] });
+wall('#p5', { seed: 5, span: [210, 241], speed: 8, near: 3 });
+(() => {
+  const G = [['PASS', 260, 240, 150, 210], ['WARN', 1080, 330, 150, 218], ['FAIL', 520, 610, 170, 225], ['UNVERIFIED', 980, 700, 128, 233]];
+  G.forEach(([w, x, y, s, f], i) => {
+    const e = document.createElement('div'); e.className = 'big'; e.id = 'g' + i; e.textContent = w;
+    e.style.cssText += `left:${x}px;top:${y}px;font-size:${s}px;color:#ECE7DE;letter-spacing:0;transform:rotate(-14deg)`;
+    $('#gates').appendChild(e);
+    M.enter(e, { at: f, frames: 5, ease: 'snapSettle', from: { scale: 1.7, blur: 6 } });
+  });
+})();
+M.kf('#cam5', 'x', [[210, 0], [240, -50]]);
+
+// S6 240-270: two 1-beat cuts, an engine name bigger than the frame
+M.cut(240, { hide: ['#s5'], show: ['#s6a'] });
+wall('#p6a', { seed: 61, span: [240, 256], speed: 9, near: 2 });
+M.kf('#b6a', 'x', [[240, 120], [256, -60]]);
+M.cut(255, { hide: ['#s6a'], show: ['#s6b'] });
+wall('#p6b', { seed: 62, span: [255, 271], speed: -9, near: 2 });
+M.kf('#b6b', 'x', [[255, -120], [271, 60]]);
+
+// S7 270-315: six 0.25 s cuts, each a different wall, each closer
+(() => {
+  const host = $('#stut'), F = [270, 278, 285, 293, 300, 308, 315];
+  let prev = '#s6b';
+  for (let i = 0; i < 6; i++) {
+    const s = document.createElement('section'); s.className = 'scene dark'; s.id = 's7' + i; s.style.visibility = 'hidden';
+    s.innerHTML = `<div class="cam" id="c7${i}" style="transform:scale(${1 + i * .12}) rotate(${i % 2 ? 6 : -6}deg)"><div class="plane" id="p7${i}"></div></div>`;
+    host.appendChild(s);
+    wall('#p7' + i, { seed: 70 + i, span: [F[i], F[i + 1] + 1], speed: (i % 2 ? -1 : 1) * (10 + i * 2), near: 5 + (i % 2), mid: 22 + i * 3, far: 50 + i * 6, nearSize: [48, 78] });
+    M.cut(F[i], { hide: [prev], show: ['#s7' + i] });
+    prev = '#s7' + i;
+  }
+  M.cut(315, { hide: [prev], show: ['#s8'] });
+})();
+// S8 315-330: the densest wall, every family at once (dark, no strobe)
+wall('#p8', { seed: 8, span: [315, 331], speed: 16, near: 7, mid: 40, far: 90, nearSize: [40, 70] });
+M.kf('#cam8', 'scale', [[315, 1.0], [330, 1.12, 'gentleIn']]);
+
+/* ---------- ACT 2 · BREATH ---------- */
+M.cut(330, { hide: ['#s8'], show: ['#s9'] });
+M.type('#ptext', { at: 331, events: [[0, 3], [2, 6], [3, 8], [5, 11], [6, 13], [8, 17], [9, 19], [11, 22], [13, 'all']], caret: '#caret', caretGap: 4, recenter: true });
+M.kf('#pool9', 'opacity', [[330, .82], [360, 1]]);
+M.kf('#ghost', 'x', [[330, 60], [360, -60]]);
+
+/* ---------- ACT 3 · CONTROL ---------- */
+// Enter at 360: 2-frame light-out, then the key
+M.mark(360, 'press', 'Enter');
+M.show('#black', 360, 362);
+M.cut(362, { hide: ['#s9'], show: ['#s10'] });
+
+// HERO: every name in the noise travels in one continuous move into one line
+const ROWN = ['anidoodle','cinetic','hyperframes','blender-core','manim','remotion','motionmaxxing','huashu-art-motion','reanimate','motion-design','librosa','video-director','ffmpeg'];
+const MMX = ROWN.indexOf('motionmaxxing');
+(() => {
+  const row = $('#row'), r = rng(99), gh = $('#ghost');
+  ROWN.forEach((n, i) => {
+    const s = document.createElement('span'); s.textContent = n; s.id = 'h' + i; s.style.whiteSpace = 'pre'; s.style.display = 'inline-block'; s.style.transformOrigin = '50% 50%';
+    row.appendChild(s);
+  });
+  // layout is final now (flex, space-between); scatter start poses on the noise plane
+  ROWN.forEach((n, i) => {
+    const s = $('#h' + i), sx = 160 + s.offsetLeft + s.offsetWidth / 2, sy = 549;
+    const ang = (i * 2.39996) % (Math.PI * 2), rad = 260 + r() * 520;
+    const x0 = 960 + Math.cos(ang) * rad * 1.45, y0 = 540 + Math.sin(ang) * rad * .78, sc = 1.6 + r() * 2.6;
+    const dx = Math.round(x0 - 60 - sx), dy = Math.round(y0 - sy);
+    // the same name, ghosted in the dark during the breath, at the same start pose (continuity across the light-out)
+    const g = document.createElement('div'); g.className = 'nm'; g.textContent = n;
+    g.style.cssText += `left:${Math.round(x0)}px;top:${Math.round(y0)}px;font-size:17px;color:#ECE7DE;opacity:.13;transform:translate(-50%,-50%) rotate(-14deg) scale(${sc.toFixed(2)})`;
+    gh.appendChild(g);
+    const fr = 16 + Math.round(r() * 4);
+    M.show(s, 362); M.enter(s, { at: 364, frames: fr, ease: 'whip', from: { x: dx, y: dy, rotation: -14, scale: +sc.toFixed(2) }, smear: { axis: 'x', px: 28, frames: 3 } });
+  });
+  // the locked engine drops out of the line, in the accent
+  const w = M.wrap('#h' + MMX);
+  M.kf(w, 'y', [[382, 0], [396, 66, 'softLand']]);
+  M.kf(w, 'scale', [[382, 1], [396, 2.6, 'softLand']]);
+  M.kf('#h' + MMX, 'color', [[382, '#1a1714'], [388, ACCENT]]);
+})();
+// held poster 386-421, kept alive: a slow push + one light sweep
+const w10 = M.wrap('#cam10');
+M.drift(w10, { prop: 'scale', from: 1, to: 1.12, start: 362, end: 436 });
+M.kf('#sw10', 'x', [[380, 0], [440, 2700]]);
+// the line is a timeline: this film's own cuts drop onto it as ticks; the playhead runs
+(() => {
+  const cutsS = [2.5, 4.5, 6, 7, 8, 8.5, 9, 9.25, 9.5, 9.75, 10, 10.25, 10.5, 11, 12, 14.5, 15.25, 16];
+  cutsS.forEach((t, i) => {
+    const k = document.createElement('div'); k.id = 'k' + i;
+    k.style.cssText = `position:absolute;left:${Math.round(160 + t / 20 * 1600)}px;top:526px;width:2px;height:16px;background:#16130F`;
+    $('#ticks').appendChild(k);
+    M.enter(k, { at: 420 + Math.round(i * 1.2), frames: 6, ease: 'softLand', from: { y: -26 } });
+  });
+})();
+M.kf('#playhead', 'x', [[420, 160], [480, 160 + 1600 * 15.6 / 20]]);
+M.show('#playhead', 420, 999);
+M.show('#fail', 436, 450);
+M.show('#pass', 450, 999);
+M.camera('#cam10', [[436, { scale: 1, x: 0 }], [457, { scale: 1.45, x: -300 }, 'softInOut']], { origin: '1400px 560px' });
+M.words('#L4', { at: 440, mech: 'rise', dist: 50, gaps: 4, frames: 11, smear: true });
+M.hide('#L4', 492);
+
+// echo b 457-480: frames of the film slot into the timeline as the playhead passes
+M.cut(457, { hide: ['#s10'], show: ['#s11'] });
+(() => {
+  const host = $('#cells'), looks = ['d', 'd', 'd', 'd', 'k', 'p', 'p', 'p'];
+  looks.forEach((l, i) => {
+    const c = document.createElement('div'); c.id = 'cell' + i;
+    const bg = l === 'd' ? 'radial-gradient(ellipse at 40% 45%,#2a2622,#0f0e0c)' : l === 'k' ? 'radial-gradient(ellipse at 50% 50%,#4a4239,#0c0b0a)' : 'radial-gradient(ellipse at 50% 48%,#fbf7ef,#ddd4c4)';
+    const inner = l === 'd' ? `<div style="position:absolute;left:14px;top:30px;width:120px;height:3px;background:#ECE7DE;opacity:.7;transform:rotate(-14deg)"></div><div style="position:absolute;left:70px;top:70px;width:90px;height:2px;background:#ECE7DE;opacity:.4;transform:rotate(-14deg)"></div><div style="position:absolute;left:40px;top:100px;width:140px;height:3px;background:#ECE7DE;opacity:.55;transform:rotate(-14deg)"></div>`
+      : l === 'k' ? `<div style="position:absolute;left:70px;top:62px;width:100px;height:2px;background:#ECE7DE;opacity:.8"></div>`
+      : `<div style="position:absolute;left:22px;top:66px;width:196px;height:2px;background:#16130F"></div>`;
+    c.style.cssText = `position:absolute;left:${180 + i * 200}px;top:${470}px;width:184px;height:150px;overflow:hidden;background:${bg};box-shadow:0 10px 30px rgba(40,30,20,.18)`;
+    c.innerHTML = inner;
+    host.appendChild(c);
+    M.enter(c, { at: 457 + i * 2, frames: 9, ease: 'softLand', from: { y: -60 }, smear: { axis: 'y', px: 18, frames: 2 } });
+  });
+})();
+M.kf('#ph11', 'x', [[457, 150], [480, 1820]]);
+M.kf('#cam11', 'x', [[457, 40], [480, -40]]);
+
+// CTA 480-600: hard cut on motion; the line contracts and pulls the name in from its ends; the line is the hyphen
+M.cut(480, { hide: ['#s11'], show: ['#s12'] });
+M.kf('#mline', 'scaleX', [[480, 1], [562, 36 / 680, 'softInOut']]);
+M.kf('#mline', 'scaleY', [[540, 1], [562, 2.6, 'softLand']]);
+M.kf('#mline', 'backgroundColor', [[560, '#16130F'], [564, ACCENT]]);
+M.kf('#mL', 'x', [[480, 0], [562, 322, 'softInOut']]);
+M.kf('#mR', 'x', [[480, 0], [562, -322, 'softInOut']]);
+M.mark(562, 'snap', 'mark lands');
+const MARKDX = -28;  // set after measuring the landed mark
+const wg = M.wrap('#markg');
+M.kf('#markg', 'x', [[480, 0], [562, MARKDX, 'softInOut']]);
+M.drift(wg, { prop: 'scale', from: 1, to: 1.035, start: 562, end: 600 });
+M.kf('#sw12', 'x', [[556, 0], [600, 2900]]);
+M.kf('#pool12', 'opacity', [[540, 0], [600, .85]]);
+
+window.__ready = Motion.loaded().then(() => { if (/selftest/.test(location.search)) Motion.selfTest(M, { samples: 24 }); });
+</script>
+</body>
+</html>

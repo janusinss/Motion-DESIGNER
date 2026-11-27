@@ -67,3 +67,11 @@ projects/**/final_v.mp4.events.json
 projects/**/stills/
 projects/**/look/
 projects/**/audio/*.wav
+# draft renders inside version folders, hero clips, scratch scans (sources in v<N>/ stay tracked)
+projects/**/film/v*/**/*.mp4
+projects/**/film/v*/**/*.mp4.events.json
+projects/**/film/v*/**/tailscan/
+projects/**/film/hero*.mp4
+projects/**/film/hero*.mp4.events.json
+projects/**/glimpse/
+projects/**/look*/

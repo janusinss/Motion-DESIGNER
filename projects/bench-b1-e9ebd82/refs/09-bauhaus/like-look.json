@@ -1,0 +1,462 @@
+{
+ "tool": "look-audit",
+ "file": "the clip (sha256 7938c337896f, 10 s)",
+ "fps": 30.0,
+ "size": [
+  1920,
+  1080
+ ],
+ "analysis": [
+  480,
+  270
+ ],
+ "fails": 2,
+ "warnings": 1,
+ "accent": null,
+ "brand": [],
+ "look": null,
+ "flags": [
+  {
+   "check": "hue-count",
+   "severity": "fail",
+   "frame": 0,
+   "t": 0.0,
+   "note": "3 hue groups across the film (30, 85, 260 deg): one accent family; several hues live only inside imagery (--imagery)"
+  },
+  {
+   "check": "banned-hue",
+   "severity": "fail",
+   "frame": 45,
+   "t": 1.5,
+   "note": "a banned colour region (orange/amber, beige/cream, purple/violet or neon) covers >= 0.5 % of 17 samples; a brand-supplied colour is declared in the tokens (cinetic:brand-supplied) or with --brand"
+  },
+  {
+   "check": "living-ground",
+   "severity": "warn",
+   "frame": "127-177",
+   "t": 4.233,
+   "note": "1 stretch(es) where nothing moves (longest 1.7 s): a still hold rests up to 2 s on a read and 1.5 s elsewhere; past it something moves with a purpose (a move that starts, travels and lands; never an idle float)"
+  }
+ ],
+ "floor": {
+  "moving": {
+   "share": 0.664,
+   "need": 0.65,
+   "ok": true,
+   "read_lock_frames": 0
+  },
+  "depth": {
+   "share": 0.5,
+   "need": 0.5,
+   "ok": true,
+   "shots": [
+    {
+     "shot": [
+      0,
+      180
+     ],
+     "share": 0.25,
+     "depth": false
+    },
+    {
+     "shot": [
+      180,
+      240
+     ],
+     "share": 0.812,
+     "depth": true
+    }
+   ],
+   "gate": false
+  },
+  "carried": {
+   "share": 0.0,
+   "need": 0.4,
+   "ok": false,
+   "seams": [
+    {
+     "frame": 180,
+     "kind": "cut",
+     "declared": false,
+     "carried": false,
+     "before_pxs": 44.6,
+     "after_pxs": 0.0,
+     "cos": 0.0
+    },
+    {
+     "frame": 240,
+     "kind": "cut",
+     "declared": false,
+     "carried": false,
+     "before_pxs": 164.0,
+     "after_pxs": 37.5,
+     "cos": -0.08
+    }
+   ],
+   "na": false
+  },
+  "device": {
+   "max_gap_s": 0,
+   "need_s": 3,
+   "ok": true,
+   "gaps": []
+  },
+  "light": {
+   "acts": [
+    {
+     "act": "film",
+     "light": true
+    }
+   ],
+   "ok": true,
+   "gate": false
+  },
+  "scale": {
+   "share": 0.0,
+   "need": 0.3,
+   "ok": false,
+   "cuts": [
+    {
+     "cut": 180,
+     "height_ratio": 1.25,
+     "cover_ratio": 1.95,
+     "contrast": false
+    },
+    {
+     "cut": 240,
+     "height_ratio": 1.25,
+     "cover_ratio": 1.22,
+     "contrast": false
+    }
+   ],
+   "na": false
+  },
+  "picture": {
+   "flat": {
+    "mean": 0.319,
+    "frames_over": 0.037,
+    "need": {
+     "mean": [
+      0.25,
+      0.9
+     ],
+     "frames_over": 0.05
+    },
+    "target": {
+     "mean": [
+      0.43,
+      0.85
+     ],
+     "frames_over": 0.18
+    },
+    "ok": false,
+    "target_ok": false
+   },
+   "edges": {
+    "mean": 0.0291,
+    "need": [
+     0.006,
+     0.12
+    ],
+    "target": 0.059,
+    "ok": true,
+    "target_ok": true
+   },
+   "saturated": {
+    "mean": 0.2115,
+    "hsv": 0.2104,
+    "need": 0.022,
+    "target": 0.045,
+    "ok": true,
+    "target_ok": true
+   },
+   "bleed": {
+    "acts": [
+     {
+      "act": "part1",
+      "frames": [
+       0,
+       240
+      ],
+      "bleed_at": 15,
+      "ok": true
+     }
+    ],
+    "share": 1.0,
+    "need": 0.25,
+    "target": 1.0,
+    "ok": true,
+    "target_ok": true
+   },
+   "skeleton": {
+    "frames": [],
+    "samples": 0,
+    "max_bars": 0,
+    "need": 3,
+    "ok": true,
+    "target_ok": true
+   },
+   "filler": {
+    "frames": [],
+    "samples": 0,
+    "share": 0.0,
+    "boxes": [],
+    "need": {
+     "samples": 3,
+     "share": 0.1
+    },
+    "ok": true,
+    "target_ok": true
+   },
+   "haze": {
+    "frames": [],
+    "samples": 0,
+    "measured": 16,
+    "share": 0.0,
+    "max": 0.0155,
+    "median": 0.0142,
+    "need": {
+     "lift": 0.025,
+     "samples": 3,
+     "share": 0.2
+    },
+    "ok": true,
+    "target_ok": true
+   },
+   "plate": {
+    "frames": [],
+    "samples": 0,
+    "measured": 16,
+    "share": 0.0,
+    "fields": [],
+    "need": {
+     "samples": 3,
+     "share": 0.1
+    },
+    "ok": true,
+    "target_ok": true
+   },
+   "cards": {
+    "frames": [],
+    "samples": 0,
+    "dark": 0,
+    "share": 0.0,
+    "steps": [],
+    "grounds": [],
+    "need": {
+     "samples": 3,
+     "share": 0.2,
+     "step": 8.0
+    },
+    "ok": true,
+    "target_ok": true
+   },
+   "void": {
+    "frames": [
+     0
+    ],
+    "samples": 1,
+    "measured": 16,
+    "share": 0.062,
+    "spread": 0.0,
+    "L": 94.9,
+    "need": {
+     "share": 0.8,
+     "warn": 0.6,
+     "step": 8.0
+    },
+    "ok": true,
+    "target_ok": true,
+    "warn": false,
+    "excused": false,
+    "stage_ok": false
+   },
+   "falloff": {
+    "share": 0.217,
+    "raw": 0.758,
+    "target": 0.35,
+    "ok": true,
+    "target_ok": false
+   },
+   "wash": {
+    "saturated": 0.2115,
+    "frames_over": 0.0,
+    "need": [
+     0.6,
+     0.65
+    ],
+    "target": [
+     0.32,
+     0.25
+    ],
+    "ok": true,
+    "target_ok": true
+   },
+   "neutral": {
+    "mean": 0.7848,
+    "target": 0.4,
+    "ok": true,
+    "target_ok": true
+   },
+   "accent": {
+    "mean": 0.1135,
+    "h": 25.0,
+    "source": "dominant",
+    "target": [
+     0.06,
+     0.15
+    ],
+    "ok": true,
+    "target_ok": true
+   },
+   "second": {
+    "frames": 0.85,
+    "h": 241.7,
+    "target": 0.09,
+    "ok": true,
+    "target_ok": true
+   },
+   "colour": {
+    "neutral": 0.7848,
+    "saturated": 0.2115,
+    "wash_share": 0.0,
+    "events": [],
+    "accent": {
+     "h": 25.0,
+     "source": "dominant",
+     "mean": 0.1135,
+     "p95": 0.2811,
+     "runs": [
+      {
+       "frames": [
+        180,
+        195
+       ],
+       "s": 0.5
+      }
+     ],
+     "flood_ok": true
+    },
+    "second": {
+     "h": 241.7,
+     "frames": 0.85,
+     "share_when": 0.0703,
+     "support": true,
+     "second_accent": false,
+     "declared": false
+    }
+   },
+   "ok": false,
+   "target": {
+    "ok": false,
+    "misses": [
+     "flat",
+     "falloff"
+    ]
+   },
+   "reported_only": true
+  },
+  "pass": false
+ },
+ "measures": {
+  "fps": 30.0,
+  "frames": 300,
+  "seconds": 10.0,
+  "body_frames": 240,
+  "cuts": [
+   180,
+   240
+  ],
+  "shots": [
+   [
+    0,
+    180
+   ],
+   [
+    180,
+    240
+   ],
+   [
+    240,
+    300
+   ]
+  ],
+  "shot_lengths": [
+   6.0,
+   2.0,
+   2.0
+  ],
+  "shot_median": 2.0,
+  "shot_spread": 2.0,
+  "shot_longest_over_shortest": 3.0,
+  "shots_over_4s": 0.333,
+  "one_take": false,
+  "starts_per_s": 2.25,
+  "region_starts_per_s": 45.375,
+  "concurrency": 1.992,
+  "idle_share": 0.055,
+  "living_holds": 1.0,
+  "moving_share": 0.664,
+  "camera_share": 0.389,
+  "read_locks": [],
+  "carried_share": 0.0,
+  "seams": 2,
+  "cut_sync": {
+   "within_1f": 1.0,
+   "within_100ms": 1.0,
+   "onsets": 61
+  },
+  "hue_groups": 3,
+  "accent_p95": null,
+  "ground_L": 0.945,
+  "ground_C": 0.0229,
+  "ink_L": 0.173,
+  "grain": null,
+  "vignette": null,
+  "type_issues": 0,
+  "words": [],
+  "small_text": 0,
+  "type_reads": [],
+  "picture": {
+   "flat": 0.319,
+   "flat_frames_over": 0.037,
+   "edges": 0.0291,
+   "falloff": 0.217,
+   "saturated": 0.2115,
+   "bleed_acts": [
+    true
+   ],
+   "bleed_share": 1.0,
+   "skeleton_samples": 0,
+   "filler_samples": 0,
+   "haze_samples": 0,
+   "haze_max": 0.0155,
+   "saturated_out": 0.2115,
+   "wash_share": 0.0,
+   "neutral": 0.7848,
+   "accent": 0.1135,
+   "accent_flood_ok": true,
+   "second_frames": 0.85,
+   "second_support": true,
+   "second_accent": false,
+   "target_misses": [
+    "flat",
+    "falloff"
+   ],
+   "pass": false
+  },
+  "framing": {
+   "samples": 16,
+   "centred": 0,
+   "centred_share": 0.0,
+   "centred_frames": [],
+   "bleed_share": 0.562
+  }
+ },
+ "marks": {
+  "record": null,
+  "samples": 0,
+  "of": 20
+ },
+ "pass": false
+}

@@ -16,3 +16,9 @@ Lowest: World/Light 6, Originality 6, Idea 7, Motion Craft 7, Design 7 (r1 6.65 
 - **Proof beats show transformation, not readouts**: two terminal panels in a row read as a slide deck.
 - **Seek-safety**: two keyframes on the same frame are not seek-safe (selfTest mismatch); hold for one frame instead.
 - **AAC headroom**: master to -2.5 dBTP before an AAC mux; AAC adds ~1.2 dB of true peak on hard transients.
+
+## 2026-11-28 · bench-b1-e9ebd82 · motionmaxxing · jury 6.95/10 (Motion Awards)
+Lowest: Originality 6; Idea, Story, Craft, Design, World, Sound all 7 (r1 6.95 → r2 6.95; stopped at 2 rounds because r2 did not raise the total, although a blind A/B picked r2 clearly).
+- **A held poster is not a hero**: a 0.5 s+ still after a 20 f move read as "a 0.25 s flash, then a still" in both rounds. Keep the hero moving through its whole window (energy above ~30 % of peak until the next beat), and take the poster frame mid-move, not as a hold.
+- **Show the product's output, not its menu**: names, a prompt and an orange pick are text about the product. The control half needs real output being made (a title, a chart, a 3D turn) carried by the same move. Recycling the film's own opening frames read as a callback, not as proof.
+- **Accelerate from the first cut and protect the headline zone**: cuts of 2.5 / 2.0 / 1.5 s in the first 6 s read as an equal-density build. Start at ≤ 2.0 s and halve each beat. Keep flood words out of a clear zone around the copy, and keep crash-in words inside a 120 px margin (collisions at 1.5 s and 8 s were marked as craft flaws).

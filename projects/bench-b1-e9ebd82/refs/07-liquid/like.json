@@ -1,0 +1,187 @@
+{
+ "source": "like.py: the grammar of the clip (sha256 01712cd0a22c, 10 s)",
+ "shot": {
+  "band": {
+   "launch": [
+    2.07,
+    2.8
+   ],
+   "update": [
+    2.07,
+    2.8
+   ],
+   "explainer": [
+    2.07,
+    2.8
+   ],
+   "reel": [
+    2.07,
+    2.8
+   ],
+   "social": [
+    2.07,
+    2.8
+   ]
+  },
+  "spread": [
+   2.52,
+   3.32
+  ],
+  "r70": 1.75
+ },
+ "roleMix": {
+  "shares": {
+   "arrive": 0.429,
+   "reposition": 0.286,
+   "leave": 0.286,
+   "linear": 0.0,
+   "spring": 0.0
+  },
+  "tvdMax": 0.2
+ },
+ "frontLoaded": 0.4,
+ "intoCuts": 0.3,
+ "density": {
+  "startsPerSec": [
+   1.8,
+   2.7
+  ],
+  "concurrent": [
+   1.82,
+   2.73
+  ],
+  "idleMax": 0.05
+ },
+ "seams": {
+  "carriedMin": 0.4,
+  "mix": {
+   "hard": 0.167,
+   "velocity": 0.333,
+   "light": 0.167,
+   "colour": 0.167,
+   "dissolveUi": 0.167
+  },
+  "mixTvdMax": 0.35
+ },
+ "cutSync": {
+  "within1f": 0.2,
+  "within100ms": 0.3
+ },
+ "picture": {
+  "target": {
+   "flatMax": 0.612,
+   "edgesMin": 0.018,
+   "saturatedMin": 0.7785
+  }
+ },
+ "like": {
+  "clip": "sha256 01712cd0a22c, 10 s",
+  "seconds": 10.0,
+  "fps": 30.0,
+  "size": [
+   1920,
+   1080
+  ],
+  "shots": {
+   "count": 4,
+   "median_s": 2.433,
+   "q25_s": 1.242,
+   "q75_s": 3.625,
+   "longest_s": 4.1,
+   "cuts_per_s": 0.5,
+   "one_take": false
+  },
+  "changes": {
+   "count": 3,
+   "median_s": 2.5,
+   "per_s": 0.3,
+   "carried_share": 0.0
+  },
+  "cut_on_sound": {
+   "within_1f": 0.2,
+   "within_100ms": 0.2,
+   "onsets": 26
+  },
+  "tempo": {
+   "bpm": 149.72,
+   "source": "track.py",
+   "cuts_on_beat": 0.2,
+   "cuts_on_downbeat": 0.2
+  },
+  "camera": {
+   "moving_share": 0.906,
+   "zoom_share": 0.896,
+   "speed_pxs_median": 53.1
+  },
+  "moves": {
+   "count": 7,
+   "families": {
+    "front": 0.429,
+    "symmetric": 0.286,
+    "back": 0.286,
+    "linear": 0.0
+   },
+   "mean_pxs_median": 704.9
+  },
+  "transitions": {
+   "hard": 1,
+   "carried": 2,
+   "flash": 1,
+   "dip": 1,
+   "soft": 1
+  },
+  "type": {
+   "text_share": 0.0,
+   "line_height_median": null,
+   "line_height_largest": null,
+   "confidence": null,
+   "unsure_share": 0.4,
+   "note": "estimates from glyph lines read without OCR (confident lines only); heights are a share of the frame height"
+  },
+  "moments": {
+   "kinds": {
+    "type": 0,
+    "ui": 0,
+    "picture": 4,
+    "graphic": 0
+   },
+   "sequence": [
+    "picture",
+    "picture",
+    "picture",
+    "picture"
+   ],
+   "note": "what each picture shows, read from one frame of it: picture (footage or a photograph), ui, type, graphic"
+  },
+  "density": {
+   "starts_per_s": 2.25,
+   "concurrency": 2.279,
+   "idle_share": 0.026,
+   "living_holds": 1.0
+  },
+  "palette": {
+   "ground": 0.451,
+   "ink": 0.09,
+   "accent": 0.186,
+   "tones": {
+    "light": 0.0,
+    "mid": 0.0,
+    "dark": 0.0,
+    "field": 1.0
+   },
+   "hues": "not recorded: the film keeps its own colours"
+  },
+  "picture": {
+   "flat": 0.556,
+   "edges": 0.015,
+   "saturated": 0.865,
+   "falloff": 0.854,
+   "bleed_share": 1.0
+  },
+  "blur": {
+   "policy": "camera",
+   "fast_vs_still_sharpness": 0.569,
+   "fast_frames": 164
+  }
+ }
+}
