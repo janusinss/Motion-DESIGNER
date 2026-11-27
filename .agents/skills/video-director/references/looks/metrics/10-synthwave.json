@@ -1,0 +1,49 @@
+{
+ "peak_fraction": 0.417,
+ "cuts_s": [
+  4.167,
+  9.833
+ ],
+ "energy_quarters": [
+  13.178,
+  17.232,
+  11.061,
+  13.017
+ ],
+ "energy_cv": 0.165,
+ "energy_curve_0p5s": [
+  6.163,
+  9.561,
+  16.474,
+  17.322,
+  16.369,
+  10.992,
+  12.023,
+  16.446,
+  37.116,
+  9.583,
+  9.316,
+  9.271,
+  10.71,
+  15.737,
+  10.27,
+  10.738,
+  10.249,
+  12.895,
+  14.704,
+  17.193
+ ],
+ "median_shot_s": 4.167,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.0,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/10-synthwave.mp4 (MIT)"
+}

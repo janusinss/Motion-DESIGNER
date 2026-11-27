@@ -1,0 +1,51 @@
+{
+ "peak_fraction": 0.35,
+ "cuts_s": [
+  3.5,
+  3.583,
+  5.417,
+  8.0
+ ],
+ "energy_quarters": [
+  7.959,
+  20.54,
+  9.173,
+  8.666
+ ],
+ "energy_cv": 0.448,
+ "energy_curve_0p5s": [
+  8.789,
+  4.968,
+  7.467,
+  8.12,
+  10.452,
+  8.481,
+  48.2,
+  31.864,
+  5.969,
+  8.185,
+  22.933,
+  9.326,
+  7.078,
+  3.116,
+  3.416,
+  22.546,
+  14.776,
+  3.233,
+  0.79,
+  0.651
+ ],
+ "median_shot_s": 2.0,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.65,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/01-flat-vector.mp4 (MIT)"
+}

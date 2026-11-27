@@ -1,0 +1,51 @@
+{
+ "peak_fraction": 0.658,
+ "cuts_s": [
+  4.167,
+  5.0,
+  6.417,
+  6.5
+ ],
+ "energy_quarters": [
+  6.153,
+  10.261,
+  8.654,
+  1.12
+ ],
+ "energy_cv": 0.528,
+ "energy_curve_0p5s": [
+  8.146,
+  7.854,
+  5.78,
+  5.357,
+  3.626,
+  3.739,
+  5.093,
+  7.044,
+  21.93,
+  13.501,
+  9.754,
+  0.713,
+  16.385,
+  15.351,
+  1.068,
+  1.037,
+  1.356,
+  1.383,
+  0.994,
+  0.769
+ ],
+ "median_shot_s": 1.417,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.0,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/07-liquid.mp4 (MIT)"
+}

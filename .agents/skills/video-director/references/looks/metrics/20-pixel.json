@@ -1,0 +1,50 @@
+{
+ "peak_fraction": 0.667,
+ "cuts_s": [
+  0.167,
+  6.417,
+  6.5
+ ],
+ "energy_quarters": [
+  12.67,
+  6.32,
+  20.17,
+  1.835
+ ],
+ "energy_cv": 0.673,
+ "energy_curve_0p5s": [
+  34.896,
+  6.682,
+  6.685,
+  7.579,
+  7.508,
+  7.596,
+  10.043,
+  1.95,
+  6.064,
+  5.949,
+  0.854,
+  8.455,
+  43.392,
+  33.333,
+  14.818,
+  3.277,
+  2.87,
+  1.051,
+  1.008,
+  0.798
+ ],
+ "median_shot_s": 1.833,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.3,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/20-pixel.mp4 (MIT)"
+}

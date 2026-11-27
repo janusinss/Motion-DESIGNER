@@ -1,0 +1,56 @@
+{
+ "peak_fraction": 0.733,
+ "cuts_s": [
+  7.083,
+  7.167,
+  7.75,
+  7.833
+ ],
+ "energy_quarters": [
+  8.307,
+  12.147,
+  13.069,
+  7.295
+ ],
+ "energy_cv": 0.24,
+ "energy_curve_0p5s": [
+  9.035,
+  3.829,
+  10.85,
+  15.036,
+  2.782,
+  10.544,
+  14.533,
+  9.044,
+  5.806,
+  20.81,
+  11.38,
+  15.006,
+  5.166,
+  8.067,
+  25.724,
+  26.443,
+  5.96,
+  1.093,
+  0.95,
+  0.977
+ ],
+ "median_shot_s": 0.583,
+ "perceived_holds_s": [
+  [
+   8.75,
+   9.92
+  ]
+ ],
+ "slop_ratio": 0.3,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/19-paperclip.mp4 (MIT)"
+}

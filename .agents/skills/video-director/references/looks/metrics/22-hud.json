@@ -1,0 +1,51 @@
+{
+ "peak_fraction": 0.667,
+ "cuts_s": [
+  6.417,
+  6.5,
+  7.083,
+  9.833
+ ],
+ "energy_quarters": [
+  1.568,
+  2.819,
+  5.583,
+  1.917
+ ],
+ "energy_cv": 0.53,
+ "energy_curve_0p5s": [
+  3.334,
+  0.931,
+  1.122,
+  1.04,
+  1.411,
+  2.424,
+  2.532,
+  2.575,
+  3.125,
+  3.437,
+  2.37,
+  1.807,
+  6.685,
+  10.752,
+  6.301,
+  2.307,
+  1.53,
+  1.488,
+  1.124,
+  3.377
+ ],
+ "median_shot_s": 0.583,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.0,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/22-hud.mp4 (MIT)"
+}

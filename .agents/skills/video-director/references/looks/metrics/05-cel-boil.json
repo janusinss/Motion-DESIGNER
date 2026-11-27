@@ -1,0 +1,50 @@
+{
+ "peak_fraction": 0.675,
+ "cuts_s": [
+  0.5,
+  6.5,
+  6.583
+ ],
+ "energy_quarters": [
+  16.568,
+  10.933,
+  27.769,
+  9.214
+ ],
+ "energy_cv": 0.45,
+ "energy_curve_0p5s": [
+  20.064,
+  27.132,
+  11.258,
+  8.558,
+  15.828,
+  12.326,
+  10.256,
+  10.335,
+  11.735,
+  10.015,
+  14.387,
+  14.773,
+  38.665,
+  55.024,
+  15.995,
+  5.445,
+  3.431,
+  7.674,
+  19.3,
+  10.423
+ ],
+ "median_shot_s": 1.958,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.0,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 24.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/05-cel-boil.mp4 (MIT)"
+}

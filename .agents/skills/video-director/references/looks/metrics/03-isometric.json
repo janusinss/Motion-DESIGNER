@@ -1,0 +1,46 @@
+{
+ "peak_fraction": 0.183,
+ "cuts_s": [],
+ "energy_quarters": [
+  13.79,
+  17.377,
+  10.841,
+  6.86
+ ],
+ "energy_cv": 0.316,
+ "energy_curve_0p5s": [
+  8.443,
+  12.257,
+  15.839,
+  19.482,
+  12.931,
+  15.341,
+  19.015,
+  19.374,
+  15.281,
+  17.873,
+  13.071,
+  8.058,
+  13.941,
+  10.527,
+  8.609,
+  10.923,
+  14.221,
+  6.337,
+  1.064,
+  0.733
+ ],
+ "median_shot_s": 10.0,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.95,
+ "probe": {
+  "width": 1920,
+  "height": 1080,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/03-isometric.mp4 (MIT)"
+}

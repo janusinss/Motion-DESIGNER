@@ -1,0 +1,50 @@
+{
+ "peak_fraction": 0.408,
+ "cuts_s": [
+  4.0,
+  4.083,
+  6.0
+ ],
+ "energy_quarters": [
+  6.415,
+  16.985,
+  26.371,
+  10.181
+ ],
+ "energy_cv": 0.506,
+ "energy_curve_0p5s": [
+  5.256,
+  4.131,
+  4.906,
+  5.46,
+  12.322,
+  17.013,
+  11.322,
+  21.248,
+  27.783,
+  7.557,
+  23.879,
+  28.676,
+  31.784,
+  23.734,
+  23.781,
+  22.077,
+  13.803,
+  7.724,
+  3.534,
+  2.487
+ ],
+ "median_shot_s": 2.958,
+ "perceived_holds_s": [],
+ "slop_ratio": 0.1,
+ "probe": {
+  "width": 1080,
+  "height": 1920,
+  "fps": 30.0,
+  "duration": 10.0,
+  "has_audio": true,
+  "video_codec": "h264",
+  "audio_codec": "aac"
+ },
+ "source": "resources/mg-styles-15/videos/18-hanazi.mp4 (MIT)"
+}
