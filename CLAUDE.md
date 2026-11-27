@@ -7,7 +7,7 @@ Everything in `AGENTS.md` applies. This file adds only what is specific to Claud
 ## 1. Entry points (pick one before any tool call)
 | Request | Skill |
 |---|---|
-| Make / create / build / render any video (launch, hype cut, ad, reel, explainer, sting, demo, titles, music, data, loop, teaser, 3D hero) | `video-director` (preflight → direct → lock one engine → hero first → gates → independent jury → deliver) |
+| Make / create / build / render any video (launch, hype cut, ad, reel, explainer, sting, demo, titles, music, data, loop, teaser, 3D hero) | `video-director` (preflight → lessons + references → direct → plan-check → lock one engine → hero clip sign-off → gates → design-blind jury + blind A/B → deliver + lesson) |
 | Plan, enhance, or direct a video prompt without building | `video-prompt-enhancer` (plan-only) |
 | Critique, review, or score a rendered video | `motion-critic` |
 | Clone or match an existing animation (site, Lottie, WebGL) | `reanimate` (needs Bun) |
