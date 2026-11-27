@@ -4,6 +4,7 @@ Proof that a change to the repo makes better films, not just different ones. Eac
 
 ## Rules
 - Run each brief exactly as written in `briefs/`, in a fresh session, with the defaults the brief states (no extra guidance from the operator). Answer the director's interview with the brief's "If asked" lines.
+- **Unattended steps**: a bench run never waits on the user. The step-2 interview is answered from the "If asked" lines (no `AskUserQuestion`). The step-5 hero clip sign-off is self-checked against the director's hero gate (reads at speed, sound on, no notes from anyone) and logged in `NOTE.md`. No user feedback enters the film; that would be operator guidance.
 - The jury is `motion-critic` in a fresh subagent, design-blind, lens as stated in the brief, max 3 rounds, `critic_scan.py --cues` on the final.
 - Record per brief: repo commit, engine, rounds, final lens total, the 8 dimension scores, FAIL/UNVERIFIED count, wall-clock time. Never edit an earlier row.
 - Films go to `projects/bench-<id>-<commit>/` (only `final.mp4`, `NOTE.md`, source and cue sheet are kept; drafts and critic scans are gitignored).
