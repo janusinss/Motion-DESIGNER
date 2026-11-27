@@ -83,6 +83,12 @@ Pick the lens by purpose: commercial launch/ad → D&AD · motion/brand/explaine
 - **Revise**: anything below; next round targets the two lowest-weighted-gap dimensions first.
 - **Stop (3 rounds or no gain)**: report the invalid assumption and a 2-option choice per `AGENTS.md` Strike 3.
 
+## Round Protocol (independence, refutation, no silent regressions)
+1. **Design-blind jury**: a fresh subagent that did not build the film gets only the render, its event log or cue sheet, the planned duration and hero span, a reference `critic.json` if one was measured, and the lens. No `PLAN.md`, no `BRIEF.md`, no source.
+2. **Refute pass** (before fixes are applied): a second fresh subagent receives the render and the top 3 fixes and tries to disprove each one (wrong timecode, already true on screen, would break a protected strength, measured evidence contradicts it). Apply only the fixes that survive; record the dropped ones and why.
+3. **Blind A/B between rounds**: before judging round N ≥ 2, compare it with round N-1 on `motionmaxxing/scripts/blind_review.py`, sides hidden. If the earlier round wins, the revision regressed: roll back that change and say so.
+4. **Lesson**: the director appends the final verdict and the 1-3 highest-value fixes to the repo `LESSONS.md`.
+
 ## Fix-Writing Patterns (concrete, numeric)
 - Weak: "Make the ending better." → Strong: "`27.0s` logo fades in from nothing → no cause, reads as template → build the mark from the three strokes merging over 20 f expo-out, hold 1.1 s with a ±1 % W breathing edge."
 - Weak: "Pacing feels slow." → Strong: "`8–16s` four beats at ~2.0 s each (`energy_cv` 0.09) → equal energy, no arrival → shorten to 2.6 / 2.0 / 1.4 / 1.0 s and move the hero drop to 63 %."

@@ -13,7 +13,9 @@ You are the jury, not the maker. Judge the **rendered film**, never the source c
 2. **Calibrated scores, no inflation**: use the anchors in `references/jury-rubric.md` (5 = competent student, 7 = solid professional, 8 = high-end agency, 9 = award shortlist). Most first renders deserve 5-7.
 3. **Fix list, not a review essay**: 5-10 fixes ordered by impact, each with timecode, observable problem, why it matters, and a concrete how-to with numbers (curve + frames, px, % H, hex, dB). At least one fix must raise the **idea / wow**, not only polish.
 4. **Never regress strengths**: name what works so the revision protects it.
-5. **Loop discipline**: max 3 revision rounds per film (aligns with the 3-strike rule in `AGENTS.md`). Stop early when every dimension is ≥ 8 and Idea + Motion Craft are ≥ 9. If a round fails to raise the total, stop and report the invalid assumption.
+5. **Design-blind**: judge the render, the cue sheet and the planned numbers only. Never open `PLAN.md`, `BRIEF.md` or the film's source: the jury scores what is on screen, not what was meant.
+6. **UNVERIFIED is not PASS**: a check that could not run (missing `--expect`, no librosa, unparsed loudness) is reported as UNVERIFIED and named in the verdict; never fill it in by guess.
+7. **Loop discipline**: max 3 revision rounds per film (aligns with the 3-strike rule in `AGENTS.md`). Stop early when every dimension is ≥ 8 and Idea + Motion Craft are ≥ 9. If a round fails to raise the total, stop and report the invalid assumption.
 
 ## Workflow
 
@@ -26,7 +28,13 @@ You are the jury, not the maker. Judge the **rendered film**, never the source c
 # macOS / Linux
 .venv/bin/python .agents/skills/motion-critic/scripts/critic_scan.py <film.mp4> --out <film_dir>/critic --expect <planned_s> [--hero <planned_hero_s>]
 ```
-Outputs: `sheet.jpg` (frame every 0.5 s), `energy.png` (motion-energy curve, 55-80 % hero window shaded, measured peak in red, planned hero in blue), `critic.json` (all metrics + PASS/WARN/FAIL). Exit code 1 on any FAIL (duration, frame-0 motion, dead spans, loudness, true peak).
+Outputs: `sheet.jpg` (frame every 0.5 s), `energy.png` (motion-energy curve, 55-80 % hero window shaded, measured peak in red, planned hero in blue), `critic.json` (all metrics + PASS/WARN/FAIL/UNVERIFIED). Exit code 1 on any FAIL (duration, frame-0 motion, dead spans, black holes ≥ 0.5 s, loudness, true peak).
+
+Add these when they exist (both are inputs the maker hands over, not the plan):
+- `--cues <cues.json>`: the film's cue sheet (`video-director/scripts/cues.py`). Cut sync then uses the authored cuts, the planned hero is a span, and three more checks run: `hits_on_sound` (drop, lock, logo land on a sound onset within 1 frame), `breath_quiet` (a designed silence peaks below -30 dBFS), `holds_alive` (a designed hold longer than 1.4 s carries visible motion at 48 px, so grain alone does not count).
+- `--reference <ref/critic.json>`: a reference film scanned with this same script. `reference_grammar` reports energy-curve correlation, peak-position delta and median shot ratio, as targets for the fix list.
+
+Always on: `end_hold_perceived` (the tail as a viewer sees it, grain ignored) and `black_frames` (a 2-frame designed light-out passes; a black run ≥ 0.5 s inside the film fails).
 
 WARNs are evidence for the jury, not verdicts: a high `slop_ratio` from a deliberate, flat brand blue (one saturated hue the brand owns) is fine, while a default dark blue→purple gradient is the tell; a peak outside the hero window can be a busy scene rather than a misplaced climax. Confirm each WARN on the sheet before scoring.
 

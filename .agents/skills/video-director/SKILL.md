@@ -90,10 +90,16 @@ Cinetic films: run `node ENGINE/scripts/film-diff.mjs` so the devices differ fro
 Build the full film at target spec with the sound cut to picture, following `ENGINE/SKILL.md` step by step. Run the engine's own gate (`AGENTS.md` §6) and fix every FAIL before the jury sees it. Never self-certify from source code.
 
 ## 7. Independent jury (max 3 rounds)
-The maker does not judge its own film. In Claude Code, run `motion-critic` in a **fresh subagent** that did not build the film. Give it only the paths, the planned numbers and the target lens:
+The maker does not judge its own film. First write the film's cue sheet (one clock for picture, sound and QA; schema `references/cues.schema.json`) from the engine's own timing plus `PLAN.md`:
 ```powershell
-.venv\Scripts\python.exe .agents/skills/motion-critic/scripts/critic_scan.py projects/<slug>/film/final.mp4 --out projects/<slug>/critic/r1 --expect <s> --hero <s>
+# motionmaxxing (render.mjs events) | cinetic: from-cinetic film/out/cues.json | anidoodle: from-anidoodle out/<film>.cues.json
+.venv\Scripts\python.exe .agents/skills/video-director/scripts/cues.py from-events projects/<slug>/film/final.mp4.events.json --plan projects/<slug>/PLAN.md --hits "<t>:drop,<t>:logo" --breath "<t0>-<t1>" --hold "<t0>-<t1>" --out projects/<slug>/cues.json
 ```
+In Claude Code, run `motion-critic` in a **fresh subagent** that did not build the film. Give it only the paths, the planned numbers and the target lens:
+```powershell
+.venv\Scripts\python.exe .agents/skills/motion-critic/scripts/critic_scan.py projects/<slug>/film/final.mp4 --out projects/<slug>/critic/r1 --expect <s> --cues projects/<slug>/cues.json [--reference projects/<slug>/refs/<name>/critic.json]
+```
+(scan a reference clip once with the same script to get its `critic.json`).
 The jury is **design-blind**: it gets the render, the event log, the planned duration and hero time, and the lens, never `PLAN.md`, `BRIEF.md` or the source, so it judges what is on screen and not what was meant. When `REFERENCES.md` measured a clip, also pass its `like.json` path so the jury can quote the grammar gap.
 
 Apply the ranked fix list (Critical items first, plus at least one fix that raises the idea), re-render, and re-judge into `critic/r2`. Before round 2 and 3 are judged, compare the new draft with the previous one blind, so a revision cannot regress unseen:

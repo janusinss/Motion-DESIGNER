@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "motion-designer/cues.schema.json",
+  "title": "Motion-DESIGNER cue sheet (one clock for picture, sound and QA)",
+  "description": "Engine-neutral timing of one film, in seconds. Written by video-director/scripts/cues.py from an engine's own timing (motionmaxxing render events, cinetic out/cues.json, anidoodle cue sheet) plus PLAN.md; read by motion-critic critic_scan.py --cues.",
+  "type": "object",
+  "required": ["version", "fps", "duration", "cuts"],
+  "properties": {
+    "version": { "const": 1 },
+    "source": { "type": "string", "description": "engine and file the cues came from" },
+    "fps": { "type": "number", "exclusiveMinimum": 0 },
+    "duration": { "type": "number", "exclusiveMinimum": 0 },
+    "hero": {
+      "type": "object",
+      "required": ["t0", "t1"],
+      "properties": { "t0": { "type": "number" }, "t1": { "type": "number" }, "poster": { "type": "number" } }
+    },
+    "beats": {
+      "type": "array",
+      "items": { "type": "object", "required": ["t0", "t1"], "properties": { "t0": { "type": "number" }, "t1": { "type": "number" }, "role": { "type": "string" } } }
+    },
+    "cuts": { "type": "array", "items": { "type": "number" }, "description": "authored picture cuts, seconds" },
+    "hits": {
+      "type": "array",
+      "items": { "type": "object", "required": ["t"], "properties": { "t": { "type": "number" }, "label": { "type": "string" } } },
+      "description": "moments the sound must land on (drop, lock, logo, Enter)"
+    },
+    "breaths": {
+      "type": "array",
+      "items": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+      "description": "designed silences [t0, t1]: the mix must be quiet here"
+    },
+    "holds": {
+      "type": "array",
+      "items": { "type": "array", "items": { "type": "number" }, "minItems": 2, "maxItems": 2 },
+      "description": "designed held frames [t0, t1] (poster, end card): must still carry visible motion if longer than 1.4 s"
+    }
+  }
+}
