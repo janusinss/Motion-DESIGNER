@@ -305,7 +305,7 @@ def main() -> None:
     vids = out / "videos"
     vids.mkdir(parents=True, exist_ok=True)
     keyfile = out / ".answer-key.json"
-    old = {} if a.reshuffle or not keyfile.exists() else json.loads(keyfile.read_text())
+    old = {} if a.reshuffle or not keyfile.exists() else json.loads(keyfile.read_text(encoding="utf-8"))
     rnd = random.SystemRandom()
     key, panels = {}, []
     for f in vids.iterdir():
@@ -349,7 +349,7 @@ def main() -> None:
             key[f"{title} · {lab}"] = names[str(f)]
         panels.append({"id": rid, "title": title, "items": items})
         print(f"round '{title}' -> #{rid} ({len(files)} films)")
-    keyfile.write_text(json.dumps(key, indent=1) + "\n")
+    keyfile.write_text(json.dumps(key, indent=1) + "\n", encoding="utf-8")
     try:
         os.chmod(keyfile, 0o600)
     except OSError:
@@ -357,7 +357,7 @@ def main() -> None:
     blob = base64.b64encode(json.dumps(key).encode()).decode()[::-1]
     html = (TEMPLATE.replace("__PANELS__", json.dumps(panels)).replace("__KEY__", blob)
             .replace("__TITLE__", a.title.replace("<", "&lt;")))
-    (out / "index.html").write_text(html)
+    (out / "index.html").write_text(html, encoding="utf-8")
     print(f"wrote {out / 'index.html'}  (hidden answer key: {keyfile.name}; do not open it before judging)")
 
 

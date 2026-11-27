@@ -90,6 +90,12 @@ Cinetic films: run `node ENGINE/scripts/film-diff.mjs` so the devices differ fro
 ## 6. Build, then the engine's native gate
 Build the full film at target spec with the sound cut to picture, following `ENGINE/SKILL.md` step by step. Run the engine's own gate (`AGENTS.md` §6) and fix every FAIL before the jury sees it. Never self-certify from source code.
 
+HTML films (motionmaxxing, mg-styles harness: any page with `window.__seek` or `window.renderAt`) also run the text-collision gate, about 5 s:
+```powershell
+node .agents/skills/video-director/scripts/text_overlap.mjs projects/<slug>/film/index.html --json projects/<slug>/critic/overlap.json
+```
+FAIL = the frame's headline is covered by other text for ≥ 0.2 s. That is what earlier juries marked as craft flaws (copy crossed by flood words, two crash-in words on top of each other), which no video metric catches. Fix it: move, scale back or blur the other text, or clear a zone around the copy. A deliberate overlap is allowed only with a one-line reason in `NOTE.md`. WARN lines list piles of equal-weight words; check them against craft rule K4.
+
 ## 7. Independent jury (max 3 rounds)
 The maker does not judge its own film. First write the film's cue sheet (one clock for picture, sound and QA; schema `references/cues.schema.json`) from the engine's own timing plus `PLAN.md`:
 ```powershell

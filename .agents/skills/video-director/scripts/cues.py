@@ -52,9 +52,24 @@ def from_plan(sheet, plan, fps):
     m = re.search(r"hero moment[^\n]*?(\d+(?:\.\d+)?)\s*[-–]\s*(\d+(?:\.\d+)?)\s*s", text, re.I)
     if m and "hero" not in sheet:
         sheet["hero"] = {"t0": float(m.group(1)), "t1": float(m.group(2))}
-        p = re.search(r"screenshot frame is f\s*(\d+)|poster[^\n]*?(\d+(?:\.\d+)?)\s*s", text, re.I)
+        sheet["hero"]["poster"] = poster_time(text, fps, sheet["hero"])
+
+
+def poster_time(text, fps, hero):
+    """Absolute poster time. Accepts 'screenshot frame is f399', 'poster ... (frames 386-421)'
+    or 'poster at 13.3 s'; never a duration such as 'the poster holds 1.2 s'. Falls back to the
+    hero midpoint when nothing absolute is written or the value lies outside the hero span."""
+    t = None
+    for pat, unit in ((r"screenshot frame is f\s*(\d+)", "f"),
+                      (r"poster[^\n]*?\(?frames?\s*(\d+)", "f"),
+                      (r"poster(?: frame)?\s*(?:at|@|=)\s*(\d+(?:\.\d+)?)\s*s", "s")):
+        p = re.search(pat, text, re.I)
         if p:
-            sheet["hero"]["poster"] = round(int(p.group(1)) / fps, 3) if p.group(1) else float(p.group(2))
+            t = int(p.group(1)) / fps if unit == "f" else float(p.group(1))
+            break
+    if t is None or not (hero["t0"] <= t <= hero["t1"]):
+        t = (hero["t0"] + hero["t1"]) / 2
+    return round(t, 3)
 
 
 def validate(sheet):
