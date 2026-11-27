@@ -1,0 +1,12 @@
+{
+  "name": "motion-designer",
+  "description": "59 agent skills for AI motion design: direct, build, render and jury-review videos (video-director, motion-critic, cinetic, motionmaxxing, anidoodle, HyperFrames, Remotion, Blender).",
+  "author": {
+    "name": "janusinss",
+    "url": "https://github.com/janusinss"
+  },
+  "homepage": "https://github.com/janusinss/Motion-DESIGNER",
+  "repository": "https://github.com/janusinss/Motion-DESIGNER",
+  "keywords": ["motion-design", "video", "animation", "skills", "remotion", "hyperframes", "blender"],
+  "skills": ["./.agents/skills/"]
+}

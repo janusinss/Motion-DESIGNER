@@ -1,0 +1,17 @@
+{
+  "name": "motion-designer",
+  "description": "Motion-DESIGNER: 59 agent skills for AI motion design, video direction, critique, HyperFrames, Remotion and Blender.",
+  "owner": {
+    "name": "janusinss",
+    "url": "https://github.com/janusinss"
+  },
+  "plugins": [
+    {
+      "name": "motion-designer",
+      "source": "./",
+      "description": "All 59 Motion-DESIGNER skills from .agents/skills/ (video-director, motion-critic, video-prompt-enhancer, cinetic, motionmaxxing, anidoodle, HyperFrames, Remotion, Blender and more).",
+      "category": "design",
+      "tags": ["motion-design", "video", "animation", "remotion", "hyperframes", "blender"]
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate skills (frontmatter, unique names, doc counts, plugin manifests)
+        run: python3 scripts/validate_skills.py
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: true
+
+      - name: Install FFmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      # Lite profile: core packages only (no torch / whisperx / manim).
+      - name: Python venv (lite profile)
+        run: uv sync --locked --no-install-project --no-default-groups --python 3.13
+
+      # Ubuntu 24.04 blocks unprivileged user namespaces, which kills Chrome's sandbox.
+      - name: Allow Chrome sandbox
+        run: sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0
+
+      - name: doctor.py --json
+        run: |
+          .venv/bin/python .agents/skills/video-director/scripts/doctor.py --json | tee doctor.json
+          python3 -c "import json; r = json.load(open('doctor.json')); e = r['engines']; assert r['ready'], r['missing_hard']; assert e['motionmaxxing'] and e['motion-critic'], e"
+
+      - name: Smoke test - render a 2 s fixture with motionmaxxing render.mjs
+        run: node .agents/skills/motionmaxxing/scripts/render.mjs .github/ci/smoke.html smoke/smoke.mp4 --fps 30
+
+      - name: Smoke test - motion-critic critic_scan.py
+        run: |
+          .venv/bin/python .agents/skills/motion-critic/scripts/critic_scan.py smoke/smoke.mp4 --out smoke/critic --expect 2
+          test -s smoke/critic/critic.json
+          test -s smoke/critic/sheet.jpg
+
+      - name: Upload smoke evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: smoke
+          path: |
+            smoke/
+            doctor.json
+          if-no-files-found: ignore
+          retention-days: 7

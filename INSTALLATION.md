@@ -149,6 +149,24 @@ cp scripts/sync-skills.sh scripts/sync-skills.ps1 "$TARGET/scripts/"
 
 Then add `.claude/skills/` to the target repo's `.gitignore` and run the sync script if using Claude Code. If you also want the 15 style prompts, demos, and zero-API-key audio synthesizer, copy `resources/mg-styles-15/`.
 
+### 2.5 Install as a Plugin or with `npx skills` (no clone)
+
+The repository ships `.claude-plugin/marketplace.json` and `.claude-plugin/plugin.json`, so it works as a Claude Code plugin marketplace. The plugin `motion-designer` points its `skills` path at `.agents/skills/`:
+
+```text
+/plugin marketplace add janusinss/Motion-DESIGNER
+/plugin install motion-designer@motion-designer
+```
+
+Any agent the [`skills` CLI](https://github.com/vercel-labs/skills) supports can install them too (it discovers `.agents/skills/` directly; add `--skill <name>` for a single skill):
+
+```bash
+npx skills add janusinss/Motion-DESIGNER --list
+npx skills add janusinss/Motion-DESIGNER
+```
+
+Both routes install the skill files only. The skills' scripts still need the Python, Node and FFmpeg stacks below; for a full workspace (projects, renders, `doctor.py`), clone the repository instead.
+
 ---
 
 ## 3. Python Stack (`manim`, `librosa`, `whisperx`)
@@ -211,6 +229,23 @@ uv pip install --python .venv/bin/python \
   "torch~=2.8.0" "torchaudio~=2.8.0" "torchvision~=0.23.0" \
   "pyloudnorm>=0.1.1" "pedalboard>=0.9.25" "opencv-python-headless>=4.10" "brotli>=1.1" "uharfbuzz>=0.41"
 ```
+
+**Option C — Lite profile (no PyTorch, WhisperX or Manim; any OS, no GPU):**
+
+`pyproject.toml` keeps the heavy packages in the `full` dependency group, which `uv sync` installs by default. Skip it for a first film: the lite venv holds only the core packages `doctor.py` requires (numpy, scipy, soundfile, Pillow, librosa, pyloudnorm, pedalboard, OpenCV, fontTools, brotli, uharfbuzz).
+
+```bash
+uv sync --no-install-project --no-default-groups
+```
+
+```bash
+# pip fallback for the same set
+pip install -r requirements-lite.txt
+```
+
+Under lite, `doctor.py` reports READY with `motionmaxxing`, `cinetic`, `remotion`, `hyperframes`, `anidoodle`, `huashu-art-motion` and `motion-critic` available. It lists `manim` as blocked, and WhisperX word timing is unavailable. Add them later with a plain `uv sync --no-install-project`.
+
+> `uv sync` is exact: running the lite command in an existing full venv uninstalls torch, WhisperX and Manim. Use it in a fresh clone or a separate venv.
 
 ### 3.3 `pip` Fallback (`requirements.txt`)
 

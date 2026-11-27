@@ -3,19 +3,35 @@ name = "motion-designer"
 version = "0.1.0"
 description = "Motion Designer Python environment (manim, librosa, whisperx)"
 requires-python = ">=3.12,<3.14"
+# Core (lite profile): everything doctor.py checks as a hard requirement plus the engines'
+# audio/QA/logo packages. Enough for motionmaxxing, cinetic, huashu-art-motion and motion-critic.
 dependencies = [
+    "numpy>=2.1",
+    "scipy>=1.15",
+    "soundfile>=0.12.1",
+    "pillow>=10",
+    "fonttools>=4.50",
     "librosa>=1.0.1",
-    "manim>=0.22.1",
-    "whisperx>=3.8.6",
-    "torch~=2.8.0",
-    "torchaudio~=2.8.0",
-    "torchvision~=0.23.0",
     "pyloudnorm>=0.1.1",
     "opencv-python-headless>=4.10",
     "brotli>=1.1",
     "uharfbuzz>=0.41",
     "pedalboard>=0.9.25",
 ]
+
+[dependency-groups]
+# Heavy extras (several GB with CUDA torch): Manim, WhisperX word timing, PyTorch.
+# Installed by default; skip them with `uv sync --no-default-groups` (the lite profile).
+full = [
+    "manim>=0.22.1",
+    "whisperx>=3.8.6",
+    "torch~=2.8.0",
+    "torchaudio~=2.8.0",
+    "torchvision~=0.23.0",
+]
+
+[tool.uv]
+default-groups = ["full"]
 
 [tool.uv.sources]
 torch = { index = "pytorch-cu128" }
